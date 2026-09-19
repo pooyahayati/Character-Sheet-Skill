@@ -1,0 +1,112 @@
+{
+  "character_id": "CS-DEMO-001",
+  "version": "1.0",
+  "level": "Advanced",
+  "identity": {
+    "face_geometry": {
+      "overall_shape": {
+        "value": "Example only",
+        "confidence": "High",
+        "consistency": "High",
+        "status": "Locked",
+        "source_images": ["ref-front", "ref-three-quarter"]
+      }
+    },
+    "facial_proportions": {
+      "inter_eye_to_face_width": {
+        "value": 0.0,
+        "confidence": "High",
+        "consistency": "High",
+        "status": "Cross-Validated",
+        "source_images": ["ref-front"]
+      }
+    },
+    "eyes": {
+      "left_eye": {
+        "value": "Structured eye identity",
+        "confidence": "High",
+        "consistency": "High",
+        "status": "Locked",
+        "source_images": ["ref-front", "ref-eye-closeup"]
+      },
+      "right_eye": {
+        "value": "Structured eye identity",
+        "confidence": "High",
+        "consistency": "High",
+        "status": "Locked",
+        "source_images": ["ref-front", "ref-eye-closeup"]
+      }
+    },
+    "mouth_lips": {
+      "neutral_geometry": {
+        "value": "Structured mouth/lip identity",
+        "confidence": "High",
+        "consistency": "High",
+        "status": "Locked",
+        "source_images": ["ref-front"]
+      }
+    },
+    "smile_expression": {
+      "soft_smile": {
+        "value": "Calibrated only from visible references",
+        "confidence": "Medium",
+        "consistency": "Medium",
+        "status": "Cross-Validated",
+        "source_images": ["ref-smile-1", "ref-smile-2"]
+      }
+    },
+    "distinctive_features": [
+      {
+        "name": "Example visible identity marker",
+        "subject_side": "Left",
+        "location": "Example relative location",
+        "confidence": "High",
+        "status": "Locked",
+        "source_images": ["ref-front"]
+      }
+    ],
+    "body_geometry": {
+      "shoulder_to_hip_relationship": {
+        "value": "Relative visual proportion only",
+        "confidence": "Medium",
+        "consistency": "Medium",
+        "status": "Cross-Validated",
+        "source_images": ["ref-body-front", "ref-body-side"]
+      },
+      "exact_waist_measurement": {
+        "confidence": "Unknown",
+        "consistency": "Unknown",
+        "status": "Unverified",
+        "source_images": [],
+        "notes": "Never infer exact physical measurement from ordinary uncalibrated images."
+      }
+    }
+  },
+  "editable": {
+    "appearance": {
+      "hair_color": "Default appearance value",
+      "hair_style": "Default appearance value",
+      "nail_color": "Default appearance value",
+      "clothing": "Minimal neutral non-sexualized base clothing"
+    },
+    "body": {
+      "waist_shape": "Editable with Body Revision Guard",
+      "chest_shape": "Editable with Body Revision Guard",
+      "overall_body_shape": "Editable with Body Revision Guard"
+    }
+  },
+  "evidence": {
+    "primary_references": ["ref-front", "ref-three-quarter", "ref-body-front"],
+    "validation_references": ["ref-smile-2", "ref-body-side"],
+    "excluded_references": ["duplicate-or-unreliable-example"],
+    "coverage": {
+      "face": "Strong",
+      "eyes": "Strong",
+      "smile": "Moderate",
+      "profile": "Moderate",
+      "body": "Moderate",
+      "hands_nails": "Weak"
+    }
+  },
+  "revisions": []
+}
