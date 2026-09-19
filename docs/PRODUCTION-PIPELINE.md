@@ -14,8 +14,8 @@ Reference Intake
 → Canonical Identity Profile
 → Canonical Body Proxy when pose production is required
 → Pose Readiness Target
-→ Canonical Face Anchor
-→ Canonical Face QC
+→ Multi-view Identity Anchor Bank
+→ Anchor Bank QC
 → Individual Face Panels
 → Per-Panel Face QC
 → Pose Contract + Generation Route
@@ -41,13 +41,16 @@ Before generating profile, 3/4, body, expression, or modeling panels:
 
 1. choose the strongest facial references;
 2. build the canonical identity profile;
-3. create or select one canonical neutral face anchor;
-4. validate it against the source references;
-5. mark it Approved only after the critical Face Gates pass.
+3. approve a neutral frontal anchor;
+4. add evidence-supported 3/4/profile/detail anchors when available;
+5. validate every anchor against the original source references;
+6. store the bank using `schemas/identity-anchor-bank.schema.json`.
 
-Downstream generated panels use the approved canonical face anchor plus the relevant original references.
+Downstream panels use the nearest relevant approved anchor(s), plus the relevant original references.
 
-The canonical face anchor is a production control asset. It is not new source evidence.
+A reconstructed anchor remains Reconstructed and cannot become stronger evidence than its source references.
+
+The anchor bank is a production control asset. It is not new source evidence.
 
 ## Panel isolation rule
 
@@ -95,11 +98,14 @@ Repeated critical failure triggers escalation to a stronger route instead of bli
 
 Every panel receives:
 
-1. the canonical face anchor;
+1. nearest relevant approved identity anchor(s);
 2. the minimal original references relevant to that panel;
 3. canonical locked attributes;
-4. the requested panel-specific pose/expression/camera instruction;
-5. the explicit list of attributes that are allowed to change.
+4. pose contract when relevant;
+5. camera-lighting contract;
+6. clothing behavior contract when relevant;
+7. skin/hair/extremity assets when visible/relevant;
+8. the explicit list of attributes that are allowed to change.
 
 Examples:
 
@@ -152,6 +158,15 @@ After the route-local repair budget is exhausted:
 5. return `BLOCK` only when the evidence gap cannot be resolved in the current build or the required route ladder is exhausted.
 
 Never loop indefinitely across routes.
+
+## Cross-panel identity validation
+
+Before deterministic composition:
+
+1. compare approved panels using `schemas/cross-panel-identity-matrix.schema.json`;
+2. include front ↔ 3/4, neutral ↔ expression, canonical face ↔ full-body face, and neutral body ↔ dynamic body comparisons when those panels exist;
+3. reject any required pair with a BLOCK consistency result;
+4. repair the drifting panel rather than averaging identities across the set.
 
 ## Deterministic composition
 
