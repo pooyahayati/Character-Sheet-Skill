@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/build-request.schema.json",
+  "title": "Character Sheet Build Request",
+  "type": "object",
+  "required": [
+    "request_id",
+    "goal",
+    "requested_level",
+    "required_details",
+    "subject_authorization",
+    "age_handling"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "goal": {
+      "enum": [
+        "Face-Reference",
+        "Character-Reference",
+        "Modeling-Reference",
+        "Revision",
+        "Level-Upgrade",
+        "Custom"
+      ]
+    },
+    "requested_level": {
+      "enum": [
+        "Auto",
+        "Base",
+        "Advanced",
+        "Full"
+      ]
+    },
+    "required_details": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "Face-Angles",
+          "Expressions",
+          "Smile",
+          "Body",
+          "Back-View",
+          "Hair",
+          "Hands-Nails",
+          "Distinctive-Features",
+          "Modeling-Poses",
+          "Measurements"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "target_appearance_epoch": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "subject_authorization": {
+      "enum": [
+        "Self",
+        "Authorized-by-Subject",
+        "Licensed-or-Permitted",
+        "Unknown"
+      ]
+    },
+    "age_handling": {
+      "enum": [
+        "Adult-Confirmed",
+        "Minor",
+        "Unknown"
+      ]
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
