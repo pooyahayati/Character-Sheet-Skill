@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/hair-dynamics.schema.json",
+  "title": "Hair Identity and Dynamics",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "character_id",
+    "profile_version",
+    "static_identity",
+    "dynamic_behavior"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "character_id": {
+      "type": "string"
+    },
+    "profile_version": {
+      "type": "string"
+    },
+    "static_identity": {
+      "type": "object",
+      "required": [
+        "hairline",
+        "parting",
+        "length",
+        "texture",
+        "volume"
+      ],
+      "properties": {
+        "hairline": {
+          "type": "string"
+        },
+        "parting": {
+          "type": "string"
+        },
+        "length": {
+          "type": "string"
+        },
+        "texture": {
+          "type": "string"
+        },
+        "volume": {
+          "type": "string"
+        },
+        "color": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "dynamic_behavior": {
+      "type": "object",
+      "required": [
+        "gravity_response",
+        "shoulder_interaction",
+        "head_turn_behavior"
+      ],
+      "properties": {
+        "gravity_response": {
+          "enum": [
+            "Straight-Fall",
+            "Wavy-Fall",
+            "Curly-Volume",
+            "Coily-Volume",
+            "Tied-Controlled",
+            "Unknown"
+          ]
+        },
+        "shoulder_interaction": {
+          "enum": [
+            "Above-Shoulder",
+            "Touches-Shoulder",
+            "Drapes-Over-Shoulder",
+            "Below-Shoulder",
+            "Unknown"
+          ]
+        },
+        "head_turn_behavior": {
+          "enum": [
+            "Low-Motion",
+            "Moderate-Motion",
+            "High-Motion",
+            "Tied-Controlled",
+            "Unknown"
+          ]
+        },
+        "face_occlusion_tendency": {
+          "enum": [
+            "Low",
+            "Medium",
+            "High",
+            "Unknown"
+          ]
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
