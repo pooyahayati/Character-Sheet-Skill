@@ -4,6 +4,21 @@
 
 Large photo sets must be curated before identity extraction. More images can reduce quality when they are duplicates, distorted, filtered, outdated or contradictory.
 
+## Structured record
+
+Store the result for every image using `schemas/reference-analysis.schema.json`. The record includes target-subject resolution, capture context, pose, utility, risks, duplicate cluster, identity consistency, and final selection role.
+
+## Multi-person images
+
+If `person_count > 1`, resolve the target person before identity extraction.
+
+Allowed target states:
+
+- `User-Selected`;
+- `Resolved-by-Context`.
+
+If the target remains `Ambiguous`, the image must be `Excluded`. Do not guess based on prominence, gender presentation, clothing, or similarity alone.
+
 ## Per-image assessment
 
 Evaluate each image for:
