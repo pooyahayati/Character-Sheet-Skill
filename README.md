@@ -14,6 +14,151 @@ It can start from a single usable photograph, scale to large photo sets, automat
 
 For repeated realistic outputs in varied poses, the skill also builds a pose-ready control layer: a canonical body proxy, explicit pose contracts, separate camera/lighting contracts, capability-based generation routing, anatomy/occlusion QC, and a visual benchmark from neutral through extreme articulation.
 
+## Release status
+
+Current production release: `v1.0.0`
+
+The installable package is:
+
+`character-sheet-skill-v1.0.0.zip`
+
+The repository keeps development/test files separate from the install package. The ZIP contains only the runtime Skill files and supporting resources.
+
+See:
+
+- `VERSION`
+- `CHANGELOG.md`
+- `docs/FINAL-RELEASE-CHECKLIST.md`
+
+## Install on ChatGPT for Windows
+
+### Requirements
+
+You need:
+
+- the ChatGPT desktop app for Windows;
+- a ChatGPT workspace/account where **Skills** are available;
+- permission to upload/install Skills in that workspace.
+
+OpenAI currently documents Skills for eligible `Business`, `Enterprise`, `Healthcare`, and `Edu` users, subject to workspace settings and product availability. If you do not see the **Skills** tab, your workspace may not support Skills yet or an administrator may have disabled skill creation/uploading.
+
+Official OpenAI references:
+
+- Skills in ChatGPT: https://help.openai.com/en/articles/20001066
+- ChatGPT Windows app: https://help.openai.com/en/articles/9982051-using-the-chatgpt-windows-app
+- ChatGPT desktop / Work: https://help.openai.com/en/articles/20001275
+
+### Step 1 — Get the installable ZIP
+
+**Recommended: download the package produced by GitHub Actions**
+
+1. Open this repository on GitHub.
+2. Open **Actions**.
+3. Open the latest successful **Validate Skill** run.
+4. Download the artifact named similar to:
+   `character-sheet-skill-v1.0.0`
+5. GitHub may wrap artifacts in an outer ZIP. Extract that once.
+6. The file you install into ChatGPT is:
+   `character-sheet-skill-v1.0.0.zip`
+
+**Alternative: build the ZIP locally on Windows**
+
+Requires Python 3.11+.
+
+```powershell
+python scripts/package_skill.py
+```
+
+Output:
+
+```text
+dist/character-sheet-skill-v1.0.0.zip
+```
+
+Optional validation:
+
+```powershell
+python scripts/package_skill.py --check dist/character-sheet-skill-v1.0.0.zip
+```
+
+### Step 2 — Install in the ChatGPT Windows app
+
+1. Open the ChatGPT Windows app and sign in.
+2. In the left sidebar, select **Plugins**.
+3. In the Plugin Directory, open the **Skills** tab.
+4. Select **Create**.
+5. Select **Upload from your computer**.
+6. Choose:
+   `character-sheet-skill-v1.0.0.zip`
+7. Wait for ChatGPT's skill scan to finish.
+8. If the skill is marked **Needs Review**, review it before enabling.
+9. Install/enable the Skill.
+
+If your workspace already shared the Skill with you, use:
+
+`Skills → Shared with me / Shared by <workspace> → ••• → Install`
+
+### Step 3 — Start a clean project
+
+For the first real test, use a clean environment rather than the development chat.
+
+1. Create a new ChatGPT Project, for example:
+   `Character Sheet Test`
+2. Start a new **Chat** inside that Project.
+3. Do not copy the internal architecture or expected answers into the test chat.
+4. Type `@` and select **Character Sheet Skill** to invoke it explicitly, or allow ChatGPT to trigger it automatically when relevant.
+5. Upload the subject photographs in that new chat.
+
+### Recommended first prompt — Persian
+
+```text
+می‌خواهم از این عکس‌ها یک Character Sheet دقیق، فوتورئال و قابل استفاده برای تولید همین شخص در پوزیشن‌ها و زاویه‌های مختلف بسازی. ابتدا عکس‌ها را بررسی کن، بهترین رفرنس‌ها را انتخاب کن و فقط اگر اطلاعات مهمی واقعاً کم است از من عکس یا اطلاعات تکمیلی بخواه.
+```
+
+### Recommended first prompt — English
+
+```text
+Build a precise, photorealistic, pose-ready Character Sheet from these photos so I can reproduce the same person consistently across different poses and camera angles. Analyze and select the best references first, and only ask me for additional references when a material gap truly blocks the target quality.
+```
+
+### Recommended reference set
+
+A strong first test often uses 10–20 varied images when available:
+
+- neutral front face;
+- left and right 3/4 views;
+- at least one useful profile;
+- neutral and smiling expressions;
+- full-body front/side where possible;
+- a few natural candid images;
+- hands visible in at least one useful reference when hand identity matters.
+
+Photo count is not the goal. Coverage, reliability, camera diversity, and useful detail are more important.
+
+### After the Character Sheet is approved
+
+Use the approved character as the canonical identity.
+
+Examples:
+
+```text
+Using the approved character identity, create a full-body walking pose with a normal camera perspective. Preserve face identity, body proportions, hair identity and skin texture.
+```
+
+```text
+Generate a seated three-quarter pose. Keep the canonical body proportions unchanged, allow realistic clothing folds, and validate the face and hands before approval.
+```
+
+```text
+Create a P4 self-occluding pose with crossed arms. Use the strongest available pose/geometry control and reject the output if hand anatomy, occlusion ordering or identity consistency fails.
+```
+
+For a full clean-room pose-readiness test, progress from `P0` through `P5` instead of jumping directly to the hardest pose.
+
+Detailed Windows installation and usage guide:
+
+`docs/INSTALL-CHATGPT-WINDOWS.md`
+
 ## What this skill is designed to preserve
 
 - Face geometry and facial proportions
@@ -257,6 +402,10 @@ See:
 ```text
 SKILL.md
 README.md
+VERSION
+LICENSE
+CHANGELOG.md
+package-manifest.json
 assets/
   character-sheet-levels-example.svg
 docs/
@@ -280,6 +429,8 @@ docs/
   EXTREMITY-IDENTITY.md
   SKIN-HAIR-CLOTH.md
   CAMERA-LIGHTING.md
+  INSTALL-CHATGPT-WINDOWS.md
+  FINAL-RELEASE-CHECKLIST.md
 config/
   level-contract.json
   pose-readiness-contract.json
@@ -309,6 +460,7 @@ schemas/
 scripts/
   compose_sheet.py
   validate_repo.py
+  package_skill.py
 examples/
   sample-build-request.json
   sample-reference-analysis.json
