@@ -1,0 +1,42 @@
+{
+  "character_id": "CS-DEMO-001",
+  "version": "1.0",
+  "level": "Base",
+  "title": "Character Sheet Demo",
+  "canvas": {
+    "width": 1400,
+    "height": 850,
+    "background": "#ece9e4"
+  },
+  "panels": [
+    {
+      "id": "canonical-face",
+      "label": "Canonical Face",
+      "image": "panels/canonical-face.svg",
+      "gate_result": "PASS",
+      "evidence_status": "Cross-Validated",
+      "subject_side": "Center",
+      "x": 40,
+      "y": 130,
+      "width": 620,
+      "height": 650,
+      "notes": "Fictional test asset"
+    },
+    {
+      "id": "eye-detail",
+      "label": "Eye Detail",
+      "image": "panels/eye-detail.svg",
+      "gate_result": "PASS_WITH_LIMITS",
+      "evidence_status": "Observed",
+      "subject_side": "Bilateral",
+      "x": 700,
+      "y": 130,
+      "width": 650,
+      "height": 350,
+      "notes": "Example only"
+    }
+  ],
+  "metadata": {
+    "purpose": "CI compositor smoke test"
+  }
+}
