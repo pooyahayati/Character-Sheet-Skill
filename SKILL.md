@@ -21,6 +21,8 @@ If facial identity cannot be established reliably, do not produce a lower-qualit
 
 Before intake, show or generate a concise example of the expected character-sheet structure so the user understands the target output.
 
+Follow the visual hierarchy in `docs/VISUAL-STANDARD.md` and the level definitions in `docs/LEVEL-SPECS.md`. The preview should compare Base / Advanced / Full while making clear that facial identity fidelity does not decrease in lower levels.
+
 The preview should demonstrate, when applicable:
 
 - face angles;
@@ -341,6 +343,8 @@ Full means lower uncertainty and broader evidence, not merely a larger sheet.
 ## 10. Create the Sheet Plan
 
 Plan only the panels supported or explicitly reconstructed by the available evidence.
+
+Use `examples/sheet-layout-spec.json` as the machine-readable layout baseline. Keep the canonical face visually dominant, neutral body views ahead of modeling poses, and evidence-state labeling available for reconstructed/estimated content.
 
 Possible panels:
 
