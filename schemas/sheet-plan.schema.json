@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/sheet-plan.schema.json",
+  "title": "Character Sheet Plan",
+  "type": "object",
+  "required": [
+    "request_id",
+    "character_id",
+    "selected_level",
+    "panels"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "character_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selected_level": {
+      "enum": [
+        "Base",
+        "Advanced",
+        "Full"
+      ]
+    },
+    "panels": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "panel_id",
+          "panel_type",
+          "required",
+          "evidence_expectation",
+          "source_reference_ids",
+          "reconstruction_allowed"
+        ],
+        "properties": {
+          "panel_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "panel_type": {
+            "enum": [
+              "Canonical-Face",
+              "Face-Front",
+              "Face-Three-Quarter-Left",
+              "Face-Three-Quarter-Right",
+              "Face-Profile-Left",
+              "Face-Profile-Right",
+              "Eye-Detail",
+              "Mouth-Lip-Detail",
+              "Smile",
+              "Hair",
+              "Body-Front",
+              "Body-Side",
+              "Body-Back",
+              "Hands-Nails",
+              "Distinctive-Features",
+              "Modeling-Pose",
+              "Metadata",
+              "Color-Palette"
+            ]
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "evidence_expectation": {
+            "enum": [
+              "Observed-Preferred",
+              "Observed-Required",
+              "Reconstruction-Permitted",
+              "Metadata-Only"
+            ]
+          },
+          "source_reference_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "reconstruction_allowed": {
+            "type": "boolean"
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
