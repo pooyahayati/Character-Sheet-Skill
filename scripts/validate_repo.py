@@ -16,6 +16,12 @@ SCHEMAS = [
     "schemas/level-contract.schema.json",
     "schemas/sheet-plan.schema.json",
     "schemas/build-report.schema.json",
+    "schemas/body-proxy.schema.json",
+    "schemas/pose-contract.schema.json",
+    "schemas/pose-readiness.schema.json",
+    "schemas/generation-route.schema.json",
+    "schemas/visual-benchmark.schema.json",
+    "schemas/visual-benchmark-result.schema.json",
 ]
 
 EXAMPLES = [
@@ -24,6 +30,7 @@ EXAMPLES = [
     ("examples/sample-build-request.json", "schemas/build-request.schema.json"),
     ("examples/sample-sheet-manifest.json", "schemas/sheet-manifest.schema.json"),
     ("config/level-contract.json", "schemas/level-contract.schema.json"),
+    ("config/visual-benchmark.json", "schemas/visual-benchmark.schema.json"),
 ]
 
 
