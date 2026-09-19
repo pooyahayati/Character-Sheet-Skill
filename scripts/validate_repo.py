@@ -22,6 +22,13 @@ SCHEMAS = [
     "schemas/generation-route.schema.json",
     "schemas/visual-benchmark.schema.json",
     "schemas/visual-benchmark-result.schema.json",
+    "schemas/identity-anchor-bank.schema.json",
+    "schemas/cross-panel-identity-matrix.schema.json",
+    "schemas/extremity-profile.schema.json",
+    "schemas/skin-identity.schema.json",
+    "schemas/hair-dynamics.schema.json",
+    "schemas/clothing-behavior.schema.json",
+    "schemas/camera-lighting-contract.schema.json",
 ]
 
 EXAMPLES = [
@@ -36,6 +43,13 @@ EXAMPLES = [
     ("examples/sample-generation-route.json", "schemas/generation-route.schema.json"),
     ("examples/sample-pose-readiness.json", "schemas/pose-readiness.schema.json"),
     ("examples/sample-visual-benchmark-result.json", "schemas/visual-benchmark-result.schema.json"),
+    ("examples/sample-identity-anchor-bank.json", "schemas/identity-anchor-bank.schema.json"),
+    ("examples/sample-cross-panel-identity-matrix.json", "schemas/cross-panel-identity-matrix.schema.json"),
+    ("examples/sample-extremity-profile.json", "schemas/extremity-profile.schema.json"),
+    ("examples/sample-skin-identity.json", "schemas/skin-identity.schema.json"),
+    ("examples/sample-hair-dynamics.json", "schemas/hair-dynamics.schema.json"),
+    ("examples/sample-clothing-behavior.json", "schemas/clothing-behavior.schema.json"),
+    ("examples/sample-camera-lighting-contract.json", "schemas/camera-lighting-contract.schema.json"),
 ]
 
 
@@ -170,6 +184,44 @@ def validate_pose_ready_contracts():
             raise AssertionError(f"Missing sample pose asset: {rel}")
 
 
+def validate_p1_asset_links():
+    profile = load("examples/sample-character-profile.json")
+    analysis = load("examples/sample-reference-analysis.json")
+    by_ref = {x["reference_id"]: x for x in analysis["references"]}
+    assets = profile.get("production_assets", {})
+
+    required_files = [
+        "identity_anchor_bank_file",
+        "cross_panel_identity_matrix_file",
+        "extremity_profile_file",
+        "skin_identity_file",
+        "hair_dynamics_file",
+        "default_clothing_behavior_file",
+    ]
+    for key in required_files:
+        rel = assets.get(key)
+        if not rel:
+            raise AssertionError(f"Sample profile missing P1 asset link: {key}")
+        if not (ROOT / "examples" / rel).exists():
+            raise AssertionError(f"Missing P1 sample asset: {rel}")
+
+    bank = load("examples/sample-identity-anchor-bank.json")
+    for anchor in bank["anchors"]:
+        for rid in anchor["source_reference_ids"]:
+            if rid not in by_ref:
+                raise AssertionError(f"Anchor references unknown source: {rid}")
+        if anchor["role"] == "Primary-Anchor" and anchor["approval"] == "BLOCK":
+            raise AssertionError(f"BLOCK anchor cannot be Primary: {anchor['anchor_id']}")
+
+    matrix = load("examples/sample-cross-panel-identity-matrix.json")
+    for item in matrix["comparisons"]:
+        vals = list(item["checks"].values())
+        if item["result"] == "PASS" and any(v == "BLOCK" for v in vals):
+            raise AssertionError("Cross-panel PASS cannot contain BLOCK subcheck")
+        if item["result"] == "PASS_WITH_LIMITS" and any(v == "BLOCK" for v in vals):
+            raise AssertionError("Cross-panel PASS_WITH_LIMITS cannot hide BLOCK subcheck")
+
+
 def validate_visual_benchmark_result_logic():
     suite = load("config/visual-benchmark.json")
     result = load("examples/sample-visual-benchmark-result.json")
@@ -215,7 +267,9 @@ def validate_inline_output_examples():
             "reconstruction_allowed": False,
             "generation_route": "R1-Identity-Reference",
             "pose_contract_file": None,
-            "pose_difficulty": "Not-Applicable"
+            "pose_difficulty": "Not-Applicable",
+            "identity_anchor_ids": ["anchor-front"],
+            "camera_lighting_contract_file": "sample-camera-lighting-contract.json"
         }]
     }
     Draft202012Validator(load("schemas/sheet-plan.schema.json")).validate(sheet_plan)
@@ -247,6 +301,7 @@ def main():
     validate_scenarios()
     validate_skill_workflow()
     validate_pose_ready_contracts()
+    validate_p1_asset_links()
     validate_visual_benchmark_result_logic()
     validate_manifest_rules()
     validate_inline_output_examples()
