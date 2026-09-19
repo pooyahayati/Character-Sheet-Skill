@@ -62,3 +62,15 @@ The build report must preserve:
 - panel gate outcomes;
 - reconstructed/unverified areas;
 - revision parent when applicable.
+
+
+## Schemas
+
+- `schemas/build-request.schema.json`
+- `schemas/reference-analysis.schema.json`
+- `schemas/character-profile.schema.json`
+- `schemas/sheet-plan.schema.json`
+- `schemas/sheet-manifest.schema.json`
+- `schemas/build-report.schema.json`
+
+Every structured output should validate before the final package is approved.
