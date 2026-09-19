@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "character_id": "CS-DEMO-001",
+  "profile_version": "1.0",
+  "comparisons": [
+    {
+      "panel_a": "canonical-face",
+      "panel_b": "face-three-quarter-left",
+      "result": "PASS",
+      "checks": {
+        "face_identity": "PASS",
+        "body_shape": "NOT_EVALUABLE",
+        "distinctive_features": "PASS",
+        "hair_identity": "PASS",
+        "extremity_identity": "NOT_EVALUABLE"
+      },
+      "notes": []
+    },
+    {
+      "panel_a": "canonical-face",
+      "panel_b": "body-front-neutral",
+      "result": "PASS_WITH_LIMITS",
+      "checks": {
+        "face_identity": "PASS",
+        "body_shape": "PASS",
+        "distinctive_features": "PASS_WITH_LIMITS",
+        "hair_identity": "PASS",
+        "extremity_identity": "NOT_EVALUABLE"
+      },
+      "notes": [
+        "Extremity identity not evaluated in this example."
+      ]
+    }
+  ]
+}
