@@ -13,9 +13,16 @@ Do not optimize only for an attractive image. Optimize for identity fidelity, pr
 
 ## Non-negotiable rule
 
-Character-sheet level controls coverage and detail depth. It must never reduce the facial identity standard.
+Character-sheet level controls coverage, evidence depth, and uncertainty. It must never reduce the minimum facial identity acceptance standard.
 
-If facial identity cannot be established reliably, do not produce a lower-quality identity. Request only the targeted reference needed to resolve the blocking uncertainty.
+Do not confuse fidelity standard with evidence confidence:
+
+- the identity-fidelity acceptance criteria stay constant across Base / Advanced / Full;
+- the amount of source evidence and confidence may be lower in Base and higher in Full.
+
+If facial identity cannot be established reliably enough to pass the critical gates, do not produce a lower-quality canonical identity. Request only the targeted reference needed to resolve the blocking uncertainty.
+
+Use `docs/GATE-CONTRACT.md` as the decision contract.
 
 ## 1. Start with an expectation preview
 
@@ -112,24 +119,17 @@ If a reference appears synthetic or heavily altered, mark it `Suspect Reference`
 
 Extract all reliably observable information first.
 
-For every attribute record:
+For every attribute record, keep evidence, revision, and editability as separate dimensions:
 
 - `value`;
 - `confidence`;
 - `consistency`;
 - `source_images`;
-- `status`.
+- `evidence_basis`: Observed | Cross-Validated | Estimated | Reconstructed | Unverified | User-Provided;
+- `revision_state`: Original | Edited;
+- `lock_state`: Identity-Locked | Appearance-Editable | Body-Editable | Unlocked.
 
-Allowed status values:
-
-- `Observed`;
-- `Cross-Validated`;
-- `Estimated`;
-- `Reconstructed`;
-- `Unverified`;
-- `User-Provided`;
-- `Edited`;
-- `Locked`.
+Never collapse these dimensions into one status field. A feature may simultaneously be Cross-Validated, Original, and Identity-Locked.
 
 Do not ask the user for information that the references already establish with sufficient confidence.
 
@@ -141,11 +141,13 @@ This gate is mandatory for every level.
 
 Every critical gate returns one of:
 
-- `PASS` — evidence is adequate;
-- `PASS_WITH_LIMITS` — continue only while preserving unsupported areas as Estimated, Reconstructed, Unverified, or omitted;
-- `BLOCK` — the requested operation would compromise identity/evidence integrity and needs a targeted reference.
+- `PASS`;
+- `PASS_WITH_LIMITS`;
+- `BLOCK`.
 
-A `BLOCK` on core face geometry, critical eye geometry, or unresolved identity conflict blocks canonical sheet generation.
+The result must follow `docs/GATE-CONTRACT.md`, including named critical checks, evidence used, limitations, and a reason. Do not derive a gate result from one aggregate similarity score.
+
+A `BLOCK` on core face geometry, either eye, mouth/lips, jaw/chin, or unresolved identity conflict blocks canonical sheet generation.
 
 Establish the strongest supported canonical identity for:
 
@@ -404,6 +406,20 @@ If age is unclear or the subject may be a minor, use conservative age-appropriat
 
 ## 12. Generate with independent controls
 
+Follow `docs/PRODUCTION-PIPELINE.md`.
+
+Do not generate the entire multi-panel character sheet in one image-model call.
+
+Production order must be panel-based:
+
+1. establish and approve the Canonical Face Anchor;
+2. generate/edit each face, body, detail, expression, and modeling panel independently;
+3. run per-panel QC;
+4. repair failed panels in isolation;
+5. compose only Approved panels using deterministic layout.
+
+A production backend must support reference-conditioned generation or editing. If it cannot condition on the user's references, the skill may create a plan but must not approve the result as identity-faithful.
+
 Keep these variables conceptually separate:
 
 `Identity + Expression + Gaze + Head Pose + Body Pose + Camera`
@@ -447,7 +463,9 @@ Run independent gates for:
 
 Critical local failures override a strong global score.
 
-When a panel fails, repair that panel if possible rather than regenerating the entire sheet.
+When a panel fails, repair that panel rather than regenerating the entire sheet.
+
+Use the repair budget in `docs/PRODUCTION-PIPELINE.md`: initial attempt plus at most 2 targeted repair attempts. Repeated critical failure becomes `BLOCK` and requires better evidence or a different backend strategy.
 
 Use the Validation Pool to compare results against references not used as primary generation anchors.
 
@@ -465,7 +483,20 @@ A reconstructed profile/back view, invented teeth, inferred body measurement or 
 
 Only new user references or explicit user-provided facts can resolve unverified evidence.
 
-## 16. User review
+## 16. Deterministic composition
+
+After all required panels are Approved, compose the final board deterministically.
+
+Do not ask the image model to render labels, metadata, borders, evidence badges, or the final multi-panel layout.
+
+Use:
+
+- `schemas/sheet-manifest.schema.json`
+- `scripts/compose_sheet.py`
+
+The final composition may contain only PASS or explicitly allowed PASS_WITH_LIMITS panels. BLOCK panels are forbidden.
+
+## 17. User review
 
 After internal QC passes, present the best sheet and a compact summary of:
 
@@ -477,7 +508,7 @@ After internal QC passes, present the best sheet and a compact summary of:
 
 Do not burden the user with every internal score unless useful.
 
-## 17. Versioned revisions
+## 18. Versioned revisions
 
 The approved first identity becomes `v1.0`.
 
@@ -497,7 +528,7 @@ For each revision:
 
 Never rebuild identity from scratch for a simple appearance edit.
 
-## 18. Level upgrades
+## 19. Level upgrades
 
 When new references are supplied later:
 
@@ -507,7 +538,7 @@ Reuse the canonical identity and add newly validated evidence.
 
 Do not discard the approved base without a reason.
 
-## 19. Large photo-set summary
+## 20. Large photo-set summary
 
 When many images are supplied, provide a concise summary after selection, for example:
 
@@ -525,7 +556,7 @@ When many images are supplied, provide a concise summary after selection, for ex
 
 Stop requesting more references once the desired level has sufficient coverage.
 
-## 20. Accuracy and privacy discipline
+## 21. Accuracy and privacy discipline
 
 Do not infer sensitive personal traits from appearance.
 
