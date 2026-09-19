@@ -9,7 +9,9 @@
     "simple_pose": "PASS",
     "dynamic_pose": "PASS",
     "self_occlusion": "NOT_TESTED",
-    "extreme_articulation": "NOT_TESTED"
+    "extreme_articulation": "NOT_TESTED",
+    "neutral_pose": "PASS",
+    "seated_leaning": "PASS"
   },
   "limitations": [
     "P4/P5 benchmark scenarios have not been completed."
