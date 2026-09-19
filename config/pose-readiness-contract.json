@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "principle": "Pose readiness is independent from Base/Advanced/Full sheet level.",
+  "levels": {
+    "Not-Ready": {
+      "requirements": [
+        "critical_identity_not_approved_or_body_pose_evidence_insufficient"
+      ]
+    },
+    "Basic": {
+      "requirements": [
+        "critical_identity_pass",
+        "neutral_or_simple_body_pose_supported",
+        "P0_and_P1_benchmark_no_BLOCK"
+      ]
+    },
+    "Strong": {
+      "requirements": [
+        "critical_identity_pass",
+        "body_proxy_available_at_least_2D_or_3D_skeleton",
+        "P0_through_P3_benchmark_no_BLOCK",
+        "body_geometry_and_full_body_face_fidelity_pass"
+      ]
+    },
+    "Production": {
+      "requirements": [
+        "critical_identity_pass",
+        "3D_body_proxy_or_equivalent_depth_normal_control_available",
+        "P0_through_P5_benchmark_all_required_dimensions_PASS_or_explicitly_approved_PASS_WITH_LIMITS",
+        "physical_plausibility_gate_pass",
+        "occlusion_checks_pass_for_P4_P5",
+        "cross_pose_identity_consistency_pass"
+      ]
+    }
+  }
+}
