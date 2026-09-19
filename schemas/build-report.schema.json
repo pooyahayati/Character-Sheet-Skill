@@ -95,6 +95,40 @@
         "string",
         "null"
       ]
+    },
+    "pose_readiness": {
+      "enum": [
+        "Not-Ready",
+        "Basic",
+        "Strong",
+        "Production"
+      ]
+    },
+    "visual_benchmark_file": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "body_proxy_file": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "generation_routes_used": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "R1-Identity-Reference",
+          "R2-Identity-Plus-2D-Pose",
+          "R3-Identity-Plus-3D-Geometry",
+          "R4-Identity-Preserving-Local-Edit",
+          "R5-Subject-Specific-Adapter",
+          "R6-Dedicated-3D-Avatar"
+        ]
+      },
+      "uniqueItems": true
     }
   },
   "additionalProperties": false
