@@ -109,6 +109,330 @@
           "Target subject is ambiguous."
         ]
       }
+    },
+    {
+      "reference_id": "ref-three-quarter",
+      "file_name": "three-quarter.jpg",
+      "source_type": "Photograph",
+      "person_count": 1,
+      "target_subject": {
+        "status": "Single-Subject",
+        "subject_index": 0,
+        "notes": "Only visible person."
+      },
+      "capture_context": {
+        "mirror_state": "Not-Mirrored",
+        "appearance_epoch_id": "current",
+        "recency_relevance": "Current"
+      },
+      "quality": {
+        "focus": "Good",
+        "exposure": "Good",
+        "effective_resolution": "Good",
+        "face_pixel_coverage": "Good",
+        "motion_blur": "None",
+        "occlusion": "None"
+      },
+      "pose": {
+        "face_view": "Three-Quarter-Subject-Left",
+        "body_view": "None"
+      },
+      "expression": "Neutral",
+      "utility": {
+        "face_geometry": "Good",
+        "eyes": "Good",
+        "nose": "Good",
+        "mouth_lips": "Good",
+        "smile": "Limited",
+        "hair_hairline": "Good",
+        "body_geometry": "Poor",
+        "hands_nails": "Poor",
+        "distinctive_features": "Good"
+      },
+      "risks": {
+        "lens_perspective_distortion": "Low",
+        "beauty_filter": "None",
+        "heavy_retouching": "None",
+        "suspect_synthetic": "None"
+      },
+      "duplicate_cluster_id": null,
+      "identity_consistency": "Consistent",
+      "selection": {
+        "role": "Primary",
+        "reasons": [
+          "Independent non-frontal face coverage."
+        ]
+      }
+    },
+    {
+      "reference_id": "ref-body-front",
+      "file_name": "body-front.jpg",
+      "source_type": "Photograph",
+      "person_count": 1,
+      "target_subject": {
+        "status": "Single-Subject",
+        "subject_index": 0,
+        "notes": "Only visible person."
+      },
+      "capture_context": {
+        "mirror_state": "Not-Mirrored",
+        "appearance_epoch_id": "current",
+        "recency_relevance": "Current"
+      },
+      "quality": {
+        "focus": "Good",
+        "exposure": "Good",
+        "effective_resolution": "Good",
+        "face_pixel_coverage": "Limited",
+        "motion_blur": "None",
+        "occlusion": "None"
+      },
+      "pose": {
+        "face_view": "Front",
+        "body_view": "Front"
+      },
+      "expression": "Neutral",
+      "utility": {
+        "face_geometry": "Good",
+        "eyes": "Good",
+        "nose": "Good",
+        "mouth_lips": "Good",
+        "smile": "Limited",
+        "hair_hairline": "Good",
+        "body_geometry": "Good",
+        "hands_nails": "Poor",
+        "distinctive_features": "Good"
+      },
+      "risks": {
+        "lens_perspective_distortion": "Low",
+        "beauty_filter": "None",
+        "heavy_retouching": "None",
+        "suspect_synthetic": "None"
+      },
+      "duplicate_cluster_id": null,
+      "identity_consistency": "Consistent",
+      "selection": {
+        "role": "Primary",
+        "reasons": [
+          "Neutral body-front geometry."
+        ]
+      }
+    },
+    {
+      "reference_id": "ref-smile-2",
+      "file_name": "smile.jpg",
+      "source_type": "Photograph",
+      "person_count": 1,
+      "target_subject": {
+        "status": "Single-Subject",
+        "subject_index": 0,
+        "notes": "Only visible person."
+      },
+      "capture_context": {
+        "mirror_state": "Not-Mirrored",
+        "appearance_epoch_id": "current",
+        "recency_relevance": "Current"
+      },
+      "quality": {
+        "focus": "Good",
+        "exposure": "Good",
+        "effective_resolution": "Good",
+        "face_pixel_coverage": "Good",
+        "motion_blur": "None",
+        "occlusion": "None"
+      },
+      "pose": {
+        "face_view": "Front",
+        "body_view": "None"
+      },
+      "expression": "Soft-Smile",
+      "utility": {
+        "face_geometry": "Good",
+        "eyes": "Good",
+        "nose": "Good",
+        "mouth_lips": "Good",
+        "smile": "Good",
+        "hair_hairline": "Good",
+        "body_geometry": "Poor",
+        "hands_nails": "Poor",
+        "distinctive_features": "Good"
+      },
+      "risks": {
+        "lens_perspective_distortion": "Low",
+        "beauty_filter": "None",
+        "heavy_retouching": "None",
+        "suspect_synthetic": "None"
+      },
+      "duplicate_cluster_id": null,
+      "identity_consistency": "Consistent",
+      "selection": {
+        "role": "Validation",
+        "reasons": [
+          "Independent smile validation."
+        ]
+      }
+    },
+    {
+      "reference_id": "ref-body-side",
+      "file_name": "body-side.jpg",
+      "source_type": "Photograph",
+      "person_count": 1,
+      "target_subject": {
+        "status": "Single-Subject",
+        "subject_index": 0,
+        "notes": "Only visible person."
+      },
+      "capture_context": {
+        "mirror_state": "Not-Mirrored",
+        "appearance_epoch_id": "current",
+        "recency_relevance": "Current"
+      },
+      "quality": {
+        "focus": "Good",
+        "exposure": "Good",
+        "effective_resolution": "Good",
+        "face_pixel_coverage": "Limited",
+        "motion_blur": "None",
+        "occlusion": "None"
+      },
+      "pose": {
+        "face_view": "Three-Quarter-Subject-Right",
+        "body_view": "Side-Subject-Right"
+      },
+      "expression": "Neutral",
+      "utility": {
+        "face_geometry": "Good",
+        "eyes": "Good",
+        "nose": "Good",
+        "mouth_lips": "Good",
+        "smile": "Limited",
+        "hair_hairline": "Good",
+        "body_geometry": "Good",
+        "hands_nails": "Poor",
+        "distinctive_features": "Good"
+      },
+      "risks": {
+        "lens_perspective_distortion": "Low",
+        "beauty_filter": "None",
+        "heavy_retouching": "None",
+        "suspect_synthetic": "None"
+      },
+      "duplicate_cluster_id": null,
+      "identity_consistency": "Consistent",
+      "selection": {
+        "role": "Validation",
+        "reasons": [
+          "Body side validation."
+        ]
+      }
+    },
+    {
+      "reference_id": "ref-eye-closeup",
+      "file_name": "eye-closeup.jpg",
+      "source_type": "Photograph",
+      "person_count": 1,
+      "target_subject": {
+        "status": "Single-Subject",
+        "subject_index": 0,
+        "notes": "Only visible person."
+      },
+      "capture_context": {
+        "mirror_state": "Not-Mirrored",
+        "appearance_epoch_id": "current",
+        "recency_relevance": "Current"
+      },
+      "quality": {
+        "focus": "Excellent",
+        "exposure": "Good",
+        "effective_resolution": "Excellent",
+        "face_pixel_coverage": "Excellent",
+        "motion_blur": "None",
+        "occlusion": "None"
+      },
+      "pose": {
+        "face_view": "Front",
+        "body_view": "None"
+      },
+      "expression": "Neutral",
+      "utility": {
+        "face_geometry": "Limited",
+        "eyes": "Excellent",
+        "nose": "Limited",
+        "mouth_lips": "Poor",
+        "smile": "Poor",
+        "hair_hairline": "Limited",
+        "body_geometry": "Poor",
+        "hands_nails": "Poor",
+        "distinctive_features": "Good"
+      },
+      "risks": {
+        "lens_perspective_distortion": "Low",
+        "beauty_filter": "None",
+        "heavy_retouching": "None",
+        "suspect_synthetic": "None"
+      },
+      "duplicate_cluster_id": null,
+      "identity_consistency": "Consistent",
+      "selection": {
+        "role": "Validation",
+        "reasons": [
+          "High-detail eye reference."
+        ]
+      }
+    },
+    {
+      "reference_id": "duplicate-or-unreliable-example",
+      "file_name": "duplicate.jpg",
+      "source_type": "Photograph",
+      "person_count": 1,
+      "target_subject": {
+        "status": "Single-Subject",
+        "subject_index": 0,
+        "notes": "Only visible person."
+      },
+      "capture_context": {
+        "mirror_state": "Not-Mirrored",
+        "appearance_epoch_id": "current",
+        "recency_relevance": "Current"
+      },
+      "quality": {
+        "focus": "Limited",
+        "exposure": "Good",
+        "effective_resolution": "Limited",
+        "face_pixel_coverage": "Good",
+        "motion_blur": "Low",
+        "occlusion": "None"
+      },
+      "pose": {
+        "face_view": "Front",
+        "body_view": "None"
+      },
+      "expression": "Neutral",
+      "utility": {
+        "face_geometry": "Good",
+        "eyes": "Good",
+        "nose": "Good",
+        "mouth_lips": "Good",
+        "smile": "Limited",
+        "hair_hairline": "Good",
+        "body_geometry": "Poor",
+        "hands_nails": "Poor",
+        "distinctive_features": "Good"
+      },
+      "risks": {
+        "lens_perspective_distortion": "Low",
+        "beauty_filter": "None",
+        "heavy_retouching": "None",
+        "suspect_synthetic": "None"
+      },
+      "duplicate_cluster_id": "cluster-front-1",
+      "identity_consistency": "Consistent",
+      "selection": {
+        "role": "Excluded",
+        "reasons": [
+          "Near-duplicate and lower utility."
+        ]
+      }
     }
   ]
 }
