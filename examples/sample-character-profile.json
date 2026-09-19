@@ -224,5 +224,13 @@
       "ref-front",
       "ref-three-quarter"
     ]
+  },
+  "production_assets": {
+    "identity_anchor_bank_file": "sample-identity-anchor-bank.json",
+    "cross_panel_identity_matrix_file": "sample-cross-panel-identity-matrix.json",
+    "extremity_profile_file": "sample-extremity-profile.json",
+    "skin_identity_file": "sample-skin-identity.json",
+    "hair_dynamics_file": "sample-hair-dynamics.json",
+    "default_clothing_behavior_file": "sample-clothing-behavior.json"
   }
 }
