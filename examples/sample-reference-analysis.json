@@ -14,7 +14,9 @@
       "capture_context": {
         "mirror_state": "Not-Mirrored",
         "appearance_epoch_id": "current",
-        "recency_relevance": "Current"
+        "recency_relevance": "Current",
+        "camera_hint": "Unknown",
+        "lighting_hint": "Unknown"
       },
       "quality": {
         "focus": "Excellent",
@@ -39,7 +41,10 @@
         "hair_hairline": "Good",
         "body_geometry": "Poor",
         "hands_nails": "Poor",
-        "distinctive_features": "Good"
+        "distinctive_features": "Good",
+        "feet": "Poor",
+        "skin_identity": "Good",
+        "hair_dynamics": "Limited"
       },
       "risks": {
         "lens_perspective_distortion": "Low",
@@ -69,7 +74,9 @@
       "capture_context": {
         "mirror_state": "Unknown",
         "appearance_epoch_id": null,
-        "recency_relevance": "Unknown"
+        "recency_relevance": "Unknown",
+        "camera_hint": "Unknown",
+        "lighting_hint": "Unknown"
       },
       "quality": {
         "focus": "Good",
@@ -93,7 +100,10 @@
         "hair_hairline": "Limited",
         "body_geometry": "Limited",
         "hands_nails": "Poor",
-        "distinctive_features": "Poor"
+        "distinctive_features": "Poor",
+        "feet": "Poor",
+        "skin_identity": "Limited",
+        "hair_dynamics": "Limited"
       },
       "risks": {
         "lens_perspective_distortion": "Low",
@@ -123,7 +133,9 @@
       "capture_context": {
         "mirror_state": "Not-Mirrored",
         "appearance_epoch_id": "current",
-        "recency_relevance": "Current"
+        "recency_relevance": "Current",
+        "camera_hint": "Unknown",
+        "lighting_hint": "Unknown"
       },
       "quality": {
         "focus": "Good",
@@ -147,7 +159,10 @@
         "hair_hairline": "Good",
         "body_geometry": "Poor",
         "hands_nails": "Poor",
-        "distinctive_features": "Good"
+        "distinctive_features": "Good",
+        "feet": "Poor",
+        "skin_identity": "Limited",
+        "hair_dynamics": "Limited"
       },
       "risks": {
         "lens_perspective_distortion": "Low",
@@ -177,7 +192,9 @@
       "capture_context": {
         "mirror_state": "Not-Mirrored",
         "appearance_epoch_id": "current",
-        "recency_relevance": "Current"
+        "recency_relevance": "Current",
+        "camera_hint": "Unknown",
+        "lighting_hint": "Unknown"
       },
       "quality": {
         "focus": "Good",
@@ -201,7 +218,10 @@
         "hair_hairline": "Good",
         "body_geometry": "Good",
         "hands_nails": "Poor",
-        "distinctive_features": "Good"
+        "distinctive_features": "Good",
+        "feet": "Poor",
+        "skin_identity": "Limited",
+        "hair_dynamics": "Limited"
       },
       "risks": {
         "lens_perspective_distortion": "Low",
@@ -231,7 +251,9 @@
       "capture_context": {
         "mirror_state": "Not-Mirrored",
         "appearance_epoch_id": "current",
-        "recency_relevance": "Current"
+        "recency_relevance": "Current",
+        "camera_hint": "Unknown",
+        "lighting_hint": "Unknown"
       },
       "quality": {
         "focus": "Good",
@@ -255,7 +277,10 @@
         "hair_hairline": "Good",
         "body_geometry": "Poor",
         "hands_nails": "Poor",
-        "distinctive_features": "Good"
+        "distinctive_features": "Good",
+        "feet": "Poor",
+        "skin_identity": "Limited",
+        "hair_dynamics": "Limited"
       },
       "risks": {
         "lens_perspective_distortion": "Low",
@@ -285,7 +310,9 @@
       "capture_context": {
         "mirror_state": "Not-Mirrored",
         "appearance_epoch_id": "current",
-        "recency_relevance": "Current"
+        "recency_relevance": "Current",
+        "camera_hint": "Unknown",
+        "lighting_hint": "Unknown"
       },
       "quality": {
         "focus": "Good",
@@ -309,7 +336,10 @@
         "hair_hairline": "Good",
         "body_geometry": "Good",
         "hands_nails": "Poor",
-        "distinctive_features": "Good"
+        "distinctive_features": "Good",
+        "feet": "Poor",
+        "skin_identity": "Limited",
+        "hair_dynamics": "Limited"
       },
       "risks": {
         "lens_perspective_distortion": "Low",
@@ -339,7 +369,9 @@
       "capture_context": {
         "mirror_state": "Not-Mirrored",
         "appearance_epoch_id": "current",
-        "recency_relevance": "Current"
+        "recency_relevance": "Current",
+        "camera_hint": "Unknown",
+        "lighting_hint": "Unknown"
       },
       "quality": {
         "focus": "Excellent",
@@ -363,7 +395,10 @@
         "hair_hairline": "Limited",
         "body_geometry": "Poor",
         "hands_nails": "Poor",
-        "distinctive_features": "Good"
+        "distinctive_features": "Good",
+        "feet": "Poor",
+        "skin_identity": "Limited",
+        "hair_dynamics": "Limited"
       },
       "risks": {
         "lens_perspective_distortion": "Low",
@@ -393,7 +428,9 @@
       "capture_context": {
         "mirror_state": "Not-Mirrored",
         "appearance_epoch_id": "current",
-        "recency_relevance": "Current"
+        "recency_relevance": "Current",
+        "camera_hint": "Unknown",
+        "lighting_hint": "Unknown"
       },
       "quality": {
         "focus": "Limited",
@@ -417,7 +454,10 @@
         "hair_hairline": "Good",
         "body_geometry": "Poor",
         "hands_nails": "Poor",
-        "distinctive_features": "Good"
+        "distinctive_features": "Good",
+        "feet": "Poor",
+        "skin_identity": "Limited",
+        "hair_dynamics": "Limited"
       },
       "risks": {
         "lens_perspective_distortion": "Low",
