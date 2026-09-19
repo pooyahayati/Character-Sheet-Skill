@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "routes": {
+    "R1-Identity-Reference": {
+      "use_for": [
+        "Face-Portrait",
+        "View-Synthesis"
+      ],
+      "capabilities": [
+        "Reference-Conditioning"
+      ],
+      "max_pose_difficulty": "P1-Simple"
+    },
+    "R2-Identity-Plus-2D-Pose": {
+      "use_for": [
+        "Full-Body-Pose",
+        "Modeling-Pose"
+      ],
+      "capabilities": [
+        "Reference-Conditioning",
+        "2D-Pose",
+        "Camera-Control"
+      ],
+      "recommended_for": [
+        "P1-Simple",
+        "P2-Dynamic"
+      ]
+    },
+    "R3-Identity-Plus-3D-Geometry": {
+      "use_for": [
+        "Full-Body-Pose",
+        "Modeling-Pose",
+        "View-Synthesis"
+      ],
+      "capabilities": [
+        "Reference-Conditioning",
+        "3D-Pose",
+        "Depth",
+        "Normal",
+        "Camera-Control"
+      ],
+      "recommended_for": [
+        "P3-Seated-Leaning",
+        "P4-Self-Occlusion",
+        "P5-Extreme-Articulation"
+      ]
+    },
+    "R4-Identity-Preserving-Local-Edit": {
+      "use_for": [
+        "Local-Appearance-Edit",
+        "Body-Edit"
+      ],
+      "capabilities": [
+        "Reference-Conditioning",
+        "Local-Edit"
+      ]
+    },
+    "R5-Subject-Specific-Adapter": {
+      "use_for": [
+        "Face-Portrait",
+        "Full-Body-Pose",
+        "Modeling-Pose",
+        "View-Synthesis"
+      ],
+      "capabilities": [
+        "Reference-Conditioning",
+        "Fine-Tune"
+      ],
+      "use_when": "Repeated identity drift persists after route-appropriate repairs."
+    },
+    "R6-Dedicated-3D-Avatar": {
+      "use_for": [
+        "Full-Body-Pose",
+        "Modeling-Pose",
+        "View-Synthesis"
+      ],
+      "capabilities": [
+        "Dedicated-3D",
+        "Camera-Control"
+      ],
+      "use_when": "Production-grade arbitrary pose/view control is required and diffusion-only routes remain unstable."
+    }
+  },
+  "escalation_ladder": [
+    {
+      "level": 1,
+      "strategy": "Multi-reference identity-conditioned generation/editing"
+    },
+    {
+      "level": 2,
+      "strategy": "Identity adapter plus explicit 2D pose/camera control"
+    },
+    {
+      "level": 3,
+      "strategy": "3D skeleton/depth/normal/SMPL-X-like conditioning"
+    },
+    {
+      "level": 4,
+      "strategy": "Subject-specific adapter or LoRA/fine-tuning"
+    },
+    {
+      "level": 5,
+      "strategy": "Dedicated 3D/avatar representation"
+    }
+  ],
+  "rules": [
+    "Never route P4/P5 full-body work to text-only or reference-only generation.",
+    "After repeated critical failure, escalate capability rather than repeating the same route.",
+    "Do not claim identity-faithful production when the selected route lacks reference conditioning."
+  ]
+}
