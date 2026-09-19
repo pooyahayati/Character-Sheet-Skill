@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/extremity-profile.schema.json",
+  "title": "Hand and Foot Identity Profile",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "character_id",
+    "profile_version",
+    "hands",
+    "feet"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "character_id": {
+      "type": "string"
+    },
+    "profile_version": {
+      "type": "string"
+    },
+    "hands": {
+      "$ref": "#/$defs/sidePair"
+    },
+    "feet": {
+      "$ref": "#/$defs/sidePair"
+    }
+  },
+  "$defs": {
+    "part": {
+      "type": "object",
+      "required": [
+        "evidence_basis",
+        "confidence",
+        "geometry"
+      ],
+      "properties": {
+        "evidence_basis": {
+          "enum": [
+            "Observed",
+            "Cross-Validated",
+            "Estimated",
+            "Reconstructed",
+            "Unverified",
+            "User-Provided"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "High",
+            "Medium",
+            "Low",
+            "Unknown"
+          ]
+        },
+        "geometry": {
+          "type": "object",
+          "properties": {
+            "overall_shape": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "length_width_ratio": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "digit_length_pattern": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "joint_prominence": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "nail_or_toe_shape": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "source_images": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "sidePair": {
+      "type": "object",
+      "required": [
+        "left",
+        "right"
+      ],
+      "properties": {
+        "left": {
+          "$ref": "#/$defs/part"
+        },
+        "right": {
+          "$ref": "#/$defs/part"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
