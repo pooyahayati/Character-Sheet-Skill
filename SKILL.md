@@ -54,6 +54,8 @@ Do not assume more photos always improve the result. Large collections must pass
 
 ## 3. Run the Reference Image Selection System
 
+Represent per-image analysis using `schemas/reference-analysis.schema.json`.
+
 For every input image, assess:
 
 - focus and effective resolution;
@@ -88,6 +90,8 @@ Build:
 3. `Excluded Set` — images too unreliable, distorted, filtered, duplicate or identity-inconsistent for the requested use.
 
 Never weight a feature merely by photo count. Weight by independent coverage and reliability.
+
+If an image contains multiple people, do not guess the target. The target must be Single-Subject, User-Selected, or explicitly Resolved-by-Context. Ambiguous group images are Excluded from identity extraction until resolved.
 
 ### Coverage maps
 
@@ -340,11 +344,21 @@ Examples:
 - muscle/softness change;
 - overall body-shape adjustment.
 
-Body edits require a Body Revision Guard and must not silently modify unrelated proportions or facial identity.
+Body edits must follow `docs/BODY-REVISION-GUARD.md` and must not silently modify unrelated proportions or facial identity.
+
+Record previous value, new value, revision request, protected invariants, and post-edit QC.
 
 ## 9. Select the character-sheet level
 
-Choose the highest level supported by **coverage and reliability**, not raw image count.
+Use `config/level-contract.json` as the normative level definition.
+
+Choose the level from the build request and evidence:
+
+- if the user requested Base / Advanced / Full explicitly, honor that target when supported;
+- if requested level is Auto, choose the smallest level that satisfies the production goal;
+- if the requested level is unsupported, identify the exact missing evidence and offer the highest supported level.
+
+Never choose a level from raw image count.
 
 ### Base
 
@@ -495,6 +509,8 @@ Use:
 - `scripts/compose_sheet.py`
 
 The final composition may contain only PASS or explicitly allowed PASS_WITH_LIMITS panels. BLOCK panels are forbidden.
+
+Package approved outputs according to `docs/OUTPUT-CONTRACT.md`, including the build request, reference analysis, canonical profile, sheet plan, approved panel assets, composition manifest, final SVG, and build report.
 
 ## 17. User review
 
