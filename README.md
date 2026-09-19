@@ -29,6 +29,7 @@ It can start from a single usable photograph, scale to large photo sets, automat
 ```text
 Start
 → Show expected character-sheet preview
+→ Normalize build request / goal / authorization / age handling
 → Collect one or more photos
 → Reference Image Selection System
 → Automatic visual analysis
@@ -79,9 +80,9 @@ Adds stronger left/right angle coverage, better profile reconstruction, full-bod
 
 ### Full
 
-For broad, high-quality reference coverage with low uncertainty.
+For broad, high-quality reference coverage with low uncertainty for the requested production goal.
 
-Adds comprehensive face-angle coverage, expression and smile calibration, full-body front/side/back references, distinctive-feature mapping, detailed body-proportion references, hair, hands/nails and a richer reusable identity profile.
+Requires broad left/right/profile facial evidence. Expression, body, back-view, hands/nails, and modeling coverage become required only when the production goal needs them. Unsupported views remain explicitly Reconstructed rather than being presented as observed evidence.
 
 **Important:** the number of photos alone never determines the level. Coverage, reliability, diversity and image quality do.
 
@@ -224,6 +225,10 @@ docs/
   EXAMPLE-SHEET-LAYOUT.md
   PRODUCTION-PIPELINE.md
   GATE-CONTRACT.md
+  REQUEST-CONTRACT.md
+  OUTPUT-CONTRACT.md
+  BODY-REVISION-GUARD.md
+  PRIVACY-CONSENT.md
 config/
   level-contract.json
 schemas/
