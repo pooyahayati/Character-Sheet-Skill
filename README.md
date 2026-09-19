@@ -2,6 +2,10 @@
 
 A reusable AI skill for building identity-consistent, revision-ready character sheets from real photographs.
 
+![Base, Advanced, and Full character-sheet reference](assets/character-sheet-levels-example.svg)
+
+The bundled preview is a fictional visual template. It communicates output structure, not evidence about any real person.
+
 The skill is designed around a strict principle:
 
 > Character-sheet depth may change, but facial identity fidelity must not be downgraded.
@@ -176,6 +180,8 @@ A Base sheet can later be upgraded to Advanced or Full as new references are sup
 ```text
 SKILL.md
 README.md
+assets/
+  character-sheet-levels-example.svg
 docs/
   ARCHITECTURE.md
   QUALITY-CONTROL.md
