@@ -18,22 +18,35 @@ Official references:
 
 If you do not see the Skills tab, your plan/workspace may not have Skills enabled or your workspace administrator may have disabled skill creation/uploading.
 
-## Build the install package
+## Get the install package
 
-### Option A — GitHub Actions artifact
+### Option A — Official GitHub Release
 
-Every successful validation run builds an installable ZIP artifact.
+Recommended.
 
-1. Open the repository on GitHub.
-2. Open **Actions**.
-3. Open the latest successful **Validate Skill** run.
-4. Download the artifact named similar to:
-   `character-sheet-skill-v1.0.0`
-5. Extract the downloaded GitHub artifact once if GitHub wrapped the skill ZIP inside its artifact ZIP.
-6. The file you install into ChatGPT is:
-   `character-sheet-skill-v1.0.0.zip`
+Release page:
 
-### Option B — Build locally on Windows
+https://github.com/pooyahayati/Character-Sheet-Skill/releases/tag/v1.0.0
+
+Direct ZIP:
+
+https://github.com/pooyahayati/Character-Sheet-Skill/releases/download/v1.0.0/character-sheet-skill-v1.0.0.zip
+
+Checksum:
+
+https://github.com/pooyahayati/Character-Sheet-Skill/releases/download/v1.0.0/SHA256SUMS.txt
+
+### Option B — GitHub Actions artifact
+
+Every successful validation run also builds an installable ZIP artifact.
+
+1. Open **Actions**.
+2. Open the latest successful **Validate Skill** run.
+3. Download the `character-sheet-skill-v1.0.0` artifact.
+4. Extract the outer GitHub artifact ZIP once if needed.
+5. Install the inner `character-sheet-skill-v1.0.0.zip`.
+
+### Option C — Build locally on Windows
 
 Requirements: Python 3.11+.
 
