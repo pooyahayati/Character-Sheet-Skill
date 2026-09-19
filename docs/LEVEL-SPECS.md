@@ -148,6 +148,8 @@ Typical useful evidence includes:
 
 Photo count alone is irrelevant.
 
+Full is goal-aware: a missing optional detail does not block Full when that detail is irrelevant to the intended production use. Missing required details remain Unverified and trigger a targeted request only when necessary.
+
 ## Required visual blocks
 
 ### Face Master Board
@@ -175,7 +177,7 @@ Photo count alone is irrelevant.
 - optional 3/4 neutral;
 - relative proportion map;
 - body geometry notes;
-- hands/nails;
+- hands/nails when relevant and supported;
 - hair length/shape reference.
 
 ### Modeling / Expression Board
