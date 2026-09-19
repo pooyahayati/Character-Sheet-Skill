@@ -34,7 +34,19 @@ Check head silhouette, face width/height, jaw/chin and stable structure.
 
 ### 3. Facial Proportion Gate
 
-Compare normalized proportions to the canonical fingerprint.
+Compare only proportions whose `measurement_context` is appropriate for the comparison.
+
+Each stored facial proportion must record:
+
+- source view;
+- geometry validity;
+- distortion risk;
+- normalization method;
+- source image.
+
+Do not compare a three-quarter/profile-derived ratio directly to a frontal canonical ratio as though the camera geometry were equivalent.
+
+Ratios with `geometry_validity: Invalid` cannot participate in canonical proportion QC. `Limited` ratios are advisory only.
 
 ### 4. Eye Gate
 
