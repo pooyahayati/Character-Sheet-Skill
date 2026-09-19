@@ -9,14 +9,13 @@
     "difficulty",
     "body_pose",
     "head",
-    "camera",
     "contacts",
     "occlusion_expectations",
     "required_controls"
   ],
   "properties": {
     "schema_version": {
-      "const": "1.0"
+      "const": "1.1"
     },
     "pose_id": {
       "type": "string",
@@ -162,71 +161,6 @@
             "Custom",
             "Not-Specified"
           ]
-        }
-      },
-      "additionalProperties": false
-    },
-    "camera": {
-      "type": "object",
-      "required": [
-        "view",
-        "height",
-        "distance_class",
-        "focal_class",
-        "perspective_strength"
-      ],
-      "properties": {
-        "view": {
-          "enum": [
-            "Front",
-            "Three-Quarter-Left",
-            "Three-Quarter-Right",
-            "Profile-Left",
-            "Profile-Right",
-            "Back",
-            "High-Angle",
-            "Low-Angle",
-            "Custom"
-          ]
-        },
-        "height": {
-          "enum": [
-            "Low",
-            "Waist",
-            "Chest",
-            "Eye",
-            "High",
-            "Custom"
-          ]
-        },
-        "distance_class": {
-          "enum": [
-            "Close-Up",
-            "Portrait",
-            "Three-Quarter",
-            "Full-Body",
-            "Environmental"
-          ]
-        },
-        "focal_class": {
-          "enum": [
-            "Wide",
-            "Normal",
-            "Portrait",
-            "Telephoto",
-            "Unknown"
-          ]
-        },
-        "perspective_strength": {
-          "enum": [
-            "Low",
-            "Moderate",
-            "High",
-            "Unknown"
-          ]
-        },
-        "notes": {
-          "type": "string"
         }
       },
       "additionalProperties": false
