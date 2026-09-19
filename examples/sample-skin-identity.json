@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "character_id": "CS-DEMO-001",
+  "profile_version": "1.0",
+  "base": {
+    "evidence_basis": "Observed",
+    "confidence": "Medium",
+    "tone_reference": "Example neutral-light reference",
+    "undertone_reference": "Example only",
+    "texture": "Natural skin texture; no smoothing lock",
+    "notes": [
+      "Color is not colorimetric truth."
+    ]
+  },
+  "regions": {
+    "forehead": {
+      "pores_texture": "Visible natural texture",
+      "fine_lines": null,
+      "pigmentation": null,
+      "freckles_marks": null,
+      "confidence": "Medium"
+    },
+    "under_eye": {
+      "pores_texture": "Natural texture",
+      "fine_lines": "Subtle visible lines",
+      "pigmentation": "Slight tonal variation",
+      "freckles_marks": null,
+      "confidence": "Medium"
+    },
+    "cheeks": {
+      "pores_texture": "Natural texture",
+      "fine_lines": null,
+      "pigmentation": null,
+      "freckles_marks": "Example identity marks only if source-supported",
+      "confidence": "Medium"
+    },
+    "lips": {
+      "pores_texture": "Natural lip texture",
+      "fine_lines": "Visible lip lines",
+      "pigmentation": null,
+      "freckles_marks": null,
+      "confidence": "Medium"
+    }
+  }
+}
