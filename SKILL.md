@@ -294,17 +294,50 @@ Record identity-relevant visible details such as:
 
 Store position with subject laterality and confidence.
 
-### Hair Identity
+### Hair Identity and Dynamics
 
-Separate:
+Use `schemas/hair-dynamics.schema.json` and `docs/SKIN-HAIR-CLOTH.md`.
+
+Separate static hair identity from pose-dependent behavior.
+
+Static identity includes:
 
 - hairline;
 - default length;
 - default shape/texture;
 - default parting;
-- default color
+- default color;
+- default volume.
 
-from later editable hairstyle/color changes.
+Dynamic behavior includes:
+
+- gravity response;
+- shoulder interaction;
+- motion during head rotation;
+- tendency to occlude the face.
+
+Do not let pose generation randomly change hair length, parting, texture, or volume unless explicitly edited.
+
+### Skin Identity
+
+Use `schemas/skin-identity.schema.json`.
+
+Track visible rendering cues that materially affect identity realism, such as:
+
+- tone reference;
+- undertone reference;
+- natural texture;
+- regional pores/fine lines;
+- freckles and visible marks;
+- localized pigmentation.
+
+Keep skin identity independent from lighting. Do not infer medical or other sensitive traits.
+
+### Hand and Foot Identity
+
+Use `schemas/extremity-profile.schema.json` and `docs/EXTREMITY-IDENTITY.md`.
+
+When evidence exists, track left/right hands and feet separately. Hand/foot anatomy remains a critical realism check even when detailed identity evidence is unavailable.
 
 ### Body Geometry
 
@@ -441,7 +474,11 @@ Possible panels:
 
 Visually distinguish or internally track observed references vs reconstructed panels.
 
-For any pose-dependent panel, create a `Pose Contract` using `schemas/pose-contract.schema.json`. Record pose difficulty, joint targets, camera, required contacts, occlusion ordering, and required structural controls.
+For any pose-dependent panel, create a `Pose Contract` using `schemas/pose-contract.schema.json`. Record pose difficulty, joint targets, required contacts, occlusion ordering, and required structural controls.
+
+Create a separate `Camera and Lighting Contract` using `schemas/camera-lighting-contract.schema.json`. Camera and lighting are production variables, not identity.
+
+When clothing is visible in body/pose panels, use `schemas/clothing-behavior.schema.json` so garment deformation follows pose without redefining canonical body geometry.
 
 ## 12. Default clothing and presentation
 
@@ -461,11 +498,13 @@ Do not generate the entire multi-panel character sheet in one image-model call.
 
 Production order must be panel-based:
 
-1. establish and approve the Canonical Face Anchor;
-2. generate/edit each face, body, detail, expression, and modeling panel independently;
-3. run per-panel QC;
-4. repair failed panels in isolation;
-5. compose only Approved panels using deterministic layout.
+1. establish and approve a Multi-view Identity Anchor Bank using `schemas/identity-anchor-bank.schema.json`;
+2. select the nearest relevant approved anchor(s) for each target view instead of always forcing a frontal anchor;
+3. generate/edit each face, body, detail, expression, and modeling panel independently;
+4. run per-panel QC;
+5. repair failed panels in isolation;
+6. build the Cross-panel Identity Matrix;
+7. compose only Approved and cross-panel-consistent panels using deterministic layout.
 
 A production backend must support reference-conditioned generation or editing. If it cannot condition on the user's references, the skill may create a plan but must not approve the result as identity-faithful.
 
@@ -477,7 +516,7 @@ When repeated critical failures persist, escalate capability rather than repeati
 
 Keep these variables conceptually separate:
 
-`Identity + Expression + Gaze + Head Pose + Body Pose + Camera`
+`Identity + Expression + Gaze + Head Pose + Body Pose + Camera + Lighting + Clothing Deformation + Hair Dynamics`
 
 A change in one must not silently redefine the others.
 
@@ -521,6 +560,11 @@ Run independent gates for:
 19. Hand / Foot Anatomy when visible
 20. Cross-Pose Identity Consistency
 21. Photorealism
+22. Cross-Panel Identity Consistency
+23. Skin Identity Consistency
+24. Hair Dynamics Consistency
+25. Clothing Deformation
+26. Camera / Lighting Coherence
 
 Critical local failures override a strong global score.
 
@@ -529,6 +573,8 @@ When a panel fails, repair that panel rather than regenerating the entire sheet.
 Use the repair budget in `docs/PRODUCTION-PIPELINE.md`: initial attempt plus at most 2 targeted repair attempts. Repeated critical failure becomes `BLOCK` and requires better evidence or a different backend strategy.
 
 Use the Validation Pool to compare results against references not used as primary generation anchors.
+
+After all required panels pass local QC, build `schemas/cross-panel-identity-matrix.schema.json`. Required pairwise comparisons must verify that the approved panel set still represents one consistent person across view, expression, camera, and pose changes. A BLOCK pair prevents final composition.
 
 Full-body and pose-ready panels must also follow `docs/PHYSICAL-PLAUSIBILITY.md`. Critical anatomy or contact failures are BLOCK even when face identity is strong.
 
