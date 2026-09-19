@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "pose_id": "pose-crossed-arms",
+  "difficulty": "P4-Self-Occlusion",
+  "body_pose": {
+    "representation": "3D-Skeleton",
+    "joint_targets": {
+      "left_shoulder": {
+        "rotation_deg": [
+          5,
+          15,
+          -10
+        ],
+        "confidence": "Medium"
+      },
+      "right_shoulder": {
+        "rotation_deg": [
+          5,
+          -15,
+          10
+        ],
+        "confidence": "Medium"
+      },
+      "left_elbow": {
+        "rotation_deg": [
+          0,
+          75,
+          10
+        ],
+        "confidence": "Medium"
+      },
+      "right_elbow": {
+        "rotation_deg": [
+          0,
+          75,
+          -10
+        ],
+        "confidence": "Medium"
+      },
+      "left_wrist": {
+        "confidence": "Medium"
+      },
+      "right_wrist": {
+        "confidence": "Medium"
+      },
+      "pelvis": {
+        "rotation_deg": [
+          0,
+          0,
+          0
+        ],
+        "confidence": "High"
+      }
+    },
+    "hand_pose": "Relaxed",
+    "weight_distribution": "Balanced",
+    "notes": "Diagnostic self-occluding pose."
+  },
+  "head": {
+    "yaw": 10,
+    "pitch": 0,
+    "roll": 0,
+    "gaze": "Camera"
+  },
+  "camera": {
+    "view": "Front",
+    "height": "Chest",
+    "distance_class": "Full-Body",
+    "focal_class": "Normal",
+    "perspective_strength": "Moderate",
+    "notes": "Avoid wide-angle distortion."
+  },
+  "contacts": [
+    {
+      "body_part": "left_forearm",
+      "target": "right_upper_torso",
+      "required": false
+    },
+    {
+      "body_part": "right_forearm",
+      "target": "left_upper_torso",
+      "required": false
+    }
+  ],
+  "occlusion_expectations": [
+    {
+      "front_object": "left_forearm",
+      "back_object": "torso",
+      "critical": true
+    },
+    {
+      "front_object": "right_forearm",
+      "back_object": "torso",
+      "critical": true
+    }
+  ],
+  "required_controls": [
+    "Identity-Reference",
+    "3D-Pose",
+    "Depth",
+    "Camera-Control"
+  ]
+}
