@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0",
+  "principle": "Level changes evidence breadth and uncertainty, never the minimum critical facial identity acceptance standard.",
+  "levels": {
+    "Base": {
+      "purpose": "Reliable starting identity from limited evidence.",
+      "evidence_requirements": {
+        "pre_generation_face_gate": [
+          "PASS",
+          "PASS_WITH_LIMITS"
+        ],
+        "required": [
+          "front_or_near_front_face_with_critical_features_evaluable"
+        ],
+        "conditional": [],
+        "not_required": [
+          "body",
+          "profile",
+          "smile",
+          "hands_nails"
+        ]
+      },
+      "required_sections": [
+        "canonical_face",
+        "eye_detail",
+        "mouth_lip_detail",
+        "hair_reference",
+        "metadata",
+        "color_palette"
+      ],
+      "conditional_sections": [
+        "front_face",
+        "best_supported_three_quarter",
+        "profile",
+        "full_body_front",
+        "distinctive_features",
+        "smile"
+      ],
+      "blocked_claims": [
+        "exact_uncalibrated_measurements",
+        "unsupported_observed_profile",
+        "unsupported_dental_identity",
+        "unsupported_body_details"
+      ]
+    },
+    "Advanced": {
+      "purpose": "Production-ready multi-angle identity with optional body/detail expansion.",
+      "evidence_requirements": {
+        "pre_generation_face_gate": [
+          "PASS",
+          "PASS_WITH_LIMITS"
+        ],
+        "required": [
+          "front_or_near_front_face_with_critical_features_evaluable",
+          "at_least_one_independent_nonfrontal_face_reference"
+        ],
+        "conditional": [
+          "expression_reference_if_expression_or_modeling_is_required",
+          "body_reference_if_body_is_required"
+        ],
+        "not_required": [
+          "observed_back_view",
+          "hands_nails_unless_requested"
+        ]
+      },
+      "required_sections": [
+        "canonical_face",
+        "front_face",
+        "three_quarter_subject_left",
+        "three_quarter_subject_right",
+        "eye_left_right",
+        "mouth_lip_detail",
+        "metadata",
+        "color_palette"
+      ],
+      "conditional_sections": [
+        "profile",
+        "smile",
+        "full_body_front",
+        "body_side",
+        "back_view",
+        "hands_nails",
+        "distinctive_features",
+        "hair_detail"
+      ],
+      "blocked_claims": [
+        "unlabeled_reconstructed_angles",
+        "exact_uncalibrated_measurements"
+      ]
+    },
+    "Full": {
+      "purpose": "Canonical long-term identity reference with broad reliable coverage and low uncertainty for the requested production goal.",
+      "evidence_requirements": {
+        "pre_generation_face_gate": [
+          "PASS",
+          "PASS_WITH_LIMITS"
+        ],
+        "required": [
+          "front_or_near_front_face_with_critical_features_evaluable",
+          "independent_subject_left_nonfrontal_reference",
+          "independent_subject_right_nonfrontal_reference",
+          "at_least_one_observed_profile_reference"
+        ],
+        "conditional": [
+          "neutral_plus_nonneutral_expression_if_expression_or_modeling_is_required",
+          "body_front_plus_side_if_body_is_required",
+          "observed_back_reference_if_back_view_must_be_canonical",
+          "hands_nails_if_required"
+        ],
+        "not_required": [
+          "optional_details_irrelevant_to_goal"
+        ]
+      },
+      "required_sections": [
+        "face_master_board",
+        "metadata_revision_board"
+      ],
+      "conditional_sections": [
+        "body_master_board",
+        "modeling_expression_board",
+        "hands_nails",
+        "back_view"
+      ],
+      "blocked_claims": [
+        "full_evidence_claim_without_required_face_coverage",
+        "canonical_back_claim_without_observed_back_evidence",
+        "exact_uncalibrated_measurements"
+      ]
+    }
+  }
+}
