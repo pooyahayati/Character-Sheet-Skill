@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0",
+  "dimensions": [
+    "Identity-Fidelity",
+    "Pose-Accuracy",
+    "Anatomical-Plausibility",
+    "Photorealism"
+  ],
+  "scenarios": [
+    {
+      "id": "VB01",
+      "name": "Neutral full-body front",
+      "pose_difficulty": "P0-Neutral",
+      "required_dimensions": [
+        "Identity-Fidelity",
+        "Pose-Accuracy",
+        "Anatomical-Plausibility",
+        "Photorealism"
+      ],
+      "critical_checks": [
+        "face_identity",
+        "body_proportions",
+        "feet_contact",
+        "skin_hair_realism"
+      ]
+    },
+    {
+      "id": "VB02",
+      "name": "Simple three-quarter standing",
+      "pose_difficulty": "P1-Simple",
+      "required_dimensions": [
+        "Identity-Fidelity",
+        "Pose-Accuracy",
+        "Anatomical-Plausibility",
+        "Photorealism"
+      ],
+      "critical_checks": [
+        "cross_view_identity",
+        "shoulder_pelvis_rotation",
+        "camera_consistency"
+      ]
+    },
+    {
+      "id": "VB03",
+      "name": "Walking weight shift",
+      "pose_difficulty": "P2-Dynamic",
+      "required_dimensions": [
+        "Identity-Fidelity",
+        "Pose-Accuracy",
+        "Anatomical-Plausibility",
+        "Photorealism"
+      ],
+      "critical_checks": [
+        "weight_distribution",
+        "knee_ankle_alignment",
+        "limb_lengths",
+        "motion_without_identity_drift"
+      ]
+    },
+    {
+      "id": "VB04",
+      "name": "Seated pose",
+      "pose_difficulty": "P3-Seated-Leaning",
+      "required_dimensions": [
+        "Identity-Fidelity",
+        "Pose-Accuracy",
+        "Anatomical-Plausibility",
+        "Photorealism"
+      ],
+      "critical_checks": [
+        "pelvis_spine_relation",
+        "chair_contact",
+        "cloth_compression",
+        "face_fidelity"
+      ]
+    },
+    {
+      "id": "VB05",
+      "name": "Arms crossed across torso",
+      "pose_difficulty": "P4-Self-Occlusion",
+      "required_dimensions": [
+        "Identity-Fidelity",
+        "Pose-Accuracy",
+        "Anatomical-Plausibility",
+        "Photorealism"
+      ],
+      "critical_checks": [
+        "arm_torso_occlusion",
+        "hand_anatomy",
+        "shoulder_continuity",
+        "torso_preservation"
+      ]
+    },
+    {
+      "id": "VB06",
+      "name": "Hand near face",
+      "pose_difficulty": "P4-Self-Occlusion",
+      "required_dimensions": [
+        "Identity-Fidelity",
+        "Pose-Accuracy",
+        "Anatomical-Plausibility",
+        "Photorealism"
+      ],
+      "critical_checks": [
+        "hand_face_occlusion",
+        "finger_count_and_joints",
+        "eye_face_identity",
+        "contact_shadow"
+      ]
+    },
+    {
+      "id": "VB07",
+      "name": "Crouching or deep bend",
+      "pose_difficulty": "P5-Extreme-Articulation",
+      "required_dimensions": [
+        "Identity-Fidelity",
+        "Pose-Accuracy",
+        "Anatomical-Plausibility",
+        "Photorealism"
+      ],
+      "critical_checks": [
+        "hip_knee_ankle_ranges",
+        "spine_pelvis",
+        "limb_length_consistency",
+        "balance"
+      ]
+    },
+    {
+      "id": "VB08",
+      "name": "Arms raised overhead",
+      "pose_difficulty": "P5-Extreme-Articulation",
+      "required_dimensions": [
+        "Identity-Fidelity",
+        "Pose-Accuracy",
+        "Anatomical-Plausibility",
+        "Photorealism"
+      ],
+      "critical_checks": [
+        "shoulder_joint_plausibility",
+        "torso_length",
+        "armpit_transition",
+        "hand_anatomy"
+      ]
+    },
+    {
+      "id": "VB09",
+      "name": "Over-shoulder turn",
+      "pose_difficulty": "P3-Seated-Leaning",
+      "required_dimensions": [
+        "Identity-Fidelity",
+        "Pose-Accuracy",
+        "Anatomical-Plausibility",
+        "Photorealism"
+      ],
+      "critical_checks": [
+        "neck_rotation",
+        "face_identity_under_turn",
+        "spine_pelvis_counter_rotation"
+      ]
+    },
+    {
+      "id": "VB10",
+      "name": "Low-angle full-body view",
+      "pose_difficulty": "P2-Dynamic",
+      "required_dimensions": [
+        "Identity-Fidelity",
+        "Pose-Accuracy",
+        "Anatomical-Plausibility",
+        "Photorealism"
+      ],
+      "critical_checks": [
+        "camera_perspective",
+        "head_body_scale",
+        "leg_foreshortening",
+        "identity_under_viewpoint"
+      ]
+    }
+  ]
+}
