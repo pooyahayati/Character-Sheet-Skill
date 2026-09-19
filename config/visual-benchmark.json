@@ -21,7 +21,9 @@
         "face_identity",
         "body_proportions",
         "feet_contact",
-        "skin_hair_realism"
+        "skin_hair_realism",
+        "camera_lighting_coherence",
+        "skin_identity_consistency"
       ]
     },
     {
@@ -37,7 +39,9 @@
       "critical_checks": [
         "cross_view_identity",
         "shoulder_pelvis_rotation",
-        "camera_consistency"
+        "camera_consistency",
+        "camera_lighting_coherence",
+        "skin_identity_consistency"
       ]
     },
     {
@@ -54,7 +58,9 @@
         "weight_distribution",
         "knee_ankle_alignment",
         "limb_lengths",
-        "motion_without_identity_drift"
+        "motion_without_identity_drift",
+        "hair_dynamics",
+        "cloth_deformation"
       ]
     },
     {
@@ -71,7 +77,9 @@
         "pelvis_spine_relation",
         "chair_contact",
         "cloth_compression",
-        "face_fidelity"
+        "face_fidelity",
+        "hair_dynamics",
+        "cloth_deformation"
       ]
     },
     {
@@ -88,7 +96,8 @@
         "arm_torso_occlusion",
         "hand_anatomy",
         "shoulder_continuity",
-        "torso_preservation"
+        "torso_preservation",
+        "hand_foot_anatomy"
       ]
     },
     {
@@ -105,7 +114,8 @@
         "hand_face_occlusion",
         "finger_count_and_joints",
         "eye_face_identity",
-        "contact_shadow"
+        "contact_shadow",
+        "hand_foot_anatomy"
       ]
     },
     {
@@ -122,7 +132,10 @@
         "hip_knee_ankle_ranges",
         "spine_pelvis",
         "limb_length_consistency",
-        "balance"
+        "balance",
+        "hair_dynamics",
+        "cloth_deformation",
+        "hand_foot_anatomy"
       ]
     },
     {
@@ -139,7 +152,10 @@
         "shoulder_joint_plausibility",
         "torso_length",
         "armpit_transition",
-        "hand_anatomy"
+        "hand_anatomy",
+        "hair_dynamics",
+        "cloth_deformation",
+        "hand_foot_anatomy"
       ]
     },
     {
@@ -155,7 +171,9 @@
       "critical_checks": [
         "neck_rotation",
         "face_identity_under_turn",
-        "spine_pelvis_counter_rotation"
+        "spine_pelvis_counter_rotation",
+        "hair_dynamics",
+        "cloth_deformation"
       ]
     },
     {
@@ -172,7 +190,9 @@
         "camera_perspective",
         "head_body_scale",
         "leg_foreshortening",
-        "identity_under_viewpoint"
+        "identity_under_viewpoint",
+        "camera_lighting_coherence",
+        "skin_identity_consistency"
       ]
     }
   ]
