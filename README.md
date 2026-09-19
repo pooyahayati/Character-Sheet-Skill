@@ -48,20 +48,31 @@ Official OpenAI references:
 - ChatGPT Windows app: https://help.openai.com/en/articles/9982051-using-the-chatgpt-windows-app
 - ChatGPT desktop / Work: https://help.openai.com/en/articles/20001275
 
-### Step 1 — Get the installable ZIP
+### Step 1 — Download the official Release ZIP
 
-**Recommended: download the package produced by GitHub Actions**
+**Recommended: use the GitHub Release**
 
-1. Open this repository on GitHub.
-2. Open **Actions**.
-3. Open the latest successful **Validate Skill** run.
-4. Download the artifact named similar to:
-   `character-sheet-skill-v1.0.0`
-5. GitHub may wrap artifacts in an outer ZIP. Extract that once.
-6. The file you install into ChatGPT is:
-   `character-sheet-skill-v1.0.0.zip`
+Release page:
 
-**Alternative: build the ZIP locally on Windows**
+https://github.com/pooyahayati/Character-Sheet-Skill/releases/tag/v1.0.0
+
+Direct download:
+
+https://github.com/pooyahayati/Character-Sheet-Skill/releases/download/v1.0.0/character-sheet-skill-v1.0.0.zip
+
+Checksum:
+
+https://github.com/pooyahayati/Character-Sheet-Skill/releases/download/v1.0.0/SHA256SUMS.txt
+
+The file you install into ChatGPT is:
+
+`character-sheet-skill-v1.0.0.zip`
+
+**Alternative 1: GitHub Actions artifact**
+
+Open **Actions → latest successful Validate Skill run** and download the `character-sheet-skill-v1.0.0` artifact.
+
+**Alternative 2: build the ZIP locally on Windows**
 
 Requires Python 3.11+.
 
