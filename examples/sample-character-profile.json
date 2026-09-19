@@ -216,5 +216,13 @@
     "panel_gates": []
   },
   "revisions": [],
-  "build_request_file": "sample-build-request.json"
+  "build_request_file": "sample-build-request.json",
+  "pose_assets": {
+    "body_proxy_file": "sample-body-proxy.json",
+    "pose_readiness_file": "sample-pose-readiness.json",
+    "anchor_bank": [
+      "ref-front",
+      "ref-three-quarter"
+    ]
+  }
 }
