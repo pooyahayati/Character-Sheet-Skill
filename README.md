@@ -175,6 +175,15 @@ Small appearance changes may create versions such as `v1.1`, while major structu
 
 A Base sheet can later be upgraded to Advanced or Full as new references are supplied without rebuilding the identity from scratch.
 
+## Validation
+
+The repository includes a scenario-based regression suite covering single-photo intake, large duplicate sets, mixed time periods, identity outliers, filters, occluders, smile-only references, mirrored laterality, perspective distortion, modeling poses and revision workflows.
+
+See:
+
+- `tests/SCENARIO-VALIDATION.md`
+- `tests/scenario-matrix.json`
+
 ## Repository structure
 
 ```text
@@ -194,6 +203,9 @@ schemas/
 examples/
   sample-character-profile.json
   sheet-layout-spec.json
+tests/
+  SCENARIO-VALIDATION.md
+  scenario-matrix.json
 ```
 
 ## Author
