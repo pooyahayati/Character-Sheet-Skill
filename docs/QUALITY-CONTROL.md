@@ -149,6 +149,46 @@ When production realism is part of the goal, inspect skin/hair/eye/teeth/hand/fa
 
 Photorealism cannot compensate for identity or anatomy failure.
 
+### 21. Cross-Panel Identity Consistency Gate
+
+Use `schemas/cross-panel-identity-matrix.schema.json`.
+
+Compare required panel pairs across view, expression, full-body framing, and pose. A set of individually plausible images fails if face geometry, body shape, distinctive markers, hair identity, or extremity identity drift across the set.
+
+A BLOCK comparison prevents final composition.
+
+### 22. Skin Identity Consistency Gate
+
+Compare visible skin rendering to the canonical `skin-identity.json` while accounting for the lighting contract.
+
+Do not treat lighting-induced shadows or color shifts as permanent skin identity changes.
+
+### 23. Hair Dynamics Gate
+
+Validate that pose/head-turn motion changes hair naturally while preserving static identity: hairline, parting, length, texture, color, and baseline volume.
+
+### 24. Clothing Deformation Gate
+
+Validate garment folds, stretch, compression, and lift against the clothing behavior contract.
+
+Clothing deformation must not silently change canonical waist, hip, chest, shoulder, or limb geometry.
+
+### 25. Camera / Lighting Coherence Gate
+
+Validate each panel against its camera-lighting contract.
+
+Check:
+
+- perspective and foreshortening;
+- head/body scale appropriate to focal class;
+- crop and camera height;
+- key-light direction;
+- shadows/contact shadows;
+- eye highlights;
+- color bias.
+
+Camera or lighting differences must not be misdiagnosed as identity drift.
+
 ## Camera distortion guard
 
 Before validating body shape, evaluate:
