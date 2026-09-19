@@ -13,7 +13,8 @@ The system is face-first and uncertainty-aware.
 ## End-to-end pipeline
 
 ```text
-Input
+Build Request / Goal / Authorization / Age Handling
+→ Input
 → Reference Image Selection
 → Coverage Maps
 → Automatic Attribute Extraction
@@ -224,3 +225,14 @@ Actual image production follows `docs/PRODUCTION-PIPELINE.md`.
 The final board is composed from individually approved panels. Multi-panel board generation in a single image-model call is not an approved production path.
 
 Gate decisions follow `docs/GATE-CONTRACT.md`.
+
+
+## Request and output contracts
+
+Normalize the build goal before level selection using `schemas/build-request.schema.json` and `docs/REQUEST-CONTRACT.md`.
+
+Per-image evidence is stored separately using `schemas/reference-analysis.schema.json`.
+
+Approved builds follow `docs/OUTPUT-CONTRACT.md` so identity data, panel assets, composition metadata, and QC remain separately inspectable.
+
+Body edits follow `docs/BODY-REVISION-GUARD.md`. Privacy, authorization, and age handling follow `docs/PRIVACY-CONSENT.md`.
