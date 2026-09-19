@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1080" viewBox="0 0 1800 1080">
+  <defs>
+    <style>
+      .bg{fill:#ece9e4}.panel{fill:#f8f7f4;stroke:#b8b3ab;stroke-width:2}.head{fill:#24292f}
+      .title{font:700 34px Arial,sans-serif;fill:#fff}.subtitle{font:400 18px Arial,sans-serif;fill:#d8dde3}
+      .h2{font:700 22px Arial,sans-serif;fill:#1f2328}.label{font:600 14px Arial,sans-serif;fill:#333}
+      .small{font:400 12px Arial,sans-serif;fill:#5b626a}.tiny{font:400 10px Arial,sans-serif;fill:#6a7179}
+      .card{fill:#fff;stroke:#d5d0c8;stroke-width:1.5}.skin{fill:#d8ad94}.hair{fill:#352c2a}.eye{fill:#4a362b}
+      .cloth{fill:#262b31}.line{stroke:#756f68;stroke-width:2;fill:none}.muted{fill:#e4e0da}
+      .chip1{fill:#d1a58e}.chip2{fill:#6b4b3b}.chip3{fill:#312825}.chip4{fill:#b46f75}
+      .tag{fill:#edf2f7;stroke:#b8c4d1}.ok{fill:#e9f5ec;stroke:#9cc3a5}.warn{fill:#fff3df;stroke:#e2b866}
+    </style>
+  </defs>
+  <rect width="1800" height="1080" class="bg"/>
+
+  <!-- Column headers -->
+  <rect x="20" y="20" width="560" height="90" rx="12" class="head"/>
+  <rect x="620" y="20" width="560" height="90" rx="12" class="head"/>
+  <rect x="1220" y="20" width="560" height="90" rx="12" class="head"/>
+  <text x="45" y="60" class="title">CHARACTER SHEET — BASE</text>
+  <text x="45" y="88" class="subtitle">Essential identity reference</text>
+  <text x="645" y="60" class="title">CHARACTER SHEET — ADVANCED</text>
+  <text x="645" y="88" class="subtitle">Expanded reference &amp; details</text>
+  <text x="1245" y="60" class="title">CHARACTER SHEET — FULL</text>
+  <text x="1245" y="88" class="subtitle">Complete reference &amp; modeling ready</text>
+
+  <!-- BASE -->
+  <rect x="20" y="130" width="560" height="920" rx="12" class="panel"/>
+  <text x="40" y="165" class="h2">Canonical Face</text>
+  <rect x="40" y="185" width="320" height="360" class="card"/>
+  <!-- canonical stylized face -->
+  <ellipse cx="200" cy="340" rx="96" ry="122" class="skin"/>
+  <path d="M106 324 Q106 205 200 208 Q297 208 295 328 Q260 285 207 274 Q150 280 106 324Z" class="hair"/>
+  <ellipse cx="164" cy="332" rx="14" ry="8" fill="#fff"/><ellipse cx="236" cy="332" rx="14" ry="8" fill="#fff"/>
+  <circle cx="164" cy="332" r="5" class="eye"/><circle cx="236" cy="332" r="5" class="eye"/>
+  <path d="M148 315 Q164 307 180 315 M220 315 Q236 307 252 315" class="line"/>
+  <path d="M200 338 Q194 370 201 382" class="line"/>
+  <path d="M172 410 Q200 424 228 410" stroke="#9a5c62" stroke-width="4" fill="none"/>
+  <text x="55" y="525" class="small">Front / Neutral / Identity Anchor</text>
+
+  <rect x="380" y="185" width="180" height="360" class="card"/>
+  <text x="395" y="215" class="h2">Identity</text>
+  <text x="395" y="245" class="label">Adult fictional model</text>
+  <text x="395" y="275" class="small">Face geometry</text>
+  <text x="395" y="298" class="small">Eyes</text>
+  <text x="395" y="321" class="small">Nose</text>
+  <text x="395" y="344" class="small">Lips</text>
+  <text x="395" y="367" class="small">Hairline</text>
+  <text x="395" y="390" class="small">Asymmetry</text>
+  <text x="395" y="430" class="label">Evidence</text>
+  <rect x="395" y="444" width="140" height="24" rx="12" class="ok"/><text x="408" y="461" class="tiny">Observed / Locked</text>
+  <text x="395" y="500" class="label">Palette</text>
+  <rect x="395" y="513" width="28" height="28" class="chip1"/><rect x="430" y="513" width="28" height="28" class="chip2"/><rect x="465" y="513" width="28" height="28" class="chip3"/><rect x="500" y="513" width="28" height="28" class="chip4"/>
+
+  <!-- Base details -->
+  <text x="40" y="585" class="h2">Critical Details</text>
+  <rect x="40" y="605" width="160" height="120" class="card"/><rect x="220" y="605" width="160" height="120" class="card"/><rect x="400" y="605" width="160" height="120" class="card"/>
+  <ellipse cx="120" cy="665" rx="42" ry="18" fill="#fff"/><circle cx="120" cy="665" r="10" class="eye"/><text x="82" y="712" class="small">Left Eye</text>
+  <ellipse cx="300" cy="665" rx="42" ry="18" fill="#fff"/><circle cx="300" cy="665" r="10" class="eye"/><text x="257" y="712" class="small">Right Eye</text>
+  <path d="M432 667 Q480 690 528 667" stroke="#9a5c62" stroke-width="10" fill="none"/><text x="445" y="712" class="small">Neutral Lips</text>
+
+  <text x="40" y="765" class="h2">Supported Angles</text>
+  <rect x="40" y="785" width="155" height="190" class="card"/><rect x="210" y="785" width="155" height="190" class="card"/><rect x="380" y="785" width="180" height="190" class="card"/>
+  <ellipse cx="118" cy="858" rx="44" ry="58" class="skin"/><path d="M75 850 Q80 795 118 800 Q160 800 161 852Z" class="hair"/><text x="72" y="950" class="small">Front</text>
+  <ellipse cx="287" cy="858" rx="43" ry="58" class="skin"/><path d="M247 850 Q252 796 292 802 Q327 807 329 849Z" class="hair"/><text x="240" y="950" class="small">3/4</text>
+  <ellipse cx="454" cy="858" rx="34" ry="58" class="skin"/><path d="M423 850 Q428 801 458 805 Q484 810 489 850Z" class="hair"/><text x="410" y="950" class="small">Profile*</text>
+  <rect x="40" y="994" width="520" height="34" rx="8" class="warn"/><text x="57" y="1016" class="small">* Reconstructed if no profile reference exists — never treated as observed evidence.</text>
+
+  <!-- ADVANCED -->
+  <rect x="620" y="130" width="560" height="920" rx="12" class="panel"/>
+  <text x="640" y="165" class="h2">Multi-angle Face Reference</text>
+  <!-- 5 face cards -->
+  <g>
+    <rect x="640" y="185" width="96" height="150" class="card"/><rect x="748" y="185" width="96" height="150" class="card"/><rect x="856" y="185" width="96" height="150" class="card"/><rect x="964" y="185" width="96" height="150" class="card"/><rect x="1072" y="185" width="88" height="150" class="card"/>
+    <ellipse cx="688" cy="240" rx="28" ry="38" class="skin"/><ellipse cx="796" cy="240" rx="27" ry="38" class="skin"/><ellipse cx="904" cy="240" rx="25" ry="38" class="skin"/><ellipse cx="1012" cy="240" rx="27" ry="38" class="skin"/><ellipse cx="1116" cy="240" rx="23" ry="38" class="skin"/>
+    <path d="M661 236 Q664 202 688 204 Q715 204 715 238Z" class="hair"/><path d="M770 236 Q772 202 798 204 Q823 207 823 238Z" class="hair"/><path d="M880 236 Q883 204 907 205 Q931 208 931 238Z" class="hair"/><path d="M986 236 Q989 203 1014 205 Q1038 208 1039 238Z" class="hair"/><path d="M1094 236 Q1097 205 1118 207 Q1138 210 1139 238Z" class="hair"/>
+    <text x="666" y="318" class="tiny">Front</text><text x="770" y="318" class="tiny">3/4 L</text><text x="880" y="318" class="tiny">Profile L</text><text x="987" y="318" class="tiny">3/4 R</text><text x="1092" y="318" class="tiny">Profile R</text>
+  </g>
+
+  <text x="640" y="375" class="h2">Expression Calibration</text>
+  <rect x="640" y="395" width="120" height="120" class="card"/><rect x="775" y="395" width="120" height="120" class="card"/><rect x="910" y="395" width="120" height="120" class="card"/><rect x="1045" y="395" width="115" height="120" class="card"/>
+  <ellipse cx="700" cy="440" rx="30" ry="38" class="skin"/><ellipse cx="835" cy="440" rx="30" ry="38" class="skin"/><ellipse cx="970" cy="440" rx="30" ry="38" class="skin"/><ellipse cx="1102" cy="440" rx="30" ry="38" class="skin"/>
+  <text x="668" y="497" class="tiny">Neutral</text><text x="798" y="497" class="tiny">Soft Smile</text><text x="934" y="497" class="tiny">Closed Smile</text><text x="1065" y="497" class="tiny">Open Smile</text>
+
+  <text x="640" y="555" class="h2">Neutral Body Reference</text>
+  <g>
+    <rect x="640" y="575" width="150" height="300" class="card"/><rect x="805" y="575" width="150" height="300" class="card"/><rect x="970" y="575" width="190" height="300" class="card"/>
+    <circle cx="715" cy="620" r="24" class="skin"/><rect x="688" y="646" width="54" height="105" rx="20" class="cloth"/><line x1="698" y1="750" x2="692" y2="840" class="line"/><line x1="732" y1="750" x2="738" y2="840" class="line"/><line x1="688" y1="674" x2="657" y2="760" class="line"/><line x1="742" y1="674" x2="773" y2="760" class="line"/>
+    <circle cx="880" cy="620" r="24" class="skin"/><rect x="864" y="646" width="34" height="105" rx="14" class="cloth"/><line x1="870" y1="750" x2="865" y2="840" class="line"/><line x1="892" y1="750" x2="897" y2="840" class="line"/>
+    <circle cx="1065" cy="620" r="24" class="skin"/><rect x="1038" y="646" width="54" height="105" rx="20" class="cloth"/><line x1="1048" y1="750" x2="1042" y2="840" class="line"/><line x1="1082" y1="750" x2="1088" y2="840" class="line"/>
+    <text x="690" y="862" class="small">Front</text><text x="858" y="862" class="small">Side</text><text x="1042" y="862" class="small">Back</text>
+  </g>
+
+  <text x="640" y="915" class="h2">Details + Evidence</text>
+  <rect x="640" y="935" width="160" height="80" class="card"/><rect x="815" y="935" width="160" height="80" class="card"/><rect x="990" y="935" width="170" height="80" class="card"/>
+  <text x="660" y="965" class="small">Hands / Nails</text><text x="835" y="965" class="small">Hair / Hairline</text><text x="1010" y="965" class="small">Coverage / Confidence</text>
+  <text x="660" y="990" class="tiny">When visible</text><text x="835" y="990" class="tiny">Default + editable</text><text x="1010" y="990" class="tiny">Observed vs reconstructed</text>
+
+  <!-- FULL -->
+  <rect x="1220" y="130" width="560" height="920" rx="12" class="panel"/>
+  <text x="1240" y="165" class="h2">Face Master Board</text>
+  <!-- Face strip -->
+  <g>
+    <rect x="1240" y="185" width="75" height="110" class="card"/><rect x="1325" y="185" width="75" height="110" class="card"/><rect x="1410" y="185" width="75" height="110" class="card"/><rect x="1495" y="185" width="75" height="110" class="card"/><rect x="1580" y="185" width="75" height="110" class="card"/><rect x="1665" y="185" width="95" height="110" class="card"/>
+    <ellipse cx="1278" cy="230" rx="20" ry="28" class="skin"/><ellipse cx="1363" cy="230" rx="20" ry="28" class="skin"/><ellipse cx="1448" cy="230" rx="18" ry="28" class="skin"/><ellipse cx="1533" cy="230" rx="18" ry="28" class="skin"/><ellipse cx="1618" cy="230" rx="18" ry="28" class="skin"/><ellipse cx="1712" cy="230" rx="18" ry="28" class="skin"/>
+    <text x="1256" y="282" class="tiny">Front</text><text x="1344" y="282" class="tiny">Smile</text><text x="1425" y="282" class="tiny">3/4 L</text><text x="1511" y="282" class="tiny">Prof L</text><text x="1595" y="282" class="tiny">3/4 R</text><text x="1688" y="282" class="tiny">Prof R</text>
+  </g>
+
+  <text x="1240" y="330" class="h2">Feature Close-ups</text>
+  <rect x="1240" y="350" width="110" height="100" class="card"/><rect x="1365" y="350" width="110" height="100" class="card"/><rect x="1490" y="350" width="110" height="100" class="card"/><rect x="1615" y="350" width="145" height="100" class="card"/>
+  <ellipse cx="1295" cy="392" rx="30" ry="12" fill="#fff"/><circle cx="1295" cy="392" r="7" class="eye"/>
+  <ellipse cx="1420" cy="392" rx="30" ry="12" fill="#fff"/><circle cx="1420" cy="392" r="7" class="eye"/>
+  <path d="M1510 397 Q1545 414 1580 397" stroke="#9a5c62" stroke-width="8" fill="none"/>
+  <text x="1640" y="385" class="tiny">Moles</text><text x="1640" y="403" class="tiny">Freckles</text><text x="1640" y="421" class="tiny">Scars</text><text x="1640" y="439" class="tiny">Asymmetry</text>
+  <text x="1268" y="442" class="tiny">Eye L</text><text x="1392" y="442" class="tiny">Eye R</text><text x="1518" y="442" class="tiny">Lips</text>
+
+  <text x="1240" y="490" class="h2">Body Master + Modeling Range</text>
+  <rect x="1240" y="510" width="230" height="320" class="card"/>
+  <rect x="1485" y="510" width="275" height="320" class="card"/>
+  <!-- canonical body -->
+  <circle cx="1355" cy="560" r="24" class="skin"/><rect x="1326" y="586" width="58" height="115" rx="22" class="cloth"/><line x1="1337" y1="700" x2="1332" y2="790" class="line"/><line x1="1373" y1="700" x2="1378" y2="790" class="line"/>
+  <text x="1280" y="815" class="small">Front / Side / Back</text>
+  <!-- modeling thumbnails -->
+  <g>
+    <rect x="1500" y="530" width="75" height="120" class="muted"/><rect x="1588" y="530" width="75" height="120" class="muted"/><rect x="1676" y="530" width="68" height="120" class="muted"/>
+    <rect x="1500" y="665" width="75" height="120" class="muted"/><rect x="1588" y="665" width="75" height="120" class="muted"/><rect x="1676" y="665" width="68" height="120" class="muted"/>
+    <text x="1508" y="642" class="tiny">Beauty Neutral</text><text x="1596" y="642" class="tiny">Soft Gaze</text><text x="1684" y="642" class="tiny">Editorial</text>
+    <text x="1508" y="777" class="tiny">Confident</text><text x="1596" y="777" class="tiny">Side Gaze</text><text x="1684" y="777" class="tiny">Over-Shoulder</text>
+  </g>
+
+  <text x="1240" y="865" class="h2">Metadata / Revision / Evidence</text>
+  <rect x="1240" y="885" width="520" height="130" class="card"/>
+  <text x="1260" y="915" class="small">Character ID: CS-EXAMPLE-001      Version: v1.0      Level: FULL</text>
+  <text x="1260" y="942" class="small">Identity Locked: face geometry, eyes, nose, lips, asymmetry, distinctive features</text>
+  <text x="1260" y="969" class="small">Appearance Editable: hair, nails, makeup, clothing</text>
+  <text x="1260" y="996" class="small">Body Editable: controlled revisions with Body Revision Guard</text>
+
+  <!-- Footer -->
+  <text x="30" y="1065" class="small">Character Sheet Skill — visual reference template — fictional example only</text>
+  <text x="1280" y="1065" class="small">Face fidelity standard remains constant across Base / Advanced / Full</text>
+</svg>
