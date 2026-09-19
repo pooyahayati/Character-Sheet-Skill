@@ -8,7 +8,7 @@ The bundled preview is a fictional visual template. It communicates output struc
 
 The skill is designed around a strict principle:
 
-> Character-sheet depth may change, but facial identity fidelity must not be downgraded.
+> Character-sheet depth and evidence confidence may change, but the minimum facial identity acceptance standard must not be downgraded.
 
 It can start from a single usable photograph, scale to large photo sets, automatically select the most useful references, build a structured identity profile, generate Base / Advanced / Full character sheets, and keep later edits from unintentionally redefining the person.
 
@@ -37,9 +37,11 @@ Start
 → Select Base / Advanced / Full
 → Build Canonical Character Identity
 → Create Sheet Plan
-→ Generate character sheet
-→ Multi-gate quality control
+→ Approve Canonical Face Anchor
+→ Generate panels individually
+→ Per-panel multi-gate quality control
 → Repair failed panels only
+→ Deterministic composition
 → User approval
 → Approved Character v1.0
 → Revision / Expansion / Level Upgrade
@@ -114,18 +116,15 @@ The internal identity representation includes:
 - Body Geometry
 - Editable Appearance
 
-## Evidence states
+## Attribute state model
 
-Every extracted attribute must carry a provenance state:
+Every extracted attribute keeps three independent dimensions:
 
-- `Observed`
-- `Cross-Validated`
-- `Estimated`
-- `Reconstructed`
-- `Unverified`
-- `User-Provided`
-- `Edited`
-- `Locked`
+- evidence basis: `Observed`, `Cross-Validated`, `Estimated`, `Reconstructed`, `Unverified`, or `User-Provided`;
+- revision state: `Original` or `Edited`;
+- lock state: `Identity-Locked`, `Appearance-Editable`, `Body-Editable`, or `Unlocked`.
+
+This allows a feature to be simultaneously, for example, `Cross-Validated` and `Identity-Locked`.
 
 The skill must never turn an estimate into a fact merely because it appeared in a generated image.
 
@@ -175,6 +174,17 @@ Small appearance changes may create versions such as `v1.1`, while major structu
 
 A Base sheet can later be upgraded to Advanced or Full as new references are supplied without rebuilding the identity from scratch.
 
+## Production
+
+The production path is explicitly panel-by-panel. The skill first approves a Canonical Face Anchor, then generates and validates each panel independently, and finally composes the approved panels deterministically.
+
+See:
+
+- `docs/PRODUCTION-PIPELINE.md`
+- `docs/GATE-CONTRACT.md`
+- `schemas/sheet-manifest.schema.json`
+- `scripts/compose_sheet.py`
+
 ## Validation
 
 The repository includes a scenario-based regression suite covering single-photo intake, large duplicate sets, mixed time periods, identity outliers, filters, occluders, smile-only references, mirrored laterality, perspective distortion, modeling poses and revision workflows.
@@ -198,8 +208,13 @@ docs/
   VISUAL-STANDARD.md
   LEVEL-SPECS.md
   EXAMPLE-SHEET-LAYOUT.md
+  PRODUCTION-PIPELINE.md
+  GATE-CONTRACT.md
 schemas/
   character-profile.schema.json
+  sheet-manifest.schema.json
+scripts/
+  compose_sheet.py
 examples/
   sample-character-profile.json
   sheet-layout-spec.json
