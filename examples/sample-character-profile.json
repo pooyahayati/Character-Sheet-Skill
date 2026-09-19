@@ -29,7 +29,14 @@
         "source_images": [
           "ref-front"
         ],
-        "notes": "Example normalized ratio; real values must be derived only from suitable camera/view conditions."
+        "notes": "Example normalized ratio; real values must be derived only from suitable camera/view conditions.",
+        "measurement_context": {
+          "reference_view": "Front",
+          "geometry_validity": "Valid",
+          "distortion_risk": "Low",
+          "normalization": "inter-eye distance divided by face width on normalized frontal crop",
+          "source_image": "ref-front"
+        }
       }
     },
     "eyes": {
@@ -181,7 +188,8 @@
       "body": "Moderate",
       "hands_nails": "Weak"
     },
-    "target_appearance_epoch": null
+    "target_appearance_epoch": null,
+    "reference_analysis_file": "sample-reference-analysis.json"
   },
   "qc": {
     "pre_generation_face_gate": {
@@ -207,5 +215,6 @@
     },
     "panel_gates": []
   },
-  "revisions": []
+  "revisions": [],
+  "build_request_file": "sample-build-request.json"
 }
