@@ -6,6 +6,18 @@ Identity is multi-dimensional. Never approve a sheet using only one global face-
 
 Critical local failures override a strong global result.
 
+## Gate outcomes
+
+Each gate returns:
+
+- `PASS`;
+- `PASS_WITH_LIMITS`;
+- `BLOCK`.
+
+Do not collapse these states into one average score.
+
+A critical local `BLOCK` cannot be cancelled by a good global score.
+
 ## QC gates
 
 ### 1. Global Identity Gate
@@ -42,6 +54,10 @@ Check bridge, width, length, tip, nostril relationship and profile.
 Check mouth width, lip proportions, cupid's bow, corners and profile.
 
 ### 7. Smile / Expression Gate
+
+When only smiling references exist, explicitly check whether neutral lower-face geometry is actually supported. Do not infer a canonical neutral mouth solely by undoing a smile without marking uncertainty.
+
+
 
 When smiling, validate coordinated deformation across:
 
@@ -127,6 +143,14 @@ Avoid full-sheet regeneration when unnecessary.
 After primary generation, compare outputs to secondary references that were not generation anchors.
 
 This helps detect overfitting to one photograph or one expression.
+
+## Appearance-epoch consistency
+
+Before approval, verify that mutable defaults (hair, brows, makeup, body state, facial hair and similar appearance layers) come from the intended appearance epoch and have not been averaged across incompatible periods.
+
+## Occluder check
+
+Verify that glasses, contacts, strong makeup, facial hair or other occluders have not been mistaken for underlying eye/face/lip/jaw geometry.
 
 ## Approval conditions
 
