@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "character_id": "CS-DEMO-001",
+  "profile_version": "1.0",
+  "level": "Strong",
+  "required_checks": {
+    "identity": "PASS",
+    "body_proxy": "PASS",
+    "simple_pose": "PASS",
+    "dynamic_pose": "PASS",
+    "self_occlusion": "NOT_TESTED",
+    "extreme_articulation": "NOT_TESTED"
+  },
+  "limitations": [
+    "P4/P5 benchmark scenarios have not been completed."
+  ]
+}
