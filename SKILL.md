@@ -7,7 +7,7 @@ description: Build an identity-consistent, revision-ready Base, Advanced, or Ful
 
 ## Mission
 
-Create a reusable character identity from real photographs and turn it into a high-quality character sheet that remains stable across future poses, angles, expressions, styling changes and revisions.
+Create a reusable character identity from real photographs and turn it into a high-quality character sheet backed by a pose-ready canonical asset that remains stable across future poses, angles, expressions, camera conditions, styling changes and revisions.
 
 Do not optimize only for an attractive image. Optimize for identity fidelity, provenance, controllability and future reuse.
 
@@ -473,7 +473,7 @@ Route each panel using `docs/GENERATION-ROUTER.md`, `config/generation-routing.j
 
 For P3-P5 body poses, prefer 3D/depth/normal/SMPL-X-like structural control. Never treat text-only or reference-only generation as sufficient for demanding self-occluding/extreme body poses.
 
-When repeated critical failures persist, escalate capability rather than repeating the same route.
+When repeated critical failures persist, escalate capability rather than repeating the same route. Apply the repair budget per route; return BLOCK only after a required evidence gap is identified or the appropriate escalation path is exhausted.
 
 Keep these variables conceptually separate:
 
