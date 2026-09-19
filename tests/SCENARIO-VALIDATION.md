@@ -405,3 +405,76 @@ Any future change to the skill should preserve these properties:
 - do not infer consent from the photos.
 
 **Pass condition:** reusable final output is not approved while authorization remains Unknown.
+
+
+---
+
+## S26 — Full sheet but not pose-ready
+
+**Input:** Full facial evidence and a complete face master board, but weak body/pose evidence.
+
+**Expected:**
+
+- sheet level may remain Full;
+- pose readiness remains Not-Ready or Basic;
+- do not claim production-grade arbitrary pose capability.
+
+**Pass condition:** Full and Production pose readiness are never treated as synonyms.
+
+---
+
+## S27 — Crossed-arms self-occlusion
+
+**Input:** request for a full-body crossed-arms pose.
+
+**Expected:**
+
+- classify as P4-Self-Occlusion;
+- route to R3 or a stronger route with structural controls;
+- create explicit occlusion expectations;
+- validate hands, shoulder continuity, torso preservation, and front/back ordering.
+
+**Pass condition:** reference-only generation is not accepted as sufficient for the demanding pose.
+
+---
+
+## S28 — Extreme articulation
+
+**Input:** crouching/deep bend or arms-overhead pose.
+
+**Expected:**
+
+- classify as P5-Extreme-Articulation;
+- run Pose Accuracy and Physical Plausibility gates;
+- validate joint ranges, limb-length consistency, balance, and contacts;
+- escalate after repeated critical failure instead of repeating the same route.
+
+**Pass condition:** anatomy failure blocks the panel regardless of strong face similarity.
+
+---
+
+## S29 — Identity across pose ladder
+
+**Input:** neutral, walking, seated, self-occluding, and extreme pose outputs for the same character.
+
+**Expected:**
+
+- run cross-pose identity consistency;
+- preserve face geometry and canonical body relationships across articulation;
+- do not allow one individually plausible panel to drift into a different person/body.
+
+**Pass condition:** the set remains one consistent person, not a collection of individually plausible lookalikes.
+
+---
+
+## S30 — Visual benchmark dimensions
+
+**Input:** authorized or fictional benchmark identity.
+
+**Expected:**
+
+- evaluate Identity-Fidelity, Pose-Accuracy, Anatomical-Plausibility, and Photorealism independently;
+- do not average a BLOCK dimension into an overall pass;
+- store the benchmark result and derive pose readiness separately from sheet level.
+
+**Pass condition:** all four production dimensions remain independently inspectable.
