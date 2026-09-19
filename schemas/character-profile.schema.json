@@ -13,7 +13,8 @@
     "editable",
     "evidence",
     "qc",
-    "pose_assets"
+    "pose_assets",
+    "production_assets"
   ],
   "properties": {
     "schema_version": {
@@ -244,6 +245,56 @@
             "type": "string"
           },
           "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "production_assets": {
+      "type": "object",
+      "required": [
+        "identity_anchor_bank_file",
+        "cross_panel_identity_matrix_file",
+        "extremity_profile_file",
+        "skin_identity_file",
+        "hair_dynamics_file",
+        "default_clothing_behavior_file"
+      ],
+      "properties": {
+        "identity_anchor_bank_file": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cross_panel_identity_matrix_file": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "extremity_profile_file": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "skin_identity_file": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hair_dynamics_file": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "default_clothing_behavior_file": {
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "additionalProperties": false
