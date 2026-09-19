@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "character_id": "CS-DEMO-001",
+  "profile_version": "1.0",
+  "representation": "3D-Skeleton",
+  "scale_mode": "Relative-Only",
+  "source_reference_ids": [
+    "ref-body-front",
+    "ref-body-side"
+  ],
+  "neutral_geometry": {
+    "body_shape_relations": {
+      "head_to_body": 0.13,
+      "shoulder_to_hip": 1.08,
+      "torso_to_leg": 0.72,
+      "waist_to_hip": 0.78
+    },
+    "joint_structure": {
+      "joint_set": "Custom-3D",
+      "joint_count": 24,
+      "coordinate_space": "3D-Canonical",
+      "notes": "Fictional example proxy."
+    },
+    "symmetry_notes": [
+      "Preserve observed shoulder/hip asymmetry if validated."
+    ]
+  },
+  "pose_space": {
+    "supports_3d_pose": true,
+    "supports_hand_pose": false,
+    "supports_contact_constraints": true,
+    "limitations": [
+      "Detailed finger articulation is not represented."
+    ]
+  },
+  "artifacts": {
+    "mesh": null,
+    "skeleton": "body-proxy-skeleton.json",
+    "depth": null,
+    "normal": null,
+    "segmentation": null
+  },
+  "confidence": {
+    "body_shape": "Medium",
+    "joint_geometry": "Medium",
+    "scale": "Unknown"
+  },
+  "limitations": [
+    "Relative geometry only; no calibrated real-world scale."
+  ]
+}
