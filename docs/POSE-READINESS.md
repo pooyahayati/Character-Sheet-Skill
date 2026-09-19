@@ -105,3 +105,14 @@ A pose-ready package may include:
 - visual benchmark result.
 
 Generated proxy assets remain production controls, not new source evidence.
+
+
+## Source-of-truth separation
+
+`Pose Contract` owns articulation, joint targets, contacts, and occlusion expectations.
+
+`Camera and Lighting Contract` owns viewpoint, focal/perspective state, crop, and lighting.
+
+Do not duplicate camera state inside the pose contract. The pose contract may require `Camera-Control` capability, but the camera values themselves live only in `camera-lighting-contract.json`.
+
+The canonical multi-view anchor bank lives in `production_assets.identity_anchor_bank_file`, not in the pose-assets block.
