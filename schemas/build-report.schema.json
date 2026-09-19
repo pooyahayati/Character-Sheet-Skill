@@ -129,6 +129,25 @@
         ]
       },
       "uniqueItems": true
+    },
+    "cross_panel_identity_matrix_file": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "identity_anchor_bank_file": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "camera_lighting_contract_files": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
     }
   },
   "additionalProperties": false
