@@ -36,8 +36,10 @@
       "required": [
         "identity",
         "body_proxy",
+        "neutral_pose",
         "simple_pose",
         "dynamic_pose",
+        "seated_leaning",
         "self_occlusion",
         "extreme_articulation"
       ],
@@ -58,6 +60,12 @@
           "$ref": "#/$defs/result"
         },
         "extreme_articulation": {
+          "$ref": "#/$defs/result"
+        },
+        "neutral_pose": {
+          "$ref": "#/$defs/result"
+        },
+        "seated_leaning": {
           "$ref": "#/$defs/result"
         }
       },
