@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "character_id": "CS-DEMO-001",
+  "profile_version": "1.0",
+  "static_identity": {
+    "hairline": "Canonical observed hairline",
+    "parting": "Example center-left part",
+    "length": "Shoulder length",
+    "texture": "Wavy",
+    "volume": "Medium",
+    "color": "Dark brown"
+  },
+  "dynamic_behavior": {
+    "gravity_response": "Wavy-Fall",
+    "shoulder_interaction": "Touches-Shoulder",
+    "head_turn_behavior": "Moderate-Motion",
+    "face_occlusion_tendency": "Medium",
+    "notes": [
+      "Hair dynamics must preserve static length/parting unless edited."
+    ]
+  }
+}
