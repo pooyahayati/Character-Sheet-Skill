@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "character_id": "CS-DEMO-001",
+  "profile_version": "1.0",
+  "suite_version": "1.0",
+  "scenario_results": [
+    {
+      "scenario_id": "VB01",
+      "dimensions": {
+        "Identity-Fidelity": "PASS",
+        "Pose-Accuracy": "PASS",
+        "Anatomical-Plausibility": "PASS",
+        "Photorealism": "PASS_WITH_LIMITS"
+      },
+      "overall": "PASS_WITH_LIMITS",
+      "notes": [
+        "Fictional structural example; not a real image benchmark result."
+      ]
+    },
+    {
+      "scenario_id": "VB05",
+      "dimensions": {
+        "Identity-Fidelity": "NOT_TESTED",
+        "Pose-Accuracy": "NOT_TESTED",
+        "Anatomical-Plausibility": "NOT_TESTED",
+        "Photorealism": "NOT_TESTED"
+      },
+      "overall": "NOT_TESTED",
+      "notes": [
+        "P4 not yet evaluated in example."
+      ]
+    }
+  ],
+  "overall_pose_readiness": "Strong"
+}
