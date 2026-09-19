@@ -238,13 +238,6 @@
         "pose_readiness_file": {
           "type": "string",
           "minLength": 1
-        },
-        "anchor_bank": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "uniqueItems": true
         }
       },
       "additionalProperties": false
