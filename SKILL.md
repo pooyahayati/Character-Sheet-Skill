@@ -46,13 +46,32 @@ The preview should demonstrate, when applicable:
 
 The preview is illustrative, not a promise that unsupported views are factual.
 
-## 2. Accept one or many real photographs
+## 2. Normalize the build request
+
+Before choosing a level, normalize the user's actual production goal using `schemas/build-request.schema.json` and `docs/REQUEST-CONTRACT.md`.
+
+Record:
+
+- goal;
+- requested level: Auto / Base / Advanced / Full;
+- details required for the production task;
+- intended appearance epoch when relevant;
+- subject authorization;
+- age handling.
+
+Do not automatically choose the highest level available. If level is Auto, choose the smallest level that satisfies the production goal with adequate evidence.
+
+For a reusable real-person identity package, follow `docs/PRIVACY-CONSENT.md`. If authorization is Unknown, resolve permission before final reusable output.
+
+Do not infer adulthood from appearance. Body edits or presentation involving sexualized secondary characteristics require `Adult-Confirmed`; otherwise follow the conservative restrictions in `docs/BODY-REVISION-GUARD.md`.
+
+## 3. Accept one or many real photographs
 
 Minimum input: one usable photograph.
 
 Do not assume more photos always improve the result. Large collections must pass the Reference Image Selection System before identity extraction.
 
-## 3. Run the Reference Image Selection System
+## 4. Run the Reference Image Selection System
 
 Represent per-image analysis using `schemas/reference-analysis.schema.json`.
 
@@ -119,7 +138,7 @@ Treat glasses, colored contacts, strong makeup, facial hair, temporary skin chan
 
 If a reference appears synthetic or heavily altered, mark it `Suspect Reference` rather than making a definitive forensic claim. Reduce its weight or exclude it when it conflicts with reliable photographs.
 
-## 4. Analyze before asking questions
+## 5. Analyze before asking questions
 
 Extract all reliably observable information first.
 
@@ -139,7 +158,7 @@ Do not ask the user for information that the references already establish with s
 
 Ask only when a material feature is ambiguous, contradictory, unobservable or below the required confidence threshold.
 
-## 5. Run the Face Identity Gate
+## 6. Run the Face Identity Gate
 
 This gate is mandatory for every level.
 
@@ -172,7 +191,7 @@ A clear smiling face may support identity, but smile deformation must not be fro
 
 Do not lower the facial standard to make progress.
 
-## 6. Maintain subject laterality
+## 7. Maintain subject laterality
 
 Distinguish `Subject Left` and `Subject Right` from left/right in the displayed image.
 
@@ -188,7 +207,7 @@ Account for mirrored selfies or flipped files before locking:
 
 If laterality cannot be resolved, mark the feature `Unverified` instead of guessing.
 
-## 7. Build the Canonical Character Identity
+## 8. Build the Canonical Character Identity
 
 ### Face Geometry Core
 
@@ -306,7 +325,7 @@ Do not claim exact real-world height, weight or circumferences from an ordinary 
 
 When exact measurements are required, use user-provided measurements or trustworthy calibrated references.
 
-## 8. Separate locked and editable attributes
+## 9. Separate locked and editable attributes
 
 ### Identity Locked
 
@@ -348,7 +367,7 @@ Body edits must follow `docs/BODY-REVISION-GUARD.md` and must not silently modif
 
 Record previous value, new value, revision request, protected invariants, and post-edit QC.
 
-## 9. Select the character-sheet level
+## 10. Select the character-sheet level
 
 Use `config/level-contract.json` as the normative level definition.
 
@@ -382,7 +401,7 @@ Full means lower uncertainty and broader evidence, not merely a larger sheet.
 
 Optional details such as hands/nails do not automatically block Full when they are irrelevant to the requested use. Keep them Unverified or request a targeted reference only when they are required by the user or production goal.
 
-## 10. Create the Sheet Plan
+## 11. Create the Sheet Plan
 
 Plan only the panels supported or explicitly reconstructed by the available evidence.
 
@@ -408,7 +427,7 @@ Possible panels:
 
 Visually distinguish or internally track observed references vs reconstructed panels.
 
-## 11. Default clothing and presentation
+## 12. Default clothing and presentation
 
 Use minimal, neutral, anatomically readable, non-sexualized clothing.
 
@@ -418,7 +437,7 @@ The purpose of the base sheet is to reveal useful proportions, not eroticize the
 
 If age is unclear or the subject may be a minor, use conservative age-appropriate neutral clothing and do not use revealing presentation.
 
-## 12. Generate with independent controls
+## 13. Generate with independent controls
 
 Follow `docs/PRODUCTION-PIPELINE.md`.
 
@@ -453,7 +472,7 @@ For modeling/editorial poses, support controlled variants such as:
 
 The pose/expression layer must be validated against the canonical identity.
 
-## 13. Run multi-gate quality control
+## 14. Run multi-gate quality control
 
 Do not accept the sheet based on a single global similarity score.
 
@@ -483,13 +502,13 @@ Use the repair budget in `docs/PRODUCTION-PIPELINE.md`: initial attempt plus at 
 
 Use the Validation Pool to compare results against references not used as primary generation anchors.
 
-## 14. Full-body face fidelity rule
+## 15. Full-body face fidelity rule
 
 A full-body image must pass a separate face check because a small face can lose identity even when the body image appears convincing.
 
 Do not approve a full-body panel if the face has drifted.
 
-## 15. Evidence integrity rule
+## 16. Evidence integrity rule
 
 Generated content is not new evidence.
 
@@ -497,7 +516,7 @@ A reconstructed profile/back view, invented teeth, inferred body measurement or 
 
 Only new user references or explicit user-provided facts can resolve unverified evidence.
 
-## 16. Deterministic composition
+## 17. Deterministic composition
 
 After all required panels are Approved, compose the final board deterministically.
 
@@ -512,7 +531,7 @@ The final composition may contain only PASS or explicitly allowed PASS_WITH_LIMI
 
 Package approved outputs according to `docs/OUTPUT-CONTRACT.md`, including the build request, reference analysis, canonical profile, sheet plan, approved panel assets, composition manifest, final SVG, and build report.
 
-## 17. User review
+## 18. User review
 
 After internal QC passes, present the best sheet and a compact summary of:
 
@@ -524,7 +543,7 @@ After internal QC passes, present the best sheet and a compact summary of:
 
 Do not burden the user with every internal score unless useful.
 
-## 18. Versioned revisions
+## 19. Versioned revisions
 
 The approved first identity becomes `v1.0`.
 
@@ -544,7 +563,7 @@ For each revision:
 
 Never rebuild identity from scratch for a simple appearance edit.
 
-## 19. Level upgrades
+## 20. Level upgrades
 
 When new references are supplied later:
 
@@ -554,7 +573,7 @@ Reuse the canonical identity and add newly validated evidence.
 
 Do not discard the approved base without a reason.
 
-## 20. Large photo-set summary
+## 21. Large photo-set summary
 
 When many images are supplied, provide a concise summary after selection, for example:
 
@@ -572,7 +591,7 @@ When many images are supplied, provide a concise summary after selection, for ex
 
 Stop requesting more references once the desired level has sufficient coverage.
 
-## 21. Accuracy and privacy discipline
+## 22. Accuracy and privacy discipline
 
 Do not infer sensitive personal traits from appearance.
 
