@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/body-proxy.schema.json",
+  "title": "Canonical 3D Body Proxy",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "character_id",
+    "profile_version",
+    "representation",
+    "scale_mode",
+    "source_reference_ids",
+    "neutral_geometry",
+    "pose_space",
+    "artifacts",
+    "confidence"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "character_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "representation": {
+      "enum": [
+        "SMPL-X-Compatible",
+        "SMPL-Compatible",
+        "3D-Skeleton",
+        "Depth-Normal-Proxy",
+        "2D-Skeleton-Only",
+        "Unavailable"
+      ]
+    },
+    "scale_mode": {
+      "enum": [
+        "Relative-Only",
+        "User-Calibrated",
+        "Calibrated-Reference"
+      ]
+    },
+    "source_reference_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "neutral_geometry": {
+      "type": "object",
+      "required": [
+        "body_shape_relations",
+        "joint_structure",
+        "symmetry_notes"
+      ],
+      "properties": {
+        "body_shape_relations": {
+          "type": "object",
+          "properties": {
+            "head_to_body": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "shoulder_to_hip": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "torso_to_leg": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "waist_to_hip": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "joint_structure": {
+          "type": "object",
+          "required": [
+            "joint_set",
+            "joint_count",
+            "coordinate_space"
+          ],
+          "properties": {
+            "joint_set": {
+              "enum": [
+                "SMPL-X",
+                "SMPL",
+                "COCO-17",
+                "Custom-3D",
+                "Custom-2D",
+                "Unknown"
+              ]
+            },
+            "joint_count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "coordinate_space": {
+              "enum": [
+                "3D-Canonical",
+                "3D-Camera",
+                "2D-Image",
+                "Unknown"
+              ]
+            },
+            "notes": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "symmetry_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "pose_space": {
+      "type": "object",
+      "required": [
+        "supports_3d_pose",
+        "supports_hand_pose",
+        "supports_contact_constraints"
+      ],
+      "properties": {
+        "supports_3d_pose": {
+          "type": "boolean"
+        },
+        "supports_hand_pose": {
+          "type": "boolean"
+        },
+        "supports_contact_constraints": {
+          "type": "boolean"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "artifacts": {
+      "type": "object",
+      "properties": {
+        "mesh": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "skeleton": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "depth": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "normal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "segmentation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "confidence": {
+      "type": "object",
+      "required": [
+        "body_shape",
+        "joint_geometry",
+        "scale"
+      ],
+      "properties": {
+        "body_shape": {
+          "enum": [
+            "High",
+            "Medium",
+            "Low",
+            "Unknown"
+          ]
+        },
+        "joint_geometry": {
+          "enum": [
+            "High",
+            "Medium",
+            "Low",
+            "Unknown"
+          ]
+        },
+        "scale": {
+          "enum": [
+            "High",
+            "Medium",
+            "Low",
+            "Unknown"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}
