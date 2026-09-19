@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/generation-route.schema.json",
+  "title": "Generation Route Decision",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "task",
+    "pose_difficulty",
+    "selected_route",
+    "required_capabilities",
+    "escalation_level",
+    "reason"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "task": {
+      "enum": [
+        "Face-Portrait",
+        "Expression",
+        "Full-Body-Pose",
+        "Modeling-Pose",
+        "Body-Edit",
+        "Local-Appearance-Edit",
+        "View-Synthesis"
+      ]
+    },
+    "pose_difficulty": {
+      "enum": [
+        "P0-Neutral",
+        "P1-Simple",
+        "P2-Dynamic",
+        "P3-Seated-Leaning",
+        "P4-Self-Occlusion",
+        "P5-Extreme-Articulation",
+        "Not-Applicable"
+      ]
+    },
+    "selected_route": {
+      "enum": [
+        "R1-Identity-Reference",
+        "R2-Identity-Plus-2D-Pose",
+        "R3-Identity-Plus-3D-Geometry",
+        "R4-Identity-Preserving-Local-Edit",
+        "R5-Subject-Specific-Adapter",
+        "R6-Dedicated-3D-Avatar"
+      ]
+    },
+    "required_capabilities": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "Reference-Conditioning",
+          "2D-Pose",
+          "3D-Pose",
+          "Depth",
+          "Normal",
+          "Segmentation",
+          "Local-Edit",
+          "Fine-Tune",
+          "Dedicated-3D",
+          "Camera-Control"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "escalation_level": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "previous_failures": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false
+}
