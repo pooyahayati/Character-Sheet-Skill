@@ -12,12 +12,15 @@ The skill must not ask an image model to create the final multi-panel board in o
 Reference Intake
 → Reference Selection
 → Canonical Identity Profile
+→ Canonical Body Proxy when pose production is required
+→ Pose Readiness Target
 → Canonical Face Anchor
 → Canonical Face QC
 → Individual Face Panels
 → Per-Panel Face QC
-→ Individual Body Panels
-→ Per-Panel Face + Body QC
+→ Pose Contract + Generation Route
+→ Individual Body / Pose Panels
+→ Per-Panel Face + Pose + Anatomy QC
 → Detail Panels
 → Modeling / Expression Panels
 → Per-Panel QC
@@ -68,6 +71,26 @@ Examples:
 
 Never rely on a single model call to create the entire character-sheet board.
 
+## Pose and structural control
+
+For pose-dependent panels, create a pose/camera contract before generation.
+
+Use:
+
+- `schemas/pose-contract.schema.json`;
+- `schemas/body-proxy.schema.json`;
+- `config/pose-readiness-contract.json`.
+
+P3-P5 panels should use 3D/depth/normal/SMPL-X-like structural controls when supported.
+
+## Generation routing
+
+Route by capability, not vendor/model name.
+
+Use `docs/GENERATION-ROUTER.md` and `config/generation-routing.json`.
+
+Repeated critical failure triggers escalation to a stronger route instead of blind repetition.
+
 ## Reference routing per panel
 
 Every panel receives:
@@ -98,14 +121,18 @@ Use:
 - locked eye/nose/jaw identity;
 - calibrated smile-expression information.
 
-### Body panel
+### Body / pose panel
 
 Use:
 
 - canonical face anchor;
 - body references appropriate for geometry;
+- canonical body proxy when available;
+- explicit pose contract;
 - body proportion constraints;
-- neutral camera constraints.
+- camera contract;
+- contact and occlusion expectations;
+- route-appropriate structural controls.
 
 ## Repair loop
 
