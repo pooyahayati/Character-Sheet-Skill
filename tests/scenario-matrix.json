@@ -1,0 +1,170 @@
+{
+  "suite": "Character Sheet Skill scenario validation v1",
+  "gate_outcomes": [
+    "PASS",
+    "PASS_WITH_LIMITS",
+    "BLOCK"
+  ],
+  "scenarios": [
+    {
+      "id": "S01",
+      "name": "single_strong_front",
+      "expected_level": "Base",
+      "face_gate": "PASS",
+      "must_not": [
+        "invent_body_measurements",
+        "claim_observed_profile"
+      ]
+    },
+    {
+      "id": "S02",
+      "name": "wide_angle_selfie",
+      "expected_level": "Base_or_block",
+      "face_gate": "PASS_WITH_LIMITS",
+      "must": [
+        "request_neutral_distance_reference_if_geometry_unreliable"
+      ]
+    },
+    {
+      "id": "S03",
+      "name": "many_duplicate_selfies",
+      "expected_level": "Base",
+      "must": [
+        "duplicate_cluster",
+        "coverage_weighting"
+      ]
+    },
+    {
+      "id": "S04",
+      "name": "diverse_high_quality_set",
+      "expected_level": "Advanced_or_Full",
+      "must": [
+        "cross_validate",
+        "laterality_check"
+      ]
+    },
+    {
+      "id": "S05",
+      "name": "mixed_time_periods",
+      "must": [
+        "appearance_epoch_clustering",
+        "target_epoch_resolution"
+      ]
+    },
+    {
+      "id": "S06",
+      "name": "identity_outlier",
+      "must": [
+        "exclude_outlier"
+      ]
+    },
+    {
+      "id": "S07",
+      "name": "beauty_filter_conflict",
+      "must": [
+        "filter_risk",
+        "anchor_unfiltered_geometry"
+      ]
+    },
+    {
+      "id": "S08",
+      "name": "glasses_contacts",
+      "must": [
+        "occluder_separation",
+        "eye_color_conflict_handling"
+      ]
+    },
+    {
+      "id": "S09",
+      "name": "smile_only",
+      "face_gate": "PASS_WITH_LIMITS",
+      "must": [
+        "separate_smile_from_neutral_geometry"
+      ]
+    },
+    {
+      "id": "S10",
+      "name": "smile_calibration",
+      "must": [
+        "joint_smile_qc",
+        "dental_provenance"
+      ]
+    },
+    {
+      "id": "S11",
+      "name": "mirrored_laterality",
+      "must": [
+        "subject_side_resolution"
+      ]
+    },
+    {
+      "id": "S12",
+      "name": "low_angle_body",
+      "must": [
+        "camera_distortion_guard"
+      ]
+    },
+    {
+      "id": "S13",
+      "name": "neutral_plus_modeling",
+      "must": [
+        "separate_body_geometry_from_pose"
+      ]
+    },
+    {
+      "id": "S14",
+      "name": "hair_only_revision",
+      "must": [
+        "minor_version",
+        "preserve_identity"
+      ]
+    },
+    {
+      "id": "S15",
+      "name": "body_revision",
+      "must": [
+        "body_revision_guard",
+        "edited_provenance"
+      ]
+    },
+    {
+      "id": "S16",
+      "name": "user_measurements",
+      "must": [
+        "user_provided_provenance"
+      ]
+    },
+    {
+      "id": "S17",
+      "name": "missing_hands_nails",
+      "must": [
+        "keep_unverified",
+        "targeted_request_only_if_needed"
+      ]
+    },
+    {
+      "id": "S18",
+      "name": "styling_variants",
+      "must": [
+        "appearance_variants",
+        "no_average_default"
+      ]
+    },
+    {
+      "id": "S19",
+      "name": "suspect_synthetic_reference",
+      "must": [
+        "suspect_not_certainty",
+        "lower_weight"
+      ]
+    },
+    {
+      "id": "S20",
+      "name": "level_upgrade",
+      "must": [
+        "preserve_canonical_identity",
+        "additive_evidence"
+      ]
+    }
+  ]
+}
