@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/sheet-manifest.schema.json",
+  "title": "Character Sheet Composition Manifest",
+  "type": "object",
+  "required": [
+    "character_id",
+    "version",
+    "level",
+    "title",
+    "panels"
+  ],
+  "properties": {
+    "character_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "level": {
+      "enum": [
+        "Base",
+        "Advanced",
+        "Full"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canvas": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 800
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 600
+        },
+        "background": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "panels": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "image",
+          "gate_result",
+          "evidence_status",
+          "x",
+          "y",
+          "width",
+          "height"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "image": {
+            "type": "string",
+            "minLength": 1
+          },
+          "gate_result": {
+            "enum": [
+              "PASS",
+              "PASS_WITH_LIMITS"
+            ]
+          },
+          "evidence_status": {
+            "enum": [
+              "Observed",
+              "Cross-Validated",
+              "Estimated",
+              "Reconstructed",
+              "Unverified",
+              "User-Provided"
+            ]
+          },
+          "subject_side": {
+            "enum": [
+              "Left",
+              "Right",
+              "Center",
+              "Bilateral",
+              "Not-Applicable",
+              "Unknown"
+            ]
+          },
+          "x": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "y": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}
