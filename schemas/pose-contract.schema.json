@@ -1,0 +1,338 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/pose-contract.schema.json",
+  "title": "Pose and Camera Contract",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "pose_id",
+    "difficulty",
+    "body_pose",
+    "head",
+    "camera",
+    "contacts",
+    "occlusion_expectations",
+    "required_controls"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "pose_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "difficulty": {
+      "enum": [
+        "P0-Neutral",
+        "P1-Simple",
+        "P2-Dynamic",
+        "P3-Seated-Leaning",
+        "P4-Self-Occlusion",
+        "P5-Extreme-Articulation"
+      ]
+    },
+    "body_pose": {
+      "type": "object",
+      "required": [
+        "representation",
+        "joint_targets"
+      ],
+      "properties": {
+        "representation": {
+          "enum": [
+            "3D-Skeleton",
+            "2D-Keypoints",
+            "SMPL-X-Pose",
+            "SMPL-Pose",
+            "Text-Only"
+          ]
+        },
+        "joint_targets": {
+          "type": "object",
+          "properties": {
+            "neck": {
+              "$ref": "#/$defs/joint"
+            },
+            "spine": {
+              "$ref": "#/$defs/joint"
+            },
+            "pelvis": {
+              "$ref": "#/$defs/joint"
+            },
+            "left_shoulder": {
+              "$ref": "#/$defs/joint"
+            },
+            "right_shoulder": {
+              "$ref": "#/$defs/joint"
+            },
+            "left_elbow": {
+              "$ref": "#/$defs/joint"
+            },
+            "right_elbow": {
+              "$ref": "#/$defs/joint"
+            },
+            "left_wrist": {
+              "$ref": "#/$defs/joint"
+            },
+            "right_wrist": {
+              "$ref": "#/$defs/joint"
+            },
+            "left_hip": {
+              "$ref": "#/$defs/joint"
+            },
+            "right_hip": {
+              "$ref": "#/$defs/joint"
+            },
+            "left_knee": {
+              "$ref": "#/$defs/joint"
+            },
+            "right_knee": {
+              "$ref": "#/$defs/joint"
+            },
+            "left_ankle": {
+              "$ref": "#/$defs/joint"
+            },
+            "right_ankle": {
+              "$ref": "#/$defs/joint"
+            }
+          },
+          "additionalProperties": false
+        },
+        "hand_pose": {
+          "enum": [
+            "Neutral",
+            "Open",
+            "Closed",
+            "Relaxed",
+            "Gesture",
+            "Custom",
+            "Not-Specified"
+          ]
+        },
+        "weight_distribution": {
+          "enum": [
+            "Balanced",
+            "Left",
+            "Right",
+            "Front",
+            "Back",
+            "Seated",
+            "Supported",
+            "Unknown"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "head": {
+      "type": "object",
+      "required": [
+        "yaw",
+        "pitch",
+        "roll",
+        "gaze"
+      ],
+      "properties": {
+        "yaw": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "pitch": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "roll": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "gaze": {
+          "enum": [
+            "Camera",
+            "Left",
+            "Right",
+            "Up",
+            "Down",
+            "Custom",
+            "Not-Specified"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "camera": {
+      "type": "object",
+      "required": [
+        "view",
+        "height",
+        "distance_class",
+        "focal_class",
+        "perspective_strength"
+      ],
+      "properties": {
+        "view": {
+          "enum": [
+            "Front",
+            "Three-Quarter-Left",
+            "Three-Quarter-Right",
+            "Profile-Left",
+            "Profile-Right",
+            "Back",
+            "High-Angle",
+            "Low-Angle",
+            "Custom"
+          ]
+        },
+        "height": {
+          "enum": [
+            "Low",
+            "Waist",
+            "Chest",
+            "Eye",
+            "High",
+            "Custom"
+          ]
+        },
+        "distance_class": {
+          "enum": [
+            "Close-Up",
+            "Portrait",
+            "Three-Quarter",
+            "Full-Body",
+            "Environmental"
+          ]
+        },
+        "focal_class": {
+          "enum": [
+            "Wide",
+            "Normal",
+            "Portrait",
+            "Telephoto",
+            "Unknown"
+          ]
+        },
+        "perspective_strength": {
+          "enum": [
+            "Low",
+            "Moderate",
+            "High",
+            "Unknown"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "contacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "body_part",
+          "target",
+          "required"
+        ],
+        "properties": {
+          "body_part": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "occlusion_expectations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "front_object",
+          "back_object",
+          "critical"
+        ],
+        "properties": {
+          "front_object": {
+            "type": "string",
+            "minLength": 1
+          },
+          "back_object": {
+            "type": "string",
+            "minLength": 1
+          },
+          "critical": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "required_controls": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "Identity-Reference",
+          "2D-Pose",
+          "3D-Pose",
+          "Depth",
+          "Normal",
+          "Segmentation",
+          "Hand-Pose",
+          "Camera-Control",
+          "Inpainting"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "joint": {
+      "type": "object",
+      "properties": {
+        "rotation_deg": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "position": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 3
+        },
+        "confidence": {
+          "enum": [
+            "High",
+            "Medium",
+            "Low",
+            "Unknown"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
