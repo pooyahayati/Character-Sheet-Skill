@@ -57,6 +57,25 @@ def load(rel: str):
     return json.loads((ROOT / rel).read_text(encoding="utf-8"))
 
 
+def validate_release_metadata():
+    version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
+    manifest = load("package-manifest.json")
+    if version != manifest.get("version"):
+        raise AssertionError(f"VERSION ({version}) != package manifest ({manifest.get('version')})")
+    if manifest.get("package_name") != "character-sheet-skill":
+        raise AssertionError("Unexpected package name")
+    if manifest.get("entrypoint") != "SKILL.md":
+        raise AssertionError("Skill package entrypoint must be SKILL.md")
+    if not (ROOT / "LICENSE").is_file():
+        raise AssertionError("LICENSE is required for release")
+    changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+    if f"## [{version}]" not in changelog:
+        raise AssertionError("CHANGELOG does not contain current VERSION")
+    install_doc = (ROOT / "docs/INSTALL-CHATGPT-WINDOWS.md").read_text(encoding="utf-8")
+    if "Plugins" not in install_doc or "Skills" not in install_doc or "Upload from your computer" not in install_doc:
+        raise AssertionError("Windows install guide is incomplete")
+
+
 def validate_schema_files():
     for rel in SCHEMAS:
         Draft202012Validator.check_schema(load(rel))
@@ -307,6 +326,7 @@ def validate_inline_output_examples():
 
 
 def main():
+    validate_release_metadata()
     validate_schema_files()
     validate_examples()
     validate_level_contract()
