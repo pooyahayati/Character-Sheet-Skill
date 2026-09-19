@@ -320,3 +320,36 @@ The board is diagnostic, not decorative. It should expose:
 - loss of photorealism in difficult poses.
 
 A failed diagnostic panel must remain excluded or visibly marked as failed; it must not be presented as proof of pose readiness.
+
+
+## Multi-view Identity Anchor Bank
+
+The final production asset should visually distinguish primary identity anchors from generated diagnostic/output panels.
+
+When evidence supports them, maintain approved anchors for:
+
+- front;
+- subject-left 3/4;
+- subject-right 3/4;
+- observed profile;
+- eye detail;
+- mouth detail;
+- calibrated smile.
+
+A frontal anchor must not dominate every target view when a better side-specific anchor exists.
+
+## Skin / Hair / Clothing realism
+
+Neutral reference panels should preserve natural visible skin texture without beauty smoothing.
+
+Hair should retain static identity across panels while moving plausibly with head pose and gravity.
+
+Clothing should fold and stretch with pose, but must not visually redefine the underlying body.
+
+## Camera / Lighting standard
+
+Every production panel has an explicit camera/lighting state.
+
+Neutral canonical views should prefer low-distortion camera logic and identity-neutral lighting.
+
+Diagnostic perspective views may use high/low camera angles, but those perspective effects must not be interpreted as canonical anatomy.
