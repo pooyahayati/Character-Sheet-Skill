@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/camera-lighting-contract.schema.json",
+  "title": "Camera and Lighting Contract",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "camera",
+    "lighting"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "camera": {
+      "type": "object",
+      "required": [
+        "yaw",
+        "pitch",
+        "roll",
+        "height",
+        "distance_class",
+        "focal_class",
+        "crop",
+        "perspective_strength"
+      ],
+      "properties": {
+        "yaw": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "pitch": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "roll": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "height": {
+          "enum": [
+            "Low",
+            "Waist",
+            "Chest",
+            "Eye",
+            "High",
+            "Custom"
+          ]
+        },
+        "distance_class": {
+          "enum": [
+            "Close-Up",
+            "Portrait",
+            "Three-Quarter",
+            "Full-Body",
+            "Environmental"
+          ]
+        },
+        "focal_class": {
+          "enum": [
+            "Wide",
+            "Normal",
+            "Portrait",
+            "Telephoto",
+            "Unknown"
+          ]
+        },
+        "crop": {
+          "enum": [
+            "Head",
+            "Head-Shoulders",
+            "Half-Body",
+            "Three-Quarter",
+            "Full-Body",
+            "Environmental"
+          ]
+        },
+        "perspective_strength": {
+          "enum": [
+            "Low",
+            "Moderate",
+            "High",
+            "Unknown"
+          ]
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "lighting": {
+      "type": "object",
+      "required": [
+        "setup",
+        "key_direction",
+        "contrast",
+        "color_bias",
+        "identity_neutrality"
+      ],
+      "properties": {
+        "setup": {
+          "enum": [
+            "Neutral-Studio",
+            "Soft-Window",
+            "Directional-Studio",
+            "Outdoor-Soft",
+            "Outdoor-Hard",
+            "Custom"
+          ]
+        },
+        "key_direction": {
+          "enum": [
+            "Front",
+            "Front-Left",
+            "Front-Right",
+            "Side-Left",
+            "Side-Right",
+            "Back",
+            "Top",
+            "Custom"
+          ]
+        },
+        "contrast": {
+          "enum": [
+            "Low",
+            "Medium",
+            "High"
+          ]
+        },
+        "color_bias": {
+          "enum": [
+            "Neutral",
+            "Warm",
+            "Cool",
+            "Mixed",
+            "Unknown"
+          ]
+        },
+        "identity_neutrality": {
+          "enum": [
+            "High",
+            "Medium",
+            "Low"
+          ]
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
