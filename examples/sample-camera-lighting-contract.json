@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "camera": {
+    "yaw": 0,
+    "pitch": 0,
+    "roll": 0,
+    "height": "Chest",
+    "distance_class": "Full-Body",
+    "focal_class": "Normal",
+    "crop": "Full-Body",
+    "perspective_strength": "Low",
+    "notes": [
+      "Canonical neutral body camera."
+    ]
+  },
+  "lighting": {
+    "setup": "Neutral-Studio",
+    "key_direction": "Front-Left",
+    "contrast": "Low",
+    "color_bias": "Neutral",
+    "identity_neutrality": "High",
+    "notes": [
+      "Soft identity-neutral lighting."
+    ]
+  }
+}
