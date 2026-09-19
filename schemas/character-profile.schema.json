@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/character-profile.schema.json",
+  "title": "Character Sheet Canonical Profile",
+  "type": "object",
+  "required": ["character_id", "version", "level", "identity", "editable", "evidence"],
+  "properties": {
+    "character_id": { "type": "string" },
+    "version": { "type": "string" },
+    "level": { "enum": ["Base", "Advanced", "Full"] },
+    "identity": {
+      "type": "object",
+      "properties": {
+        "face_geometry": { "$ref": "#/$defs/attributeGroup" },
+        "facial_proportions": { "$ref": "#/$defs/attributeGroup" },
+        "eyes": { "$ref": "#/$defs/attributeGroup" },
+        "nose": { "$ref": "#/$defs/attributeGroup" },
+        "mouth_lips": { "$ref": "#/$defs/attributeGroup" },
+        "smile_expression": { "$ref": "#/$defs/attributeGroup" },
+        "natural_asymmetry": { "$ref": "#/$defs/attributeGroup" },
+        "distinctive_features": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/feature" }
+        },
+        "hair_identity": { "$ref": "#/$defs/attributeGroup" },
+        "body_geometry": { "$ref": "#/$defs/attributeGroup" }
+      },
+      "additionalProperties": true
+    },
+    "editable": {
+      "type": "object",
+      "properties": {
+        "appearance": { "type": "object" },
+        "body": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "primary_references": { "type": "array", "items": { "type": "string" } },
+        "validation_references": { "type": "array", "items": { "type": "string" } },
+        "excluded_references": { "type": "array", "items": { "type": "string" } },
+        "coverage": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "revisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "version": { "type": "string" },
+          "parent": { "type": "string" },
+          "changes": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["version", "changes"]
+      }
+    }
+  },
+  "$defs": {
+    "status": {
+      "enum": [
+        "Observed",
+        "Cross-Validated",
+        "Estimated",
+        "Reconstructed",
+        "Unverified",
+        "User-Provided",
+        "Edited",
+        "Locked"
+      ]
+    },
+    "attribute": {
+      "type": "object",
+      "properties": {
+        "value": {},
+        "confidence": { "enum": ["High", "Medium", "Low", "Unknown"] },
+        "consistency": { "enum": ["High", "Medium", "Low", "Unknown"] },
+        "status": { "$ref": "#/$defs/status" },
+        "source_images": { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": "string" }
+      },
+      "required": ["status"]
+    },
+    "attributeGroup": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/attribute" }
+    },
+    "feature": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "subject_side": { "enum": ["Left", "Right", "Center", "Bilateral", "Unknown"] },
+        "location": { "type": "string" },
+        "confidence": { "enum": ["High", "Medium", "Low", "Unknown"] },
+        "status": { "$ref": "#/$defs/status" },
+        "source_images": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["name", "status"]
+    }
+  }
+}
