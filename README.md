@@ -1,0 +1,183 @@
+# Character Sheet Skill
+
+A reusable AI skill for building identity-consistent, revision-ready character sheets from real photographs.
+
+The skill is designed around a strict principle:
+
+> Character-sheet depth may change, but facial identity fidelity must not be downgraded.
+
+It can start from a single usable photograph, scale to large photo sets, automatically select the most useful references, build a structured identity profile, generate Base / Advanced / Full character sheets, and keep later edits from unintentionally redefining the person.
+
+## What this skill is designed to preserve
+
+- Face geometry and facial proportions
+- Left/right eye identity, eyelids, iris appearance, brow-eye relationship and natural asymmetry
+- Nose, jaw, lips and mouth geometry
+- Smile behavior when supported by reference images
+- Hairline and default hair characteristics
+- Distinctive visible features such as moles, freckles, scars or dimples
+- Body proportions and shape within the limits supported by the references
+- Subject-left vs subject-right feature placement
+- Identity consistency across poses, expressions, camera angles and revisions
+
+## Core workflow
+
+```text
+Start
+→ Show expected character-sheet preview
+→ Collect one or more photos
+→ Reference Image Selection System
+→ Automatic visual analysis
+→ Face Identity Gate
+→ Coverage analysis
+→ Select Base / Advanced / Full
+→ Build Canonical Character Identity
+→ Create Sheet Plan
+→ Generate character sheet
+→ Multi-gate quality control
+→ Repair failed panels only
+→ User approval
+→ Approved Character v1.0
+→ Revision / Expansion / Level Upgrade
+```
+
+## Character-sheet levels
+
+### Base
+
+For limited but usable reference coverage. A good facial reference is mandatory.
+
+Typical output includes the strongest supported facial views, close-up face and eye references, basic body reference, default hair, color palette, observed attributes, editable defaults and uncertainty labels.
+
+### Advanced
+
+For broader multi-angle reference coverage.
+
+Adds stronger left/right angle coverage, better profile reconstruction, full-body views where supported, improved body geometry, hair details, expression references and hand/nail information when visible.
+
+### Full
+
+For broad, high-quality reference coverage with low uncertainty.
+
+Adds comprehensive face-angle coverage, expression and smile calibration, full-body front/side/back references, distinctive-feature mapping, detailed body-proportion references, hair, hands/nails and a richer reusable identity profile.
+
+**Important:** the number of photos alone never determines the level. Coverage, reliability, diversity and image quality do.
+
+## Reference Image Selection System
+
+When many images are provided, the skill does not treat every image equally. It:
+
+- scores image quality and identity reliability;
+- detects near-duplicates;
+- clusters face angles and expressions;
+- maps body/detail coverage;
+- detects heavy filters, distortion and misleading perspectives;
+- separates current appearance from older or conflicting appearance;
+- identifies identity outliers;
+- chooses a Primary Reference Set;
+- retains useful remaining images as a Validation Pool.
+
+A photograph can be excellent for eyes but unsuitable for body proportions. Utility is evaluated per feature, not only per image.
+
+## Identity model
+
+The character profile separates:
+
+- `Identity Locked` — core identity features;
+- `Appearance Editable` — hair color/length/style, nails, makeup, clothing and similar appearance variables;
+- `Body Editable` — controlled body-shape edits that require stronger consistency checks.
+
+The internal identity representation includes:
+
+- Face Geometry Core
+- Facial Proportion Fingerprint
+- Natural Asymmetry
+- Eye Identity
+- Mouth & Lip Identity
+- Smile / Expression Model
+- Distinctive Feature Map
+- Hair Identity
+- Body Geometry
+- Editable Appearance
+
+## Evidence states
+
+Every extracted attribute must carry a provenance state:
+
+- `Observed`
+- `Cross-Validated`
+- `Estimated`
+- `Reconstructed`
+- `Unverified`
+- `User-Provided`
+- `Edited`
+- `Locked`
+
+The skill must never turn an estimate into a fact merely because it appeared in a generated image.
+
+## Minimal questioning
+
+The skill analyzes the references before asking questions.
+
+If a feature can be extracted and internally validated with sufficient confidence, it should not ask the user for that information. It asks only when the information is important and ambiguous, conflicting, unobservable or insufficiently supported.
+
+## Face-first quality gates
+
+A generated sheet is not accepted on global similarity alone. Independent gates verify:
+
+- face geometry;
+- facial proportions;
+- eyes;
+- nose;
+- mouth and lips;
+- smile behavior;
+- jaw;
+- hairline;
+- distinctive features;
+- natural asymmetry;
+- body geometry;
+- expression / pose consistency;
+- full-body face fidelity.
+
+A severe failure in a critical region cannot be hidden by a high overall similarity score.
+
+## Body measurements and proportions
+
+The skill may infer **relative visual proportions** from suitable references.
+
+It must not claim exact real-world height, weight, chest, waist, hip or other physical measurements from ordinary photographs unless the user provides the measurement or the image has a trustworthy scale/calibration reference.
+
+Camera distortion, focal length, pose and perspective must be considered before using an image for body geometry.
+
+## Default character-sheet clothing
+
+The default sheet uses minimal, neutral, anatomically readable, non-sexualized clothing that keeps body proportions visible without presenting the subject sexually.
+
+## Revision-ready by design
+
+The first approved sheet becomes the canonical base character.
+
+Small appearance changes may create versions such as `v1.1`, while major structural changes may create `v2.0`. Later edits should change only the requested attributes, followed by identity and body consistency checks.
+
+A Base sheet can later be upgraded to Advanced or Full as new references are supplied without rebuilding the identity from scratch.
+
+## Repository structure
+
+```text
+SKILL.md
+README.md
+docs/
+  ARCHITECTURE.md
+  QUALITY-CONTROL.md
+  REFERENCE-SELECTION.md
+schemas/
+  character-profile.schema.json
+examples/
+  sample-character-profile.json
+```
+
+## Author
+
+**Pooya Hayati | پویا حیاتی**
+
+https://Pooyahayati.com
