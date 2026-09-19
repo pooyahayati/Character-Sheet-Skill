@@ -5,6 +5,7 @@
   "type": "object",
   "required": [
     "schema_version",
+    "build_request_file",
     "character_id",
     "version",
     "level",
@@ -39,7 +40,7 @@
           "$ref": "#/$defs/attributeGroup"
         },
         "facial_proportions": {
-          "$ref": "#/$defs/attributeGroup"
+          "$ref": "#/$defs/facialProportionGroup"
         },
         "eyes": {
           "$ref": "#/$defs/attributeGroup"
@@ -69,7 +70,19 @@
           "$ref": "#/$defs/attributeGroup"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "required": [
+        "face_geometry",
+        "facial_proportions",
+        "eyes",
+        "nose",
+        "mouth_lips",
+        "smile_expression",
+        "natural_asymmetry",
+        "distinctive_features",
+        "hair_identity",
+        "body_geometry"
+      ]
     },
     "editable": {
       "type": "object",
@@ -96,6 +109,7 @@
     "evidence": {
       "type": "object",
       "required": [
+        "reference_analysis_file",
         "primary_references",
         "validation_references",
         "excluded_references",
@@ -121,13 +135,46 @@
           }
         },
         "coverage": {
-          "type": "object"
+          "type": "object",
+          "required": [
+            "face",
+            "eyes",
+            "smile",
+            "profile",
+            "body",
+            "hands_nails"
+          ],
+          "properties": {
+            "face": {
+              "$ref": "#/$defs/coverageLevel"
+            },
+            "eyes": {
+              "$ref": "#/$defs/coverageLevel"
+            },
+            "smile": {
+              "$ref": "#/$defs/coverageLevel"
+            },
+            "profile": {
+              "$ref": "#/$defs/coverageLevel"
+            },
+            "body": {
+              "$ref": "#/$defs/coverageLevel"
+            },
+            "hands_nails": {
+              "$ref": "#/$defs/coverageLevel"
+            }
+          },
+          "additionalProperties": false
         },
         "target_appearance_epoch": {
           "type": [
             "string",
             "null"
           ]
+        },
+        "reference_analysis_file": {
+          "type": "string",
+          "minLength": 1
         }
       },
       "additionalProperties": false
@@ -166,30 +213,12 @@
     "revisions": {
       "type": "array",
       "items": {
-        "type": "object",
-        "required": [
-          "version",
-          "changes"
-        ],
-        "properties": {
-          "version": {
-            "type": "string"
-          },
-          "parent": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "changes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "additionalProperties": false
+        "$ref": "#/$defs/revision"
       }
+    },
+    "build_request_file": {
+      "type": "string",
+      "minLength": 1
     }
   },
   "$defs": {
@@ -241,7 +270,9 @@
         "confidence"
       ],
       "properties": {
-        "value": {},
+        "value": {
+          "$ref": "#/$defs/scalarValue"
+        },
         "evidence_basis": {
           "$ref": "#/$defs/evidenceBasis"
         },
@@ -261,7 +292,9 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "minItems": 0,
+          "uniqueItems": true
         },
         "notes": {
           "type": "string"
@@ -341,6 +374,27 @@
         },
         "critical_checks": {
           "type": "object",
+          "propertyNames": {
+            "enum": [
+              "global_identity",
+              "face_geometry",
+              "facial_proportions",
+              "left_eye",
+              "right_eye",
+              "eye_spacing",
+              "nose",
+              "mouth_lips",
+              "smile_expression",
+              "jaw_chin",
+              "hairline",
+              "distinctive_features",
+              "natural_asymmetry",
+              "body_geometry",
+              "pose_expression_consistency",
+              "full_body_face_fidelity",
+              "laterality"
+            ]
+          },
           "additionalProperties": {
             "$ref": "#/$defs/checkResult"
           }
@@ -359,6 +413,224 @@
         },
         "reason": {
           "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "coverageLevel": {
+      "enum": [
+        "None",
+        "Weak",
+        "Moderate",
+        "Strong"
+      ]
+    },
+    "scalarValue": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        },
+        {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              }
+            ]
+          },
+          "maxItems": 32
+        }
+      ]
+    },
+    "measurementContext": {
+      "type": "object",
+      "required": [
+        "reference_view",
+        "geometry_validity",
+        "distortion_risk",
+        "normalization"
+      ],
+      "properties": {
+        "reference_view": {
+          "enum": [
+            "Front",
+            "Near-Front",
+            "Three-Quarter",
+            "Profile",
+            "Other"
+          ]
+        },
+        "geometry_validity": {
+          "enum": [
+            "Valid",
+            "Limited",
+            "Invalid"
+          ]
+        },
+        "distortion_risk": {
+          "enum": [
+            "None",
+            "Low",
+            "Medium",
+            "High",
+            "Unknown"
+          ]
+        },
+        "normalization": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_image": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "facialProportionAttribute": {
+      "type": "object",
+      "required": [
+        "evidence_basis",
+        "revision_state",
+        "lock_state",
+        "confidence",
+        "measurement_context"
+      ],
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/scalarValue"
+        },
+        "evidence_basis": {
+          "$ref": "#/$defs/evidenceBasis"
+        },
+        "revision_state": {
+          "$ref": "#/$defs/revisionState"
+        },
+        "lock_state": {
+          "$ref": "#/$defs/lockState"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "consistency": {
+          "$ref": "#/$defs/confidence"
+        },
+        "source_images": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "notes": {
+          "type": "string"
+        },
+        "measurement_context": {
+          "$ref": "#/$defs/measurementContext"
+        }
+      },
+      "additionalProperties": false
+    },
+    "facialProportionGroup": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/facialProportionAttribute"
+      }
+    },
+    "change": {
+      "type": "object",
+      "required": [
+        "path",
+        "scope",
+        "previous_value",
+        "new_value"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "enum": [
+            "Appearance",
+            "Body",
+            "Identity"
+          ]
+        },
+        "previous_value": {
+          "$ref": "#/$defs/scalarValue"
+        },
+        "new_value": {
+          "$ref": "#/$defs/scalarValue"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "revision": {
+      "type": "object",
+      "required": [
+        "version",
+        "parent",
+        "request_id",
+        "revision_type",
+        "changes",
+        "qc_result"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parent": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision_type": {
+          "enum": [
+            "Minor",
+            "Major"
+          ]
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/change"
+          },
+          "minItems": 1
+        },
+        "qc_result": {
+          "enum": [
+            "PASS",
+            "PASS_WITH_LIMITS",
+            "BLOCK"
+          ]
         }
       },
       "additionalProperties": false
