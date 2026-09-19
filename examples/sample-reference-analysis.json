@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0",
+  "references": [
+    {
+      "reference_id": "ref-front",
+      "file_name": "front.jpg",
+      "source_type": "Photograph",
+      "person_count": 1,
+      "target_subject": {
+        "status": "Single-Subject",
+        "subject_index": 0,
+        "notes": "Only visible person."
+      },
+      "capture_context": {
+        "mirror_state": "Not-Mirrored",
+        "appearance_epoch_id": "current",
+        "recency_relevance": "Current"
+      },
+      "quality": {
+        "focus": "Excellent",
+        "exposure": "Good",
+        "effective_resolution": "Excellent",
+        "face_pixel_coverage": "Excellent",
+        "motion_blur": "None",
+        "occlusion": "None"
+      },
+      "pose": {
+        "face_view": "Front",
+        "body_view": "None",
+        "head_pose_notes": "Near-neutral yaw/pitch."
+      },
+      "expression": "Neutral",
+      "utility": {
+        "face_geometry": "Excellent",
+        "eyes": "Excellent",
+        "nose": "Excellent",
+        "mouth_lips": "Excellent",
+        "smile": "Poor",
+        "hair_hairline": "Good",
+        "body_geometry": "Poor",
+        "hands_nails": "Poor",
+        "distinctive_features": "Good"
+      },
+      "risks": {
+        "lens_perspective_distortion": "Low",
+        "beauty_filter": "None",
+        "heavy_retouching": "None",
+        "suspect_synthetic": "None"
+      },
+      "duplicate_cluster_id": null,
+      "identity_consistency": "Consistent",
+      "selection": {
+        "role": "Primary",
+        "reasons": [
+          "Strong neutral frontal face reference."
+        ]
+      }
+    },
+    {
+      "reference_id": "ref-group-ambiguous",
+      "file_name": "group.jpg",
+      "source_type": "Photograph",
+      "person_count": 3,
+      "target_subject": {
+        "status": "Ambiguous",
+        "subject_index": null,
+        "notes": "Target subject must be identified before use."
+      },
+      "capture_context": {
+        "mirror_state": "Unknown",
+        "appearance_epoch_id": null,
+        "recency_relevance": "Unknown"
+      },
+      "quality": {
+        "focus": "Good",
+        "exposure": "Good",
+        "effective_resolution": "Good",
+        "face_pixel_coverage": "Limited",
+        "motion_blur": "None",
+        "occlusion": "Low"
+      },
+      "pose": {
+        "face_view": "Other",
+        "body_view": "Dynamic"
+      },
+      "expression": "Other",
+      "utility": {
+        "face_geometry": "Limited",
+        "eyes": "Poor",
+        "nose": "Limited",
+        "mouth_lips": "Limited",
+        "smile": "Limited",
+        "hair_hairline": "Limited",
+        "body_geometry": "Limited",
+        "hands_nails": "Poor",
+        "distinctive_features": "Poor"
+      },
+      "risks": {
+        "lens_perspective_distortion": "Low",
+        "beauty_filter": "Unknown",
+        "heavy_retouching": "Unknown",
+        "suspect_synthetic": "Low"
+      },
+      "duplicate_cluster_id": null,
+      "identity_consistency": "Unknown",
+      "selection": {
+        "role": "Excluded",
+        "reasons": [
+          "Target subject is ambiguous."
+        ]
+      }
+    }
+  ]
+}
