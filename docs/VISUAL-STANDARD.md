@@ -294,3 +294,29 @@ A visually attractive sheet still fails if:
 - full-body panels lose facial identity;
 - body proportions change between neutral views;
 - reconstructed details are presented as facts.
+
+
+## Pose Readiness Board
+
+When repeated full-body generation in varied poses is part of the production goal, include a diagnostic Pose Readiness Board.
+
+Recommended diagnostics:
+
+- P0 neutral full-body;
+- P1 simple 3/4 standing;
+- P2 walking / weight shift;
+- P3 seated / leaning;
+- P4 crossed arms or hand-near-face self-occlusion;
+- P5 crouch / deep bend or arms overhead.
+
+The board is diagnostic, not decorative. It should expose:
+
+- identity drift across articulation;
+- limb-length drift;
+- joint plausibility;
+- hand/foot failures;
+- contact and occlusion errors;
+- camera-induced proportion errors;
+- loss of photorealism in difficult poses.
+
+A failed diagnostic panel must remain excluded or visibly marked as failed; it must not be presented as proof of pose readiness.
