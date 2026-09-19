@@ -1,0 +1,22 @@
+name: Validate Skill
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install validation dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Compile Python scripts
+        run: python -m py_compile scripts/compose_sheet.py scripts/validate_repo.py
+      - name: Validate schemas, examples, and contracts
+        run: python scripts/validate_repo.py
+      - name: Smoke-test deterministic compositor
+        run: python scripts/compose_sheet.py examples/sample-sheet-manifest.json /tmp/character-sheet-demo.svg
