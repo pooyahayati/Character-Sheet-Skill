@@ -31,6 +31,11 @@ EXAMPLES = [
     ("examples/sample-sheet-manifest.json", "schemas/sheet-manifest.schema.json"),
     ("config/level-contract.json", "schemas/level-contract.schema.json"),
     ("config/visual-benchmark.json", "schemas/visual-benchmark.schema.json"),
+    ("examples/sample-body-proxy.json", "schemas/body-proxy.schema.json"),
+    ("examples/sample-pose-contract.json", "schemas/pose-contract.schema.json"),
+    ("examples/sample-generation-route.json", "schemas/generation-route.schema.json"),
+    ("examples/sample-pose-readiness.json", "schemas/pose-readiness.schema.json"),
+    ("examples/sample-visual-benchmark-result.json", "schemas/visual-benchmark-result.schema.json"),
 ]
 
 
@@ -120,6 +125,51 @@ def validate_skill_workflow():
         raise AssertionError("README workflow is missing build-request normalization")
 
 
+def validate_pose_ready_contracts():
+    readiness = load("config/pose-readiness-contract.json")
+    routing = load("config/generation-routing.json")
+    benchmark = load("config/visual-benchmark.json")
+    profile = load("examples/sample-character-profile.json")
+
+    required_readiness = {"Not-Ready", "Basic", "Strong", "Production"}
+    if set(readiness.get("levels", {})) != required_readiness:
+        raise AssertionError("Pose-readiness contract must define exactly Not-Ready/Basic/Strong/Production")
+
+    ladder = routing.get("escalation_ladder", [])
+    if [x.get("level") for x in ladder] != [1, 2, 3, 4, 5]:
+        raise AssertionError("Generation escalation ladder must be sequential 1..5")
+
+    route_names = set(routing.get("routes", {}))
+    expected_routes = {
+        "R1-Identity-Reference","R2-Identity-Plus-2D-Pose","R3-Identity-Plus-3D-Geometry",
+        "R4-Identity-Preserving-Local-Edit","R5-Subject-Specific-Adapter","R6-Dedicated-3D-Avatar"
+    }
+    if route_names != expected_routes:
+        raise AssertionError("Generation routing must define R1..R6 canonical routes")
+
+    difficulties = {s["pose_difficulty"] for s in benchmark["scenarios"]}
+    expected_difficulties = {
+        "P0-Neutral","P1-Simple","P2-Dynamic","P3-Seated-Leaning","P4-Self-Occlusion","P5-Extreme-Articulation"
+    }
+    if difficulties != expected_difficulties:
+        raise AssertionError(f"Visual benchmark must cover all P0-P5 difficulties: {difficulties}")
+
+    expected_dims = {"Identity-Fidelity","Pose-Accuracy","Anatomical-Plausibility","Photorealism"}
+    if set(benchmark["dimensions"]) != expected_dims:
+        raise AssertionError("Visual benchmark must use the four canonical dimensions")
+    for scenario in benchmark["scenarios"]:
+        if set(scenario["required_dimensions"]) != expected_dims:
+            raise AssertionError(f"{scenario['id']} must test all four visual dimensions")
+
+    pose_assets = profile.get("pose_assets")
+    if not pose_assets:
+        raise AssertionError("Sample character profile must link pose assets")
+    for key in ("body_proxy_file","pose_readiness_file"):
+        rel = pose_assets.get(key)
+        if rel and not (ROOT / "examples" / rel).exists():
+            raise AssertionError(f"Missing sample pose asset: {rel}")
+
+
 def validate_manifest_rules():
     manifest = load("examples/sample-sheet-manifest.json")
     for panel in manifest["panels"]:
@@ -138,7 +188,10 @@ def validate_inline_output_examples():
             "required": True,
             "evidence_expectation": "Observed-Preferred",
             "source_reference_ids": ["ref-front"],
-            "reconstruction_allowed": False
+            "reconstruction_allowed": False,
+            "generation_route": "R1-Identity-Reference",
+            "pose_contract_file": None,
+            "pose_difficulty": "Not-Applicable"
         }]
     }
     Draft202012Validator(load("schemas/sheet-plan.schema.json")).validate(sheet_plan)
@@ -169,6 +222,7 @@ def main():
     validate_reference_links()
     validate_scenarios()
     validate_skill_workflow()
+    validate_pose_ready_contracts()
     validate_manifest_rules()
     validate_inline_output_examples()
     print("Repository validation passed.")
