@@ -119,6 +119,36 @@ A convincing full-body composition does not compensate for facial drift.
 
 Check subject-left and subject-right features, especially after selfie/mirror references.
 
+### 16. Pose Accuracy Gate
+
+Compare the generated panel against its pose contract:
+
+- major joint configuration;
+- head orientation;
+- weight distribution;
+- contact points;
+- camera/view constraints.
+
+### 17. Physical Plausibility / Anatomy Gate
+
+Follow `docs/PHYSICAL-PLAUSIBILITY.md`. Check joint continuity, limb-length consistency, balance, contacts, hand/foot anatomy, and impossible interpenetration.
+
+Critical anatomy failure is BLOCK.
+
+### 18. Occlusion Gate
+
+Validate explicit front/back ordering from the pose contract. Wrong self-occlusion is a structural failure.
+
+### 19. Cross-Pose Identity Gate
+
+Compare the person across neutral, dynamic, seated, self-occluding, and extreme poses. The body shape and facial identity must remain canonical under articulation.
+
+### 20. Photorealism Gate
+
+When production realism is part of the goal, inspect skin/hair/eye/teeth/hand/fabric rendering, lighting/shadows, contact shadows, depth coherence, camera coherence, and obvious generative artifacts.
+
+Photorealism cannot compensate for identity or anatomy failure.
+
 ## Camera distortion guard
 
 Before validating body shape, evaluate:
