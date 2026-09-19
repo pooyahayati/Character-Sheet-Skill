@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/skin-identity.schema.json",
+  "title": "Skin Identity Profile",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "character_id",
+    "profile_version",
+    "base",
+    "regions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "character_id": {
+      "type": "string"
+    },
+    "profile_version": {
+      "type": "string"
+    },
+    "base": {
+      "type": "object",
+      "required": [
+        "evidence_basis",
+        "confidence"
+      ],
+      "properties": {
+        "evidence_basis": {
+          "enum": [
+            "Observed",
+            "Cross-Validated",
+            "Estimated",
+            "Unverified"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "High",
+            "Medium",
+            "Low",
+            "Unknown"
+          ]
+        },
+        "tone_reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "undertone_reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "texture": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "regions": {
+      "type": "object",
+      "properties": {
+        "forehead": {
+          "$ref": "#/$defs/region"
+        },
+        "under_eye": {
+          "$ref": "#/$defs/region"
+        },
+        "cheeks": {
+          "$ref": "#/$defs/region"
+        },
+        "nose": {
+          "$ref": "#/$defs/region"
+        },
+        "lips": {
+          "$ref": "#/$defs/region"
+        },
+        "neck": {
+          "$ref": "#/$defs/region"
+        },
+        "hands": {
+          "$ref": "#/$defs/region"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "region": {
+      "type": "object",
+      "properties": {
+        "pores_texture": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fine_lines": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pigmentation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "freckles_marks": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "High",
+            "Medium",
+            "Low",
+            "Unknown"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
