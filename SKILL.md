@@ -96,6 +96,18 @@ Build internal coverage maps for:
 
 Detect missing coverage before asking for more photos.
 
+### Appearance epochs and temporary occluders
+
+When references span visibly different time periods or deliberately different looks, cluster them into `Appearance Epochs` or appearance variants instead of averaging them.
+
+Stable facial identity may use evidence across epochs, but current/default hair, brows, makeup, body state and other mutable appearance must come from the intended target epoch.
+
+If the target epoch is not inferable from the user's request or references, ask one targeted question.
+
+Treat glasses, colored contacts, strong makeup, facial hair, temporary skin changes and similar occluders/appearance layers separately from underlying geometry when possible. Do not let an occluder redefine anatomy.
+
+If a reference appears synthetic or heavily altered, mark it `Suspect Reference` rather than making a definitive forensic claim. Reduce its weight or exclude it when it conflicts with reliable photographs.
+
 ## 4. Analyze before asking questions
 
 Extract all reliably observable information first.
@@ -127,6 +139,14 @@ Ask only when a material feature is ambiguous, contradictory, unobservable or be
 
 This gate is mandatory for every level.
 
+Every critical gate returns one of:
+
+- `PASS` — evidence is adequate;
+- `PASS_WITH_LIMITS` — continue only while preserving unsupported areas as Estimated, Reconstructed, Unverified, or omitted;
+- `BLOCK` — the requested operation would compromise identity/evidence integrity and needs a targeted reference.
+
+A `BLOCK` on core face geometry, critical eye geometry, or unresolved identity conflict blocks canonical sheet generation.
+
 Establish the strongest supported canonical identity for:
 
 - head/face silhouette;
@@ -141,6 +161,8 @@ Establish the strongest supported canonical identity for:
 - distinctive visible features.
 
 If these are not reliable enough for the requested output, ask for the smallest targeted reference that resolves the problem.
+
+A clear smiling face may support identity, but smile deformation must not be frozen as neutral mouth/lower-face geometry. When high-fidelity neutral geometry is required and only smiling references exist, use `PASS_WITH_LIMITS` or request one neutral reference.
 
 Do not lower the facial standard to make progress.
 
@@ -338,9 +360,11 @@ If smile consistency is important, require at least one useful smile reference b
 
 ### Full
 
-Use only when face, relevant expressions, body angles and important details have broad enough reliable coverage to reduce uncertainty materially.
+Use only when face, relevant expressions, body angles and the details that matter to the intended use have broad enough reliable coverage to reduce uncertainty materially.
 
 Full means lower uncertainty and broader evidence, not merely a larger sheet.
+
+Optional details such as hands/nails do not automatically block Full when they are irrelevant to the requested use. Keep them Unverified or request a targeted reference only when they are required by the user or production goal.
 
 ## 10. Create the Sheet Plan
 
