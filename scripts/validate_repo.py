@@ -98,6 +98,21 @@ def validate_scenarios():
         raise AssertionError("Unexpected gate outcome set")
 
 
+def validate_skill_workflow():
+    text = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+    import re
+    nums = [int(x) for x in re.findall(r"^## (\\d+)\\. ", text, flags=re.MULTILINE)]
+    if nums != list(range(1, len(nums) + 1)):
+        raise AssertionError(f"SKILL workflow numbering is not sequential: {nums}")
+    required_phrase = "## 2. Normalize the build request"
+    if required_phrase not in text:
+        raise AssertionError("SKILL must normalize build request before photo intake")
+
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    if "Normalize build request / goal / authorization / age handling" not in readme:
+        raise AssertionError("README workflow is missing build-request normalization")
+
+
 def validate_manifest_rules():
     manifest = load("examples/sample-sheet-manifest.json")
     for panel in manifest["panels"]:
@@ -146,6 +161,7 @@ def main():
     validate_level_contract()
     validate_reference_links()
     validate_scenarios()
+    validate_skill_workflow()
     validate_manifest_rules()
     validate_inline_output_examples()
     print("Repository validation passed.")
