@@ -22,9 +22,13 @@ Input
 → Canonical Character Identity
 → Level Selection
 → Sheet Plan
-→ Generation
-→ Multi-Gate QC
+→ Canonical Face Anchor
+→ Canonical Face QC
+→ Individual Panel Generation
+→ Per-Panel Multi-Gate QC
 → Repair Failed Panels
+→ Approved Panel Set
+→ Deterministic Composition
 → User Review
 → Approved v1.0
 → Revision / Expansion / Upgrade
@@ -146,23 +150,23 @@ Hair, nails, makeup, clothing and accessories.
 
 Controlled changes to waist, chest, hips, muscle/softness or overall shape. Body edits use a Body Revision Guard.
 
-## Evidence states
+## Attribute state model
 
-`Observed` — directly visible.
+Do not store evidence provenance, revision state, and editability in one status.
 
-`Cross-Validated` — confirmed across independent useful references.
+Each attribute has three independent dimensions:
 
-`Estimated` — approximate inference.
+### Evidence basis
 
-`Reconstructed` — generated or geometrically inferred view not directly observed.
+`Observed`, `Cross-Validated`, `Estimated`, `Reconstructed`, `Unverified`, or `User-Provided`.
 
-`Unverified` — unresolved or unsupported.
+### Revision state
 
-`User-Provided` — explicitly supplied by the user.
+`Original` or `Edited`.
 
-`Edited` — intentionally changed after the base identity.
+### Lock state
 
-`Locked` — approved canonical identity attribute.
+`Identity-Locked`, `Appearance-Editable`, `Body-Editable`, or `Unlocked`.
 
 Generated imagery cannot promote an attribute to Observed or Cross-Validated.
 
@@ -211,3 +215,12 @@ Each revision stores:
 ## Default presentation
 
 Use minimal, neutral, anatomically readable and non-sexualized clothing. The sheet should expose useful proportions without erotic framing.
+
+
+## Production contract
+
+Actual image production follows `docs/PRODUCTION-PIPELINE.md`.
+
+The final board is composed from individually approved panels. Multi-panel board generation in a single image-model call is not an approved production path.
+
+Gate decisions follow `docs/GATE-CONTRACT.md`.
