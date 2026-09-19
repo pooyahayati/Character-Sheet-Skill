@@ -41,6 +41,16 @@ Start
 → Revision / Expansion / Level Upgrade
 ```
 
+## Visual output standard
+
+The production layout and panel hierarchy are defined in:
+
+- `docs/VISUAL-STANDARD.md`
+- `docs/LEVEL-SPECS.md`
+- `examples/sheet-layout-spec.json`
+
+The canonical face is always the strongest visual anchor. Modeling poses are secondary. Reconstructed or estimated information must never be visually presented as directly observed evidence.
+
 ## Character-sheet levels
 
 ### Base
@@ -170,10 +180,14 @@ docs/
   ARCHITECTURE.md
   QUALITY-CONTROL.md
   REFERENCE-SELECTION.md
+  VISUAL-STANDARD.md
+  LEVEL-SPECS.md
+  EXAMPLE-SHEET-LAYOUT.md
 schemas/
   character-profile.schema.json
 examples/
   sample-character-profile.json
+  sheet-layout-spec.json
 ```
 
 ## Author
