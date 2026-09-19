@@ -205,6 +205,46 @@
       "must": [
         "resolve_authorization_before_final_package"
       ]
+    },
+    {
+      "id": "S26",
+      "name": "pose_ready_full_not_automatic",
+      "must": [
+        "separate_sheet_level_from_pose_readiness"
+      ]
+    },
+    {
+      "id": "S27",
+      "name": "p4_crossed_arms_requires_structure",
+      "must": [
+        "route_to_3d_or_equivalent",
+        "occlusion_gate",
+        "hand_anatomy_gate"
+      ]
+    },
+    {
+      "id": "S28",
+      "name": "p5_extreme_articulation",
+      "must": [
+        "physical_plausibility_gate",
+        "pose_accuracy_gate",
+        "escalate_on_repeat_failure"
+      ]
+    },
+    {
+      "id": "S29",
+      "name": "same_identity_across_pose_ladder",
+      "must": [
+        "cross_pose_identity_consistency"
+      ]
+    },
+    {
+      "id": "S30",
+      "name": "visual_benchmark_four_dimensions",
+      "must": [
+        "identity_pose_anatomy_photorealism_independent",
+        "no_average_override"
+      ]
     }
   ]
 }
