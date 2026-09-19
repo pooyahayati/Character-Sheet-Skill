@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/pose-readiness.schema.json",
+  "title": "Pose Readiness Assessment",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "character_id",
+    "profile_version",
+    "level",
+    "required_checks",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "character_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "level": {
+      "enum": [
+        "Not-Ready",
+        "Basic",
+        "Strong",
+        "Production"
+      ]
+    },
+    "required_checks": {
+      "type": "object",
+      "required": [
+        "identity",
+        "body_proxy",
+        "simple_pose",
+        "dynamic_pose",
+        "self_occlusion",
+        "extreme_articulation"
+      ],
+      "properties": {
+        "identity": {
+          "$ref": "#/$defs/result"
+        },
+        "body_proxy": {
+          "$ref": "#/$defs/result"
+        },
+        "simple_pose": {
+          "$ref": "#/$defs/result"
+        },
+        "dynamic_pose": {
+          "$ref": "#/$defs/result"
+        },
+        "self_occlusion": {
+          "$ref": "#/$defs/result"
+        },
+        "extreme_articulation": {
+          "$ref": "#/$defs/result"
+        }
+      },
+      "additionalProperties": false
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "result": {
+      "enum": [
+        "PASS",
+        "PASS_WITH_LIMITS",
+        "BLOCK",
+        "NOT_TESTED"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
