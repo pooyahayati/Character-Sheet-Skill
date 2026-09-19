@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/visual-benchmark.schema.json",
+  "title": "Visual Benchmark Suite",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "dimensions",
+    "scenarios"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "dimensions": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "Identity-Fidelity",
+          "Pose-Accuracy",
+          "Anatomical-Plausibility",
+          "Photorealism"
+        ]
+      },
+      "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "pose_difficulty",
+          "required_dimensions",
+          "critical_checks"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pose_difficulty": {
+            "enum": [
+              "P0-Neutral",
+              "P1-Simple",
+              "P2-Dynamic",
+              "P3-Seated-Leaning",
+              "P4-Self-Occlusion",
+              "P5-Extreme-Articulation"
+            ]
+          },
+          "required_dimensions": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "Identity-Fidelity",
+                "Pose-Accuracy",
+                "Anatomical-Plausibility",
+                "Photorealism"
+              ]
+            },
+            "minItems": 4,
+            "maxItems": 4,
+            "uniqueItems": true
+          },
+          "critical_checks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
