@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/level-contract.schema.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "principle",
+    "levels"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "principle": {
+      "type": "string",
+      "minLength": 1
+    },
+    "levels": {
+      "type": "object",
+      "required": [
+        "Base",
+        "Advanced",
+        "Full"
+      ],
+      "properties": {
+        "Base": {
+          "$ref": "#/$defs/level"
+        },
+        "Advanced": {
+          "$ref": "#/$defs/level"
+        },
+        "Full": {
+          "$ref": "#/$defs/level"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "level": {
+      "type": "object",
+      "required": [
+        "purpose",
+        "evidence_requirements",
+        "required_sections",
+        "conditional_sections",
+        "blocked_claims"
+      ],
+      "properties": {
+        "purpose": {
+          "type": "string"
+        },
+        "evidence_requirements": {
+          "type": "object",
+          "required": [
+            "pre_generation_face_gate",
+            "required",
+            "conditional",
+            "not_required"
+          ],
+          "properties": {
+            "pre_generation_face_gate": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "PASS",
+                  "PASS_WITH_LIMITS",
+                  "BLOCK"
+                ]
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "required": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
+            "conditional": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
+            "not_required": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "required_sections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "conditional_sections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "blocked_claims": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
