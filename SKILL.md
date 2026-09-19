@@ -23,6 +23,8 @@ Before intake, show or generate a concise example of the expected character-shee
 
 Follow the visual hierarchy in `docs/VISUAL-STANDARD.md` and the level definitions in `docs/LEVEL-SPECS.md`. The preview should compare Base / Advanced / Full while making clear that facial identity fidelity does not decrease in lower levels.
 
+Use `assets/character-sheet-levels-example.svg` as the bundled default preview when a static reference is appropriate. If the environment supports generating a preview dynamically, it may generate an equivalent fictional example that follows the same layout and evidence rules.
+
 The preview should demonstrate, when applicable:
 
 - face angles;
