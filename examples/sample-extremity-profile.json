@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "character_id": "CS-DEMO-001",
+  "profile_version": "1.0",
+  "hands": {
+    "left": {
+      "evidence_basis": "Unverified",
+      "confidence": "Unknown",
+      "geometry": {
+        "overall_shape": null,
+        "length_width_ratio": null,
+        "digit_length_pattern": null,
+        "joint_prominence": null,
+        "nail_or_toe_shape": null
+      },
+      "source_images": [],
+      "notes": [
+        "No reliable left-hand identity reference."
+      ]
+    },
+    "right": {
+      "evidence_basis": "Unverified",
+      "confidence": "Unknown",
+      "geometry": {
+        "overall_shape": null,
+        "length_width_ratio": null,
+        "digit_length_pattern": null,
+        "joint_prominence": null,
+        "nail_or_toe_shape": null
+      },
+      "source_images": [],
+      "notes": [
+        "No reliable right-hand identity reference."
+      ]
+    }
+  },
+  "feet": {
+    "left": {
+      "evidence_basis": "Unverified",
+      "confidence": "Unknown",
+      "geometry": {
+        "overall_shape": null,
+        "length_width_ratio": null,
+        "digit_length_pattern": null,
+        "joint_prominence": null,
+        "nail_or_toe_shape": null
+      },
+      "source_images": [],
+      "notes": [
+        "Foot identity not visible."
+      ]
+    },
+    "right": {
+      "evidence_basis": "Unverified",
+      "confidence": "Unknown",
+      "geometry": {
+        "overall_shape": null,
+        "length_width_ratio": null,
+        "digit_length_pattern": null,
+        "joint_prominence": null,
+        "nail_or_toe_shape": null
+      },
+      "source_images": [],
+      "notes": [
+        "Foot identity not visible."
+      ]
+    }
+  }
+}
