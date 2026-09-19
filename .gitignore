@@ -1,0 +1,12 @@
+# Local/user data and generated outputs
+references/
+character-output/
+workspaces/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# OS/editor
+.DS_Store
