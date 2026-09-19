@@ -1,0 +1,15 @@
+{
+  "request_id": "REQ-DEMO-001",
+  "goal": "Character-Reference",
+  "requested_level": "Advanced",
+  "required_details": [
+    "Face-Angles",
+    "Expressions",
+    "Body",
+    "Distinctive-Features"
+  ],
+  "target_appearance_epoch": "current",
+  "subject_authorization": "Self",
+  "age_handling": "Adult-Confirmed",
+  "notes": "Fictional example request for schema validation."
+}
