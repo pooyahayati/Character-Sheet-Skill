@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/build-report.schema.json",
+  "title": "Character Sheet Build Report",
+  "type": "object",
+  "required": [
+    "request_id",
+    "character_id",
+    "profile_version",
+    "selected_level",
+    "status",
+    "reference_ids",
+    "panel_results",
+    "limitations"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "character_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selected_level": {
+      "enum": [
+        "Base",
+        "Advanced",
+        "Full"
+      ]
+    },
+    "status": {
+      "enum": [
+        "Approved",
+        "Approved-With-Limits",
+        "Blocked"
+      ]
+    },
+    "reference_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "panel_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "panel_id",
+          "gate_result",
+          "included_in_final"
+        ],
+        "properties": {
+          "panel_id": {
+            "type": "string"
+          },
+          "gate_result": {
+            "enum": [
+              "PASS",
+              "PASS_WITH_LIMITS",
+              "BLOCK"
+            ]
+          },
+          "included_in_final": {
+            "type": "boolean"
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "omitted_panels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "revision_parent": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
