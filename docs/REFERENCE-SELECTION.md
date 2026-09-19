@@ -107,6 +107,42 @@ Flag images that can mislead geometry:
 
 Do not necessarily discard them. Restrict them to features they can still support.
 
+## Appearance epoch clustering
+
+When images span different time periods or intentionally different looks, cluster them before resolving defaults.
+
+Examples:
+
+- old vs current hair;
+- body-composition changes;
+- eyebrow changes;
+- facial-hair changes;
+- makeup eras;
+- cosmetic styling changes.
+
+Use multi-epoch evidence for stable identity only where compatible. Never average mutable appearance into a fictional hybrid.
+
+If the intended current/default epoch is ambiguous, ask one targeted question.
+
+## Occluders and temporary appearance layers
+
+Treat items that obscure or alter visible anatomy cautiously:
+
+- glasses and glare;
+- colored contacts;
+- strong makeup;
+- facial hair that obscures jaw/lips;
+- hats/hair covering hairline;
+- temporary swelling or transient skin changes.
+
+An occluded feature receives lower confidence or uses another reference. The occluder itself may be stored as an editable appearance variant.
+
+## Suspect synthetic/heavily edited references
+
+If an image appears synthetic or strongly altered, label it `Suspect Reference` instead of asserting forensic certainty.
+
+Reduce its identity weight. Exclude it when it conflicts with reliable photographic references.
+
 ## Reference conflicts
 
 Detect conflicts such as:
