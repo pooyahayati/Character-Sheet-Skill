@@ -69,6 +69,10 @@ def main() -> int:
         w, h = int(panel["width"]), int(panel["height"])
         label_h = 54
         image_path = (base_dir / panel["image"]).resolve()
+        if base_dir not in image_path.parents and image_path != base_dir:
+            raise ValueError(f"Panel image escapes manifest directory: {panel.get('id')}")
+        if not image_path.exists():
+            raise FileNotFoundError(f"Missing panel image for {panel.get('id')}: {image_path}")
         uri = data_uri(image_path)
         label = escape(str(panel["label"]))
         ev = escape(str(panel["evidence_status"]))
