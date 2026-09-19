@@ -1,6 +1,6 @@
 ---
 name: character-sheet-skill
-description: Build an identity-consistent, revision-ready Base, Advanced, or Full character sheet from one or more real photographs. Automatically select useful references, preserve facial identity across angles and expressions, model eyes/lips/smile/distinctive features/body proportions, and support controlled versioned edits.
+description: Build a photorealistic, identity-consistent, pose-ready Base, Advanced, or Full character sheet from real photographs. Select reliable references, preserve the same person across views, expressions, camera angles and body poses, model face/body/skin/hair/extremity identity, and support controlled versioned edits.
 ---
 
 # Character Sheet Skill
