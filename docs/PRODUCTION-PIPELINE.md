@@ -143,11 +143,15 @@ Default repair budget:
 - initial generation;
 - up to 2 targeted repair attempts.
 
-After 3 total failed attempts on the same critical identity problem:
+After the route-local repair budget is exhausted:
 
-- do not keep regenerating blindly;
-- return `BLOCK` for that panel;
-- request the smallest missing reference or change backend strategy.
+1. determine whether evidence is missing or the generation capability is insufficient;
+2. if evidence is adequate and a stronger route exists, escalate using `config/generation-routing.json`;
+3. reset only the route-local repair budget for the stronger route;
+4. if required evidence is missing, request the smallest targeted reference;
+5. return `BLOCK` only when the evidence gap cannot be resolved in the current build or the required route ladder is exhausted.
+
+Never loop indefinitely across routes.
 
 ## Deterministic composition
 
