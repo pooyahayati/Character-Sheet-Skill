@@ -478,3 +478,102 @@ Any future change to the skill should preserve these properties:
 - store the benchmark result and derive pose readiness separately from sheet level.
 
 **Pass condition:** all four production dimensions remain independently inspectable.
+
+
+---
+
+## S31 — Side view must use the nearest identity anchor
+
+**Input:** approved front and 3/4 anchors; generate a side-biased face/body panel.
+
+**Expected:**
+
+- choose the nearest relevant approved anchor(s);
+- do not force the frontal anchor as the sole identity control;
+- preserve nose/jaw/eye geometry under viewpoint change.
+
+**Pass condition:** side-view identity is not pulled unnaturally toward a frontal face.
+
+---
+
+## S32 — Individually plausible panels drift as a set
+
+**Input:** several panels each look plausible in isolation but differ subtly in face width/body shape.
+
+**Expected:**
+
+- build Cross-panel Identity Matrix;
+- compare canonical ↔ 3/4, canonical ↔ full-body, and neutral ↔ dynamic panels;
+- block final composition when a required pair has identity drift.
+
+**Pass condition:** set-level inconsistency cannot pass because individual images look acceptable.
+
+---
+
+## S33 — Hand near face
+
+**Input:** P4 pose with one hand near/over the face.
+
+**Expected:**
+
+- preserve hand anatomy and any supported hand identity;
+- validate hand/face scale, finger structure, wrist connection, and occlusion;
+- preserve face identity behind partial occlusion.
+
+**Pass condition:** realistic face similarity cannot hide a malformed or inconsistent hand.
+
+---
+
+## S34 — Lighting changes apparent skin
+
+**Input:** same character under neutral and strongly directional lighting.
+
+**Expected:**
+
+- use camera/lighting contracts;
+- preserve canonical skin identity;
+- treat shadow/color-bias changes as lighting, not skin-tone or facial-geometry edits.
+
+**Pass condition:** lighting does not rewrite skin identity.
+
+---
+
+## S35 — Hair motion during head turn
+
+**Input:** same hairstyle under neutral and strong head rotation.
+
+**Expected:**
+
+- preserve hairline, parting, length, texture, color, and baseline volume;
+- allow gravity/head-motion changes according to Hair Dynamics;
+- validate face occlusion caused by hair.
+
+**Pass condition:** movement does not silently create a new hairstyle.
+
+---
+
+## S36 — Clothing deformation in seated pose
+
+**Input:** canonical neutral clothing; generate seated pose.
+
+**Expected:**
+
+- folds/compression follow the Clothing Behavior Contract;
+- underlying waist/hip/torso geometry remains canonical;
+- do not infer clothing compression as body change.
+
+**Pass condition:** garment deformation and anatomy remain separate.
+
+---
+
+## S37 — Camera perspective change
+
+**Input:** portrait-like camera and a wider/lower-angle camera for the same character.
+
+**Expected:**
+
+- record camera contracts for both;
+- preserve identity while allowing physically expected perspective changes;
+- do not lock wide-angle nose/head/leg distortion into canonical geometry.
+
+**Pass condition:** camera geometry is separated from character geometry.
