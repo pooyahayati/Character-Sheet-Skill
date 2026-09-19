@@ -1,4 +1,5 @@
 {
+  "schema_version": "2.0",
   "character_id": "CS-DEMO-001",
   "version": "1.0",
   "level": "Advanced",
@@ -6,77 +7,120 @@
     "face_geometry": {
       "overall_shape": {
         "value": "Example only",
+        "evidence_basis": "Cross-Validated",
+        "revision_state": "Original",
+        "lock_state": "Identity-Locked",
         "confidence": "High",
         "consistency": "High",
-        "status": "Locked",
-        "source_images": ["ref-front", "ref-three-quarter"]
+        "source_images": [
+          "ref-front",
+          "ref-three-quarter"
+        ]
       }
     },
     "facial_proportions": {
       "inter_eye_to_face_width": {
-        "value": 0.0,
+        "value": 0.31,
+        "evidence_basis": "Observed",
+        "revision_state": "Original",
+        "lock_state": "Identity-Locked",
         "confidence": "High",
-        "consistency": "High",
-        "status": "Cross-Validated",
-        "source_images": ["ref-front"]
+        "consistency": "Medium",
+        "source_images": [
+          "ref-front"
+        ],
+        "notes": "Example normalized ratio; real values must be derived only from suitable camera/view conditions."
       }
     },
     "eyes": {
       "left_eye": {
         "value": "Structured eye identity",
+        "evidence_basis": "Cross-Validated",
+        "revision_state": "Original",
+        "lock_state": "Identity-Locked",
         "confidence": "High",
         "consistency": "High",
-        "status": "Locked",
-        "source_images": ["ref-front", "ref-eye-closeup"]
+        "source_images": [
+          "ref-front",
+          "ref-eye-closeup"
+        ]
       },
       "right_eye": {
         "value": "Structured eye identity",
+        "evidence_basis": "Cross-Validated",
+        "revision_state": "Original",
+        "lock_state": "Identity-Locked",
         "confidence": "High",
         "consistency": "High",
-        "status": "Locked",
-        "source_images": ["ref-front", "ref-eye-closeup"]
+        "source_images": [
+          "ref-front",
+          "ref-eye-closeup"
+        ]
       }
     },
+    "nose": {},
     "mouth_lips": {
       "neutral_geometry": {
         "value": "Structured mouth/lip identity",
+        "evidence_basis": "Observed",
+        "revision_state": "Original",
+        "lock_state": "Identity-Locked",
         "confidence": "High",
-        "consistency": "High",
-        "status": "Locked",
-        "source_images": ["ref-front"]
+        "consistency": "Medium",
+        "source_images": [
+          "ref-front"
+        ]
       }
     },
     "smile_expression": {
       "soft_smile": {
-        "value": "Calibrated only from visible references",
+        "value": "Calibrated from visible references",
+        "evidence_basis": "Cross-Validated",
+        "revision_state": "Original",
+        "lock_state": "Identity-Locked",
         "confidence": "Medium",
         "consistency": "Medium",
-        "status": "Cross-Validated",
-        "source_images": ["ref-smile-1", "ref-smile-2"]
+        "source_images": [
+          "ref-smile-1",
+          "ref-smile-2"
+        ]
       }
     },
+    "natural_asymmetry": {},
     "distinctive_features": [
       {
         "name": "Example visible identity marker",
         "subject_side": "Left",
         "location": "Example relative location",
+        "evidence_basis": "Observed",
+        "revision_state": "Original",
+        "lock_state": "Identity-Locked",
         "confidence": "High",
-        "status": "Locked",
-        "source_images": ["ref-front"]
+        "source_images": [
+          "ref-front"
+        ]
       }
     ],
+    "hair_identity": {},
     "body_geometry": {
       "shoulder_to_hip_relationship": {
         "value": "Relative visual proportion only",
+        "evidence_basis": "Cross-Validated",
+        "revision_state": "Original",
+        "lock_state": "Body-Editable",
         "confidence": "Medium",
         "consistency": "Medium",
-        "status": "Cross-Validated",
-        "source_images": ["ref-body-front", "ref-body-side"]
+        "source_images": [
+          "ref-body-front",
+          "ref-body-side"
+        ]
       },
       "exact_waist_measurement": {
+        "evidence_basis": "Unverified",
+        "revision_state": "Original",
+        "lock_state": "Body-Editable",
         "confidence": "Unknown",
         "consistency": "Unknown",
-        "status": "Unverified",
         "source_images": [],
         "notes": "Never infer exact physical measurement from ordinary uncalibrated images."
       }
@@ -84,21 +128,51 @@
   },
   "editable": {
     "appearance": {
-      "hair_color": "Default appearance value",
-      "hair_style": "Default appearance value",
-      "nail_color": "Default appearance value",
-      "clothing": "Minimal neutral non-sexualized base clothing"
+      "hair_color": {
+        "value": "Default appearance value",
+        "evidence_basis": "Observed",
+        "revision_state": "Original",
+        "lock_state": "Appearance-Editable",
+        "confidence": "High",
+        "source_images": [
+          "ref-front"
+        ]
+      },
+      "nail_color": {
+        "evidence_basis": "Unverified",
+        "revision_state": "Original",
+        "lock_state": "Appearance-Editable",
+        "confidence": "Unknown",
+        "source_images": []
+      }
     },
     "body": {
-      "waist_shape": "Editable with Body Revision Guard",
-      "chest_shape": "Editable with Body Revision Guard",
-      "overall_body_shape": "Editable with Body Revision Guard"
+      "waist_shape": {
+        "value": "Canonical current shape",
+        "evidence_basis": "Cross-Validated",
+        "revision_state": "Original",
+        "lock_state": "Body-Editable",
+        "confidence": "Medium",
+        "source_images": [
+          "ref-body-front",
+          "ref-body-side"
+        ]
+      }
     }
   },
   "evidence": {
-    "primary_references": ["ref-front", "ref-three-quarter", "ref-body-front"],
-    "validation_references": ["ref-smile-2", "ref-body-side"],
-    "excluded_references": ["duplicate-or-unreliable-example"],
+    "primary_references": [
+      "ref-front",
+      "ref-three-quarter",
+      "ref-body-front"
+    ],
+    "validation_references": [
+      "ref-smile-2",
+      "ref-body-side"
+    ],
+    "excluded_references": [
+      "duplicate-or-unreliable-example"
+    ],
     "coverage": {
       "face": "Strong",
       "eyes": "Strong",
@@ -106,7 +180,32 @@
       "profile": "Moderate",
       "body": "Moderate",
       "hands_nails": "Weak"
-    }
+    },
+    "target_appearance_epoch": null
+  },
+  "qc": {
+    "pre_generation_face_gate": {
+      "result": "PASS",
+      "critical_checks": {
+        "face_geometry": "PASS",
+        "left_eye": "PASS",
+        "right_eye": "PASS",
+        "nose": "PASS",
+        "mouth_lips": "PASS",
+        "jaw_chin": "PASS",
+        "laterality": "PASS"
+      },
+      "limitations": [
+        "Exact nail appearance is unverified."
+      ],
+      "evidence_used": [
+        "ref-front",
+        "ref-three-quarter",
+        "ref-eye-closeup"
+      ],
+      "reason": "Critical visible facial identity checks pass; optional details remain unresolved."
+    },
+    "panel_gates": []
   },
   "revisions": []
 }
