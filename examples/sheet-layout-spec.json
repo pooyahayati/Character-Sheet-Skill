@@ -1,79 +1,37 @@
 {
-  "visual_system": "Character Sheet Skill v1",
+  "visual_system": "Character Sheet Skill v2",
+  "level_contract": "../config/level-contract.json",
   "canvas": {
     "orientation": "landscape",
     "background": "neutral light gray",
     "grid": "modular",
     "canonical_face_priority": "highest"
   },
-  "levels": {
-    "Base": {
-      "boards": 1,
-      "required_sections": [
-        "canonical_face",
-        "front_face",
-        "best_supported_three_quarter",
-        "eye_detail",
-        "mouth_lip_detail",
-        "hair_reference",
-        "metadata",
-        "color_palette"
-      ],
-      "optional_sections": [
-        "full_body_front",
-        "distinctive_features"
-      ]
-    },
-    "Advanced": {
-      "boards": "1-2",
-      "required_sections": [
-        "canonical_face",
-        "front_face",
-        "three_quarter_left",
-        "three_quarter_right",
-        "profile_if_supported",
-        "eye_left_right",
-        "mouth_lip_detail",
-        "smile_if_calibrated",
-        "full_body_front",
-        "body_side_if_supported",
-        "metadata",
-        "color_palette"
-      ],
-      "optional_sections": [
-        "back_view",
-        "hands_nails",
-        "distinctive_features",
-        "hair_detail"
-      ]
-    },
-    "Full": {
-      "boards": "multi-board",
-      "required_sections": [
-        "face_master_board",
-        "body_master_board",
-        "modeling_expression_board",
-        "metadata_revision_board"
-      ]
-    }
+  "composition_rules": {
+    "required_sections": "Read from config/level-contract.json for selected level.",
+    "conditional_sections": "Include only when required by the build goal or supported/reconstructed according to the level contract.",
+    "reconstructed_label_required": true,
+    "modeling_secondary_to_canonical": true
   },
   "evidence_labels": [
     "Observed",
     "Cross-Validated",
     "Estimated",
     "Reconstructed",
-    "Unverified"
+    "Unverified",
+    "User-Provided"
   ],
   "editability_labels": [
-    "Identity Locked",
-    "Appearance Editable",
-    "Body Editable"
+    "Identity-Locked",
+    "Appearance-Editable",
+    "Body-Editable",
+    "Unlocked"
   ],
   "critical_visual_rules": [
     "Never beautify away identity-specific asymmetry",
     "Never mirror one side to fabricate the other",
     "Never present reconstructed details as observed evidence",
-    "Never reduce facial identity standard in lower sheet levels",
+    "Never reduce the critical facial identity acceptance standard in lower sheet levels",
     "Keep modeling poses secondary to canonical neutral references"
   ]
 }
