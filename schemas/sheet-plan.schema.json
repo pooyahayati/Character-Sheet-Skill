@@ -36,7 +36,8 @@
           "required",
           "evidence_expectation",
           "source_reference_ids",
-          "reconstruction_allowed"
+          "reconstruction_allowed",
+          "generation_route"
         ],
         "properties": {
           "panel_id": {
@@ -88,10 +89,45 @@
           },
           "notes": {
             "type": "string"
+          },
+          "pose_contract_file": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "generation_route": {
+            "enum": [
+              "R1-Identity-Reference",
+              "R2-Identity-Plus-2D-Pose",
+              "R3-Identity-Plus-3D-Geometry",
+              "R4-Identity-Preserving-Local-Edit",
+              "R5-Subject-Specific-Adapter",
+              "R6-Dedicated-3D-Avatar"
+            ]
+          },
+          "pose_difficulty": {
+            "enum": [
+              "P0-Neutral",
+              "P1-Simple",
+              "P2-Dynamic",
+              "P3-Seated-Leaning",
+              "P4-Self-Occlusion",
+              "P5-Extreme-Articulation",
+              "Not-Applicable"
+            ]
           }
         },
         "additionalProperties": false
       }
+    },
+    "pose_readiness_target": {
+      "enum": [
+        "Not-Ready",
+        "Basic",
+        "Strong",
+        "Production"
+      ]
     }
   },
   "additionalProperties": false
