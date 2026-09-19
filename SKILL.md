@@ -325,6 +325,20 @@ Do not claim exact real-world height, weight or circumferences from an ordinary 
 
 When exact measurements are required, use user-provided measurements or trustworthy calibrated references.
 
+### Canonical Body Proxy and Pose Readiness
+
+When the production goal includes repeated full-body or modeling poses, build a canonical body control asset using `schemas/body-proxy.schema.json` and `docs/POSE-READINESS.md`.
+
+Prefer the strongest representation the available evidence/backend supports:
+
+`SMPL-X-Compatible → SMPL-Compatible → 3D Skeleton → Depth/Normal Proxy → 2D Skeleton`.
+
+The proxy is a production control asset, not new evidence.
+
+Track pose readiness independently from Base / Advanced / Full as `Not-Ready`, `Basic`, `Strong`, or `Production`.
+
+A `Full` sheet is not automatically `Production` pose-ready.
+
 ## 9. Separate locked and editable attributes
 
 ### Identity Locked
@@ -427,6 +441,8 @@ Possible panels:
 
 Visually distinguish or internally track observed references vs reconstructed panels.
 
+For any pose-dependent panel, create a `Pose Contract` using `schemas/pose-contract.schema.json`. Record pose difficulty, joint targets, camera, required contacts, occlusion ordering, and required structural controls.
+
 ## 12. Default clothing and presentation
 
 Use minimal, neutral, anatomically readable, non-sexualized clothing.
@@ -452,6 +468,12 @@ Production order must be panel-based:
 5. compose only Approved panels using deterministic layout.
 
 A production backend must support reference-conditioned generation or editing. If it cannot condition on the user's references, the skill may create a plan but must not approve the result as identity-faithful.
+
+Route each panel using `docs/GENERATION-ROUTER.md`, `config/generation-routing.json`, and `schemas/generation-route.schema.json`.
+
+For P3-P5 body poses, prefer 3D/depth/normal/SMPL-X-like structural control. Never treat text-only or reference-only generation as sufficient for demanding self-occluding/extreme body poses.
+
+When repeated critical failures persist, escalate capability rather than repeating the same route.
 
 Keep these variables conceptually separate:
 
@@ -493,6 +515,12 @@ Run independent gates for:
 13. Pose / Expression Consistency
 14. Full-Body Face Fidelity
 15. Subject Laterality
+16. Pose Accuracy
+17. Physical Plausibility / Anatomy
+18. Occlusion Ordering
+19. Hand / Foot Anatomy when visible
+20. Cross-Pose Identity Consistency
+21. Photorealism
 
 Critical local failures override a strong global score.
 
@@ -501,6 +529,8 @@ When a panel fails, repair that panel rather than regenerating the entire sheet.
 Use the repair budget in `docs/PRODUCTION-PIPELINE.md`: initial attempt plus at most 2 targeted repair attempts. Repeated critical failure becomes `BLOCK` and requires better evidence or a different backend strategy.
 
 Use the Validation Pool to compare results against references not used as primary generation anchors.
+
+Full-body and pose-ready panels must also follow `docs/PHYSICAL-PLAUSIBILITY.md`. Critical anatomy or contact failures are BLOCK even when face identity is strong.
 
 ## 15. Full-body face fidelity rule
 
@@ -529,9 +559,24 @@ Use:
 
 The final composition may contain only PASS or explicitly allowed PASS_WITH_LIMITS panels. BLOCK panels are forbidden.
 
-Package approved outputs according to `docs/OUTPUT-CONTRACT.md`, including the build request, reference analysis, canonical profile, sheet plan, approved panel assets, composition manifest, final SVG, and build report.
+Package approved outputs according to `docs/OUTPUT-CONTRACT.md`, including the build request, reference analysis, canonical profile, optional body proxy, pose contracts, pose-readiness assessment, sheet plan, approved panel assets, composition manifest, final SVG, visual benchmark result when run, and build report.
 
-## 18. User review
+## 18. Pose-ready visual benchmark
+
+When the goal requires reusable production across varied poses, run the benchmark defined in `config/visual-benchmark.json` and `docs/VISUAL-BENCHMARK.md`.
+
+Evaluate each required scenario independently on:
+
+- Identity-Fidelity;
+- Pose-Accuracy;
+- Anatomical-Plausibility;
+- Photorealism.
+
+Do not average a failed dimension away. A blocking identity or anatomy failure blocks that benchmark scenario.
+
+Store results using `schemas/visual-benchmark-result.schema.json` and derive pose readiness using `config/pose-readiness-contract.json`.
+
+## 19. User review
 
 After internal QC passes, present the best sheet and a compact summary of:
 
@@ -543,7 +588,7 @@ After internal QC passes, present the best sheet and a compact summary of:
 
 Do not burden the user with every internal score unless useful.
 
-## 19. Versioned revisions
+## 20. Versioned revisions
 
 The approved first identity becomes `v1.0`.
 
@@ -563,7 +608,7 @@ For each revision:
 
 Never rebuild identity from scratch for a simple appearance edit.
 
-## 20. Level upgrades
+## 21. Level upgrades
 
 When new references are supplied later:
 
@@ -573,7 +618,7 @@ Reuse the canonical identity and add newly validated evidence.
 
 Do not discard the approved base without a reason.
 
-## 21. Large photo-set summary
+## 22. Large photo-set summary
 
 When many images are supplied, provide a concise summary after selection, for example:
 
@@ -591,7 +636,7 @@ When many images are supplied, provide a concise summary after selection, for ex
 
 Stop requesting more references once the desired level has sufficient coverage.
 
-## 22. Accuracy and privacy discipline
+## 23. Accuracy and privacy discipline
 
 Do not infer sensitive personal traits from appearance.
 
