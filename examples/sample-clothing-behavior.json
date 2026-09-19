@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "outfit_id": "default-neutral-athletic",
+  "fit": "Close-Fit",
+  "material_behavior": "Athletic",
+  "deformation_rules": [
+    {
+      "trigger": "seated_pose",
+      "expected_behavior": "Compression and folds near hips and knees; garment follows pelvis without redefining body shape.",
+      "body_shape_must_remain_invariant": true
+    },
+    {
+      "trigger": "arms_raised",
+      "expected_behavior": "Torso fabric lifts/stretch naturally while underlying torso length remains canonical.",
+      "body_shape_must_remain_invariant": true
+    },
+    {
+      "trigger": "bent_elbow",
+      "expected_behavior": "Sleeve compression near elbow with no limb-thickness drift.",
+      "body_shape_must_remain_invariant": true
+    }
+  ],
+  "notes": [
+    "Neutral non-sexualized base clothing."
+  ]
+}
