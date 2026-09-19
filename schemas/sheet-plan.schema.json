@@ -37,7 +37,9 @@
           "evidence_expectation",
           "source_reference_ids",
           "reconstruction_allowed",
-          "generation_route"
+          "generation_route",
+          "identity_anchor_ids",
+          "camera_lighting_contract_file"
         ],
         "properties": {
           "panel_id": {
@@ -116,6 +118,25 @@
               "P4-Self-Occlusion",
               "P5-Extreme-Articulation",
               "Not-Applicable"
+            ]
+          },
+          "identity_anchor_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "camera_lighting_contract_file": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "clothing_behavior_file": {
+            "type": [
+              "string",
+              "null"
             ]
           }
         },
