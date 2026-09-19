@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/visual-benchmark-result.schema.json",
+  "title": "Visual Benchmark Result",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "character_id",
+    "profile_version",
+    "suite_version",
+    "scenario_results",
+    "overall_pose_readiness"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "character_id": {
+      "type": "string"
+    },
+    "profile_version": {
+      "type": "string"
+    },
+    "suite_version": {
+      "type": "string"
+    },
+    "scenario_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "scenario_id",
+          "dimensions",
+          "overall"
+        ],
+        "properties": {
+          "scenario_id": {
+            "type": "string"
+          },
+          "dimensions": {
+            "type": "object",
+            "required": [
+              "Identity-Fidelity",
+              "Pose-Accuracy",
+              "Anatomical-Plausibility",
+              "Photorealism"
+            ],
+            "properties": {
+              "Identity-Fidelity": {
+                "$ref": "#/$defs/result"
+              },
+              "Pose-Accuracy": {
+                "$ref": "#/$defs/result"
+              },
+              "Anatomical-Plausibility": {
+                "$ref": "#/$defs/result"
+              },
+              "Photorealism": {
+                "$ref": "#/$defs/result"
+              }
+            },
+            "additionalProperties": false
+          },
+          "overall": {
+            "$ref": "#/$defs/result"
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "overall_pose_readiness": {
+      "enum": [
+        "Not-Ready",
+        "Basic",
+        "Strong",
+        "Production"
+      ]
+    }
+  },
+  "$defs": {
+    "result": {
+      "enum": [
+        "PASS",
+        "PASS_WITH_LIMITS",
+        "BLOCK",
+        "NOT_TESTED"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
