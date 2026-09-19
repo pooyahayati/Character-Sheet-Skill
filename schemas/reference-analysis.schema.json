@@ -1,0 +1,332 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/reference-analysis.schema.json",
+  "title": "Character Sheet Reference Analysis",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "references"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "references": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/reference"
+      }
+    }
+  },
+  "$defs": {
+    "rating": {
+      "enum": [
+        "Excellent",
+        "Good",
+        "Limited",
+        "Poor",
+        "Unknown"
+      ]
+    },
+    "risk": {
+      "enum": [
+        "None",
+        "Low",
+        "Medium",
+        "High",
+        "Unknown"
+      ]
+    },
+    "reference": {
+      "type": "object",
+      "required": [
+        "reference_id",
+        "source_type",
+        "person_count",
+        "target_subject",
+        "quality",
+        "pose",
+        "expression",
+        "utility",
+        "risks",
+        "identity_consistency",
+        "selection"
+      ],
+      "properties": {
+        "reference_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "file_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_type": {
+          "enum": [
+            "Photograph",
+            "Video-Frame",
+            "Scan",
+            "Unknown"
+          ]
+        },
+        "person_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "target_subject": {
+          "type": "object",
+          "required": [
+            "status"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "Single-Subject",
+                "User-Selected",
+                "Resolved-by-Context",
+                "Ambiguous"
+              ]
+            },
+            "subject_index": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "notes": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "capture_context": {
+          "type": "object",
+          "properties": {
+            "mirror_state": {
+              "enum": [
+                "Not-Mirrored",
+                "Mirrored",
+                "Unknown"
+              ]
+            },
+            "appearance_epoch_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "recency_relevance": {
+              "enum": [
+                "Current",
+                "Historical",
+                "Unknown"
+              ]
+            },
+            "notes": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "quality": {
+          "type": "object",
+          "required": [
+            "focus",
+            "exposure",
+            "effective_resolution",
+            "face_pixel_coverage",
+            "motion_blur",
+            "occlusion"
+          ],
+          "properties": {
+            "focus": {
+              "$ref": "#/$defs/rating"
+            },
+            "exposure": {
+              "$ref": "#/$defs/rating"
+            },
+            "effective_resolution": {
+              "$ref": "#/$defs/rating"
+            },
+            "face_pixel_coverage": {
+              "$ref": "#/$defs/rating"
+            },
+            "motion_blur": {
+              "$ref": "#/$defs/risk"
+            },
+            "occlusion": {
+              "$ref": "#/$defs/risk"
+            }
+          },
+          "additionalProperties": false
+        },
+        "pose": {
+          "type": "object",
+          "required": [
+            "face_view",
+            "body_view"
+          ],
+          "properties": {
+            "face_view": {
+              "enum": [
+                "Front",
+                "Three-Quarter-Subject-Left",
+                "Three-Quarter-Subject-Right",
+                "Profile-Subject-Left",
+                "Profile-Subject-Right",
+                "High-Angle",
+                "Low-Angle",
+                "Other",
+                "Unknown"
+              ]
+            },
+            "body_view": {
+              "enum": [
+                "None",
+                "Front",
+                "Side-Subject-Left",
+                "Side-Subject-Right",
+                "Back",
+                "Three-Quarter",
+                "Dynamic",
+                "Seated",
+                "Other",
+                "Unknown"
+              ]
+            },
+            "head_pose_notes": {
+              "type": "string"
+            },
+            "body_pose_notes": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "expression": {
+          "enum": [
+            "Neutral",
+            "Soft-Smile",
+            "Closed-Mouth-Smile",
+            "Open-Mouth-Smile",
+            "Serious",
+            "Other",
+            "Unknown"
+          ]
+        },
+        "utility": {
+          "type": "object",
+          "required": [
+            "face_geometry",
+            "eyes",
+            "nose",
+            "mouth_lips",
+            "smile",
+            "hair_hairline",
+            "body_geometry",
+            "hands_nails",
+            "distinctive_features"
+          ],
+          "properties": {
+            "face_geometry": {
+              "$ref": "#/$defs/rating"
+            },
+            "eyes": {
+              "$ref": "#/$defs/rating"
+            },
+            "nose": {
+              "$ref": "#/$defs/rating"
+            },
+            "mouth_lips": {
+              "$ref": "#/$defs/rating"
+            },
+            "smile": {
+              "$ref": "#/$defs/rating"
+            },
+            "hair_hairline": {
+              "$ref": "#/$defs/rating"
+            },
+            "body_geometry": {
+              "$ref": "#/$defs/rating"
+            },
+            "hands_nails": {
+              "$ref": "#/$defs/rating"
+            },
+            "distinctive_features": {
+              "$ref": "#/$defs/rating"
+            }
+          },
+          "additionalProperties": false
+        },
+        "risks": {
+          "type": "object",
+          "required": [
+            "lens_perspective_distortion",
+            "beauty_filter",
+            "heavy_retouching",
+            "suspect_synthetic"
+          ],
+          "properties": {
+            "lens_perspective_distortion": {
+              "$ref": "#/$defs/risk"
+            },
+            "beauty_filter": {
+              "$ref": "#/$defs/risk"
+            },
+            "heavy_retouching": {
+              "$ref": "#/$defs/risk"
+            },
+            "suspect_synthetic": {
+              "$ref": "#/$defs/risk"
+            }
+          },
+          "additionalProperties": false
+        },
+        "duplicate_cluster_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "identity_consistency": {
+          "enum": [
+            "Consistent",
+            "Possible-Outlier",
+            "Outlier",
+            "Unknown"
+          ]
+        },
+        "selection": {
+          "type": "object",
+          "required": [
+            "role",
+            "reasons"
+          ],
+          "properties": {
+            "role": {
+              "enum": [
+                "Primary",
+                "Validation",
+                "Excluded"
+              ]
+            },
+            "reasons": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
