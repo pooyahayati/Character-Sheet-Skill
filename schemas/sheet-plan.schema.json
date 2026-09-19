@@ -63,7 +63,8 @@
               "Distinctive-Features",
               "Modeling-Pose",
               "Metadata",
-              "Color-Palette"
+              "Color-Palette",
+              "Pose-Diagnostic"
             ]
           },
           "required": {
