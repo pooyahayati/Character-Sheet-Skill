@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "pose_id": "pose-crossed-arms",
   "difficulty": "P4-Self-Occlusion",
   "body_pose": {
@@ -61,14 +61,6 @@
     "pitch": 0,
     "roll": 0,
     "gaze": "Camera"
-  },
-  "camera": {
-    "view": "Front",
-    "height": "Chest",
-    "distance_class": "Full-Body",
-    "focal_class": "Normal",
-    "perspective_strength": "Moderate",
-    "notes": "Avoid wide-angle distortion."
   },
   "contacts": [
     {
