@@ -81,7 +81,8 @@
         "back_view",
         "hands_nails",
         "distinctive_features",
-        "hair_detail"
+        "hair_detail",
+        "pose_readiness_board"
       ],
       "blocked_claims": [
         "unlabeled_reconstructed_angles",
@@ -119,7 +120,8 @@
         "body_master_board",
         "modeling_expression_board",
         "hands_nails",
-        "back_view"
+        "back_view",
+        "pose_readiness_board"
       ],
       "blocked_claims": [
         "full_evidence_claim_without_required_face_coverage",
