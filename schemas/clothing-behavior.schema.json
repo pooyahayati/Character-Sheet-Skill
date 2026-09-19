@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/clothing-behavior.schema.json",
+  "title": "Clothing Geometry and Deformation Contract",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "outfit_id",
+    "fit",
+    "material_behavior",
+    "deformation_rules"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "outfit_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fit": {
+      "enum": [
+        "Close-Fit",
+        "Regular",
+        "Loose",
+        "Structured"
+      ]
+    },
+    "material_behavior": {
+      "enum": [
+        "Stretch",
+        "Soft-Drape",
+        "Stiff",
+        "Denim-Like",
+        "Knit-Like",
+        "Athletic",
+        "Unknown"
+      ]
+    },
+    "deformation_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "trigger",
+          "expected_behavior"
+        ],
+        "properties": {
+          "trigger": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected_behavior": {
+            "type": "string",
+            "minLength": 1
+          },
+          "body_shape_must_remain_invariant": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}
