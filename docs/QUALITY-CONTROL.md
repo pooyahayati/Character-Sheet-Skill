@@ -8,11 +8,15 @@ Critical local failures override a strong global result.
 
 ## Gate outcomes
 
-Each gate returns:
+The normative gate logic is defined in `docs/GATE-CONTRACT.md`.
 
-- `PASS`;
-- `PASS_WITH_LIMITS`;
-- `BLOCK`.
+Each gate stores:
+
+- result: `PASS` | `PASS_WITH_LIMITS` | `BLOCK`;
+- named critical checks;
+- limitations;
+- evidence used;
+- reason.
 
 Do not collapse these states into one average score.
 
@@ -132,11 +136,13 @@ When one panel fails:
 
 1. identify the failed gate;
 2. preserve successful panels;
-3. regenerate or edit only the failing panel when possible;
+3. regenerate or edit only the failing panel;
 4. rerun local gates;
 5. rerun final global identity validation.
 
-Avoid full-sheet regeneration when unnecessary.
+Use the repair budget in `docs/PRODUCTION-PIPELINE.md`: one initial attempt plus up to 2 targeted repairs. If the same critical identity failure persists, return `BLOCK`.
+
+Do not regenerate the complete sheet to repair one panel.
 
 ## Validation Pool use
 
