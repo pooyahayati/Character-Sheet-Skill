@@ -245,6 +245,63 @@
         "identity_pose_anatomy_photorealism_independent",
         "no_average_override"
       ]
+    },
+    {
+      "id": "S31",
+      "name": "side_view_uses_nearest_anchor",
+      "must": [
+        "multiview_anchor_bank",
+        "avoid_frontal_anchor_bias"
+      ]
+    },
+    {
+      "id": "S32",
+      "name": "individually_good_panels_collectively_drift",
+      "must": [
+        "cross_panel_identity_matrix",
+        "block_set_level_drift"
+      ]
+    },
+    {
+      "id": "S33",
+      "name": "hand_near_face_identity_and_anatomy",
+      "must": [
+        "extremity_identity",
+        "hand_anatomy_gate",
+        "occlusion_gate"
+      ]
+    },
+    {
+      "id": "S34",
+      "name": "lighting_changes_skin_appearance",
+      "must": [
+        "skin_identity_independent_from_lighting",
+        "camera_lighting_contract"
+      ]
+    },
+    {
+      "id": "S35",
+      "name": "head_turn_hair_motion",
+      "must": [
+        "preserve_static_hair_identity",
+        "validate_hair_dynamics"
+      ]
+    },
+    {
+      "id": "S36",
+      "name": "seated_clothing_folds",
+      "must": [
+        "cloth_deformation",
+        "body_geometry_invariant"
+      ]
+    },
+    {
+      "id": "S37",
+      "name": "wide_vs_portrait_camera",
+      "must": [
+        "camera_contract",
+        "do_not_confuse_perspective_with_identity"
+      ]
     }
   ]
 }
