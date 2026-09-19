@@ -12,6 +12,8 @@ The skill is designed around a strict principle:
 
 It can start from a single usable photograph, scale to large photo sets, automatically select the most useful references, build a structured identity profile, generate Base / Advanced / Full character sheets, and keep later edits from unintentionally redefining the person.
 
+For repeated realistic outputs in varied poses, the skill also builds a pose-ready control layer: a canonical body proxy, explicit pose/camera contracts, capability-based generation routing, anatomy/occlusion QC, and a visual benchmark from neutral through extreme articulation.
+
 ## What this skill is designed to preserve
 
 - Face geometry and facial proportions
@@ -187,6 +189,26 @@ Real-person builds record authorization and age handling. Raw user photographs m
 
 See `docs/PRIVACY-CONSENT.md`.
 
+## Pose-ready production
+
+`Base / Advanced / Full` describe sheet/evidence depth. Pose readiness is independent:
+
+- `Not-Ready`
+- `Basic`
+- `Strong`
+- `Production`
+
+A `Full` character is not automatically ready for difficult full-body posing.
+
+Pose-ready production can use a `SMPL-X`-compatible proxy, `SMPL`, a 3D skeleton, depth/normal controls, or a weaker 2D fallback depending on backend capability. P3-P5 poses should route to structural 3D/depth/normal control rather than reference-only generation.
+
+See:
+
+- `docs/POSE-READINESS.md`
+- `docs/GENERATION-ROUTER.md`
+- `docs/PHYSICAL-PLAUSIBILITY.md`
+- `docs/VISUAL-BENCHMARK.md`
+
 ## Production
 
 The production path is explicitly panel-by-panel. The skill first approves a Canonical Face Anchor, then generates and validates each panel independently, and finally composes the approved panels deterministically.
@@ -231,6 +253,9 @@ docs/
   PRIVACY-CONSENT.md
 config/
   level-contract.json
+  pose-readiness-contract.json
+  generation-routing.json
+  visual-benchmark.json
 schemas/
   build-request.schema.json
   reference-analysis.schema.json
@@ -239,6 +264,12 @@ schemas/
   sheet-plan.schema.json
   sheet-manifest.schema.json
   build-report.schema.json
+  body-proxy.schema.json
+  pose-contract.schema.json
+  pose-readiness.schema.json
+  generation-route.schema.json
+  visual-benchmark.schema.json
+  visual-benchmark-result.schema.json
 scripts/
   compose_sheet.py
   validate_repo.py
@@ -247,6 +278,11 @@ examples/
   sample-reference-analysis.json
   sample-character-profile.json
   sample-sheet-manifest.json
+  sample-body-proxy.json
+  sample-pose-contract.json
+  sample-generation-route.json
+  sample-pose-readiness.json
+  sample-visual-benchmark-result.json
   sheet-layout-spec.json
 tests/
   SCENARIO-VALIDATION.md
