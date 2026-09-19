@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/cross-panel-identity-matrix.schema.json",
+  "title": "Cross-panel Identity Consistency Matrix",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "character_id",
+    "profile_version",
+    "comparisons"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "character_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "comparisons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "panel_a",
+          "panel_b",
+          "result",
+          "checks"
+        ],
+        "properties": {
+          "panel_a": {
+            "type": "string",
+            "minLength": 1
+          },
+          "panel_b": {
+            "type": "string",
+            "minLength": 1
+          },
+          "result": {
+            "enum": [
+              "PASS",
+              "PASS_WITH_LIMITS",
+              "BLOCK",
+              "NOT_EVALUABLE"
+            ]
+          },
+          "checks": {
+            "type": "object",
+            "required": [
+              "face_identity",
+              "body_shape",
+              "distinctive_features"
+            ],
+            "properties": {
+              "face_identity": {
+                "enum": [
+                  "PASS",
+                  "PASS_WITH_LIMITS",
+                  "BLOCK",
+                  "NOT_EVALUABLE"
+                ]
+              },
+              "body_shape": {
+                "enum": [
+                  "PASS",
+                  "PASS_WITH_LIMITS",
+                  "BLOCK",
+                  "NOT_EVALUABLE"
+                ]
+              },
+              "distinctive_features": {
+                "enum": [
+                  "PASS",
+                  "PASS_WITH_LIMITS",
+                  "BLOCK",
+                  "NOT_EVALUABLE"
+                ]
+              },
+              "hair_identity": {
+                "enum": [
+                  "PASS",
+                  "PASS_WITH_LIMITS",
+                  "BLOCK",
+                  "NOT_EVALUABLE"
+                ]
+              },
+              "extremity_identity": {
+                "enum": [
+                  "PASS",
+                  "PASS_WITH_LIMITS",
+                  "BLOCK",
+                  "NOT_EVALUABLE"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
