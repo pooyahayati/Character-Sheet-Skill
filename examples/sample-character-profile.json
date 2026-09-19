@@ -219,11 +219,7 @@
   "build_request_file": "sample-build-request.json",
   "pose_assets": {
     "body_proxy_file": "sample-body-proxy.json",
-    "pose_readiness_file": "sample-pose-readiness.json",
-    "anchor_bank": [
-      "ref-front",
-      "ref-three-quarter"
-    ]
+    "pose_readiness_file": "sample-pose-readiness.json"
   },
   "production_assets": {
     "identity_anchor_bank_file": "sample-identity-anchor-bank.json",
