@@ -1,250 +1,76 @@
 # Base / Advanced / Full Output Specifications
 
+The normative machine-readable level contract is:
+
+`config/level-contract.json`
+
+This document explains that contract. If wording here conflicts with the JSON contract, the JSON contract wins.
+
 ## Shared rule
 
-All levels share the same facial identity standard.
+All levels use the same critical facial identity acceptance standard.
 
-Level changes affect breadth of coverage, evidence depth and uncertainty — never the minimum acceptable face fidelity.
+Levels change evidence breadth, supported claims, and uncertainty.
 
----
+## Base
 
-# Base
+Base requires a usable front or near-front face that can pass the critical Face Identity Gate.
 
-## Intended use
+Required sheet content:
 
-Create a reliable starting identity from limited but usable references.
-
-## Minimum evidence target
-
-- at least one strong face reference;
-- enough facial detail to pass Face Identity Gate;
-- body information optional.
-
-## Required visual blocks
-
-### Canonical Identity
-
-- large neutral canonical face;
-- front face;
-- best supported 3/4 face;
+- canonical face;
 - eye detail;
 - mouth/lip detail;
-- hairline/default hair reference.
+- hair reference;
+- metadata;
+- color palette.
 
-### Body
+A 3/4 view, profile, body panel, smile panel, or distinctive-feature panel is conditional. Do not require a 3/4 reference merely to create Base.
 
-If supported:
+Unsupported generated angles are Reconstructed, not Observed.
 
-- one full-body front reference.
+## Advanced
 
-If not supported:
+Advanced requires:
 
-- omit or mark a generated body as Reconstructed.
+- a usable front/near-front reference;
+- at least one independent non-frontal face reference.
 
-### Metadata
+Both 3/4 output panels may be generated for production utility, but any side that is not directly supported must be labeled Reconstructed.
 
-- Character ID;
-- Version;
-- Base level;
-- locked identity;
-- editable appearance defaults;
-- evidence states;
-- uncertainty summary.
+Body is conditional on the production goal. Do not require a body reference for a face-only Advanced request.
 
-## Recommended sheet footprint
+Expression/smile evidence is required only when expression or modeling behavior is part of the goal.
 
-One compact board.
+## Full
 
-## Base must not pretend to know
+Full is the canonical long-term level for the requested goal.
 
-- exact real-world measurements;
-- unsupported profiles;
-- back-view details;
-- smile behavior without references;
-- unseen dental details;
-- unseen body details.
+For face coverage it requires:
 
----
+- front/near-front evidence;
+- independent subject-left non-frontal evidence;
+- independent subject-right non-frontal evidence;
+- at least one observed profile.
 
-# Advanced
+When expressions/modeling are required, Full additionally needs neutral plus at least one useful non-neutral expression reference.
 
-## Intended use
+When body is required, Full needs at least body-front and side evidence. A back view may be reconstructed, but it cannot be claimed as canonical observed evidence without an observed back reference.
 
-Create a production-ready character reference with useful multi-angle and body coverage.
+Hands/nails are required only when relevant to the production goal.
 
-## Evidence target
+## Upgrade behavior
 
-Prefer:
+Upgrades add validated evidence to the approved canonical identity.
 
-- strong front face;
-- at least one independent 3/4 or profile reference;
-- useful expression reference;
-- useful body reference;
-- better left/right coverage than Base.
+`Base → Advanced → Full`
 
-## Required visual blocks
+Do not rebuild the person from scratch.
 
-### Canonical Identity
+## Goal-aware selection
 
-Everything in Base, plus:
+If the user requests a specific lower level, honor it.
 
-- 3/4 Subject Left;
-- 3/4 Subject Right;
-- at least one profile when support exists;
-- eye left/right detail;
-- mouth/lip detail;
-- neutral vs smile comparison when calibrated.
+If the requested level is `Auto`, choose the smallest level that satisfies the production goal with adequate evidence.
 
-### Body
-
-Prefer:
-
-- full-body front;
-- side;
-- optional back if supported;
-- proportion summary.
-
-### Details
-
-When visible:
-
-- hands/nails;
-- distinctive feature map;
-- hair detail.
-
-### Metadata
-
-Add:
-
-- coverage summary;
-- reconstructed regions;
-- reference confidence;
-- current appearance defaults.
-
-## Recommended sheet footprint
-
-One large board or two coordinated boards.
-
----
-
-# Full
-
-## Intended use
-
-Create the canonical long-term visual identity reference for repeated production.
-
-## Evidence target
-
-Broad, reliable, diverse coverage with materially reduced uncertainty.
-
-Typical useful evidence includes:
-
-- front;
-- both 3/4 views;
-- profile coverage;
-- expression/smile references;
-- full-body front/side/back or equivalent reliable body information;
-- key detail references.
-
-Photo count alone is irrelevant.
-
-Full is goal-aware: a missing optional detail does not block Full when that detail is irrelevant to the intended production use. Missing required details remain Unverified and trigger a targeted request only when necessary.
-
-## Required visual blocks
-
-### Face Master Board
-
-- large canonical neutral face;
-- front;
-- 3/4 Subject Left;
-- left profile;
-- 3/4 Subject Right;
-- right profile;
-- eye identity;
-- brows;
-- nose reference;
-- mouth/lips;
-- smile states;
-- hairline;
-- distinctive feature map;
-- natural asymmetry notes.
-
-### Body Master Board
-
-- front neutral;
-- side neutral;
-- back neutral;
-- optional 3/4 neutral;
-- relative proportion map;
-- body geometry notes;
-- hands/nails when relevant and supported;
-- hair length/shape reference.
-
-### Modeling / Expression Board
-
-Controlled examples such as:
-
-- Beauty Neutral;
-- Soft Gaze;
-- Editorial Neutral;
-- Soft Smile;
-- Confident;
-- Serious;
-- Side Gaze;
-- Over-Shoulder.
-
-This board is for pose/expression range, not for redefining identity.
-
-### Metadata / Revision Board
-
-- Character ID;
-- Version;
-- parent version;
-- sheet level;
-- canonical defaults;
-- locked attributes;
-- editable attributes;
-- evidence coverage;
-- unverified fields;
-- revision history.
-
-## Recommended footprint
-
-A coordinated multi-board system.
-
----
-
-# Upgrade behavior
-
-## Base → Advanced
-
-Do not rebuild from scratch.
-
-Add new validated evidence and expand only unsupported or low-confidence areas.
-
-## Advanced → Full
-
-Retain canonical identity and approved version history.
-
-Expand:
-
-- face-angle evidence;
-- smile/expression calibration;
-- body coverage;
-- detail coverage;
-- confidence.
-
----
-
-# Preview behavior
-
-At skill startup, show a compact visual preview that communicates:
-
-- what Base looks like;
-- what Advanced adds;
-- what Full adds;
-- that facial identity fidelity remains constant across all levels.
-
-The preview should be a fictional example or a clearly non-user-specific template.
-
-Never imply that every uploaded photo set can support Full.
+If a requested higher level is unsupported, identify the exact missing evidence and offer the highest supported level without lowering facial identity fidelity.
