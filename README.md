@@ -12,7 +12,7 @@ The skill is designed around a strict principle:
 
 It can start from a single usable photograph, scale to large photo sets, automatically select the most useful references, build a structured identity profile, generate Base / Advanced / Full character sheets, and keep later edits from unintentionally redefining the person.
 
-For repeated realistic outputs in varied poses, the skill also builds a pose-ready control layer: a canonical body proxy, explicit pose/camera contracts, capability-based generation routing, anatomy/occlusion QC, and a visual benchmark from neutral through extreme articulation.
+For repeated realistic outputs in varied poses, the skill also builds a pose-ready control layer: a canonical body proxy, explicit pose contracts, separate camera/lighting contracts, capability-based generation routing, anatomy/occlusion QC, and a visual benchmark from neutral through extreme articulation.
 
 ## What this skill is designed to preserve
 
@@ -39,11 +39,13 @@ Start
 → Coverage analysis
 → Select Base / Advanced / Full
 → Build Canonical Character Identity
-→ Create Sheet Plan
-→ Approve Canonical Face Anchor
-→ Generate panels individually
+→ Build Multi-view Identity Anchor Bank
+→ Build Body Proxy / Pose Readiness when needed
+→ Create Sheet Plan + Pose + Camera/Lighting Contracts
+→ Generate panels individually with nearest relevant anchors
 → Per-panel multi-gate quality control
-→ Repair failed panels only
+→ Repair / escalate failed panels
+→ Cross-panel Identity Matrix
 → Deterministic composition
 → User approval
 → Approved Character v1.0
@@ -230,7 +232,7 @@ See:
 
 ## Production
 
-The production path is explicitly panel-by-panel. The skill first approves a Canonical Face Anchor, then generates and validates each panel independently, and finally composes the approved panels deterministically.
+The production path is explicitly panel-by-panel. The skill first approves a Multi-view Identity Anchor Bank, then generates and validates each panel independently with explicit pose and camera/lighting controls, checks cross-panel identity consistency, and finally composes the approved panels deterministically.
 
 See:
 
@@ -270,6 +272,14 @@ docs/
   OUTPUT-CONTRACT.md
   BODY-REVISION-GUARD.md
   PRIVACY-CONSENT.md
+  POSE-READINESS.md
+  GENERATION-ROUTER.md
+  PHYSICAL-PLAUSIBILITY.md
+  VISUAL-BENCHMARK.md
+  MULTIVIEW-IDENTITY.md
+  EXTREMITY-IDENTITY.md
+  SKIN-HAIR-CLOTH.md
+  CAMERA-LIGHTING.md
 config/
   level-contract.json
   pose-readiness-contract.json
