@@ -189,6 +189,25 @@ Real-person builds record authorization and age handling. Raw user photographs m
 
 See `docs/PRIVACY-CONSENT.md`.
 
+## Multi-view realism controls
+
+Production no longer relies on one frontal face anchor. It uses a multi-view identity anchor bank and validates approved panels against each other before final composition.
+
+Additional production assets model:
+
+- left/right hand and foot identity;
+- visible skin identity independent from lighting;
+- static hair identity plus pose-dependent dynamics;
+- clothing deformation independent from body shape;
+- explicit camera and lighting state per panel.
+
+See:
+
+- `docs/MULTIVIEW-IDENTITY.md`
+- `docs/EXTREMITY-IDENTITY.md`
+- `docs/SKIN-HAIR-CLOTH.md`
+- `docs/CAMERA-LIGHTING.md`
+
 ## Pose-ready production
 
 `Base / Advanced / Full` describe sheet/evidence depth. Pose readiness is independent:
@@ -270,6 +289,13 @@ schemas/
   generation-route.schema.json
   visual-benchmark.schema.json
   visual-benchmark-result.schema.json
+  identity-anchor-bank.schema.json
+  cross-panel-identity-matrix.schema.json
+  extremity-profile.schema.json
+  skin-identity.schema.json
+  hair-dynamics.schema.json
+  clothing-behavior.schema.json
+  camera-lighting-contract.schema.json
 scripts/
   compose_sheet.py
   validate_repo.py
@@ -283,6 +309,13 @@ examples/
   sample-generation-route.json
   sample-pose-readiness.json
   sample-visual-benchmark-result.json
+  sample-identity-anchor-bank.json
+  sample-cross-panel-identity-matrix.json
+  sample-extremity-profile.json
+  sample-skin-identity.json
+  sample-hair-dynamics.json
+  sample-clothing-behavior.json
+  sample-camera-lighting-contract.json
   sheet-layout-spec.json
 tests/
   SCENARIO-VALIDATION.md
