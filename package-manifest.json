@@ -1,0 +1,36 @@
+{
+  "package_name": "character-sheet-skill",
+  "display_name": "Character Sheet Skill",
+  "version": "1.0.0",
+  "entrypoint": "SKILL.md",
+  "author": "Pooya Hayati | پویا حیاتی",
+  "homepage": "https://github.com/pooyahayati/Character-Sheet-Skill",
+  "runtime_files": [
+    "SKILL.md",
+    "README.md",
+    "VERSION",
+    "LICENSE",
+    "CHANGELOG.md",
+    "package-manifest.json"
+  ],
+  "runtime_directories": [
+    "assets",
+    "config",
+    "docs",
+    "examples",
+    "schemas"
+  ],
+  "runtime_scripts": [
+    "scripts/compose_sheet.py"
+  ],
+  "excluded_from_install_package": [
+    ".git",
+    ".github",
+    "tests",
+    "dist",
+    "requirements-dev.txt",
+    "scripts/validate_repo.py",
+    "scripts/package_skill.py",
+    "__pycache__"
+  ]
+}
