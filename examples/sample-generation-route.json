@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "task": "Modeling-Pose",
+  "pose_difficulty": "P4-Self-Occlusion",
+  "selected_route": "R3-Identity-Plus-3D-Geometry",
+  "required_capabilities": [
+    "Reference-Conditioning",
+    "3D-Pose",
+    "Depth",
+    "Normal",
+    "Camera-Control"
+  ],
+  "escalation_level": 3,
+  "reason": "Self-occluding full-body pose requires structural depth and pose control.",
+  "previous_failures": 0
+}
