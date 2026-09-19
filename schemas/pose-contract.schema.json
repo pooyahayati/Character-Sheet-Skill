@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/pose-contract.schema.json",
-  "title": "Pose and Camera Contract",
+  "title": "Pose Contract",
   "type": "object",
   "required": [
     "schema_version",
