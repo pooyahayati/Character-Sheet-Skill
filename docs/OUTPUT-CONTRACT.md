@@ -11,9 +11,16 @@ character-output/
   build-request.json
   reference-analysis.json
   character-profile.json
+  identity-anchor-bank.json
+  cross-panel-identity-matrix.json
+  extremity-profile.json
+  skin-identity.json
+  hair-dynamics.json
+  clothing-behavior.json
   body-proxy.json
   pose-readiness.json
   pose-contracts/
+  camera-lighting-contracts/
   generation-routes/
   sheet-plan.json
   panels/
@@ -33,9 +40,16 @@ Additional PNG/PDF renders are optional derivatives of the canonical SVG.
 - `build-request.json`: requested goal, level and required details.
 - `reference-analysis.json`: per-photo analysis and selection role.
 - `character-profile.json`: canonical identity and editable attributes.
+- `identity-anchor-bank.json`: approved view-specific identity anchors.
+- `cross-panel-identity-matrix.json`: pairwise consistency across approved outputs.
+- `extremity-profile.json`: left/right hand and foot identity evidence.
+- `skin-identity.json`: lighting-independent visible skin rendering cues.
+- `hair-dynamics.json`: static hair identity plus pose-dependent behavior.
+- `clothing-behavior.json`: garment deformation rules that must not redefine body geometry.
 - `body-proxy.json`: canonical body/skeleton/depth/normal control asset when pose production requires it.
 - `pose-readiness.json`: independent pose readiness assessment.
-- `pose-contracts/`: structured pose/camera/contact/occlusion targets.
+- `pose-contracts/`: structured pose/contact/occlusion targets.
+- `camera-lighting-contracts/`: explicit camera and lighting state per production panel.
 - `generation-routes/`: capability route chosen for each demanding panel.
 - `sheet-plan.json`: required and conditional panels for this build.
 - `panels/`: individually generated and approved panel assets.
@@ -88,5 +102,12 @@ The build report must preserve:
 - `schemas/generation-route.schema.json`
 - `schemas/visual-benchmark.schema.json`
 - `schemas/visual-benchmark-result.schema.json`
+- `schemas/identity-anchor-bank.schema.json`
+- `schemas/cross-panel-identity-matrix.schema.json`
+- `schemas/extremity-profile.schema.json`
+- `schemas/skin-identity.schema.json`
+- `schemas/hair-dynamics.schema.json`
+- `schemas/clothing-behavior.schema.json`
+- `schemas/camera-lighting-contract.schema.json`
 
 Every structured output should validate before the final package is approved.
