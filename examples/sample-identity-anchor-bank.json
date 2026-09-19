@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "character_id": "CS-DEMO-001",
+  "profile_version": "1.0",
+  "anchors": [
+    {
+      "anchor_id": "anchor-front",
+      "view": "Front",
+      "source_reference_ids": [
+        "ref-front"
+      ],
+      "evidence_basis": "Observed",
+      "approval": "PASS",
+      "role": "Primary-Anchor",
+      "asset_path": null,
+      "limitations": []
+    },
+    {
+      "anchor_id": "anchor-3q-left",
+      "view": "Three-Quarter-Left",
+      "source_reference_ids": [
+        "ref-three-quarter"
+      ],
+      "evidence_basis": "Observed",
+      "approval": "PASS",
+      "role": "Primary-Anchor",
+      "asset_path": null,
+      "limitations": []
+    },
+    {
+      "anchor_id": "anchor-eye",
+      "view": "Eye-Detail",
+      "source_reference_ids": [
+        "ref-eye-closeup"
+      ],
+      "evidence_basis": "Observed",
+      "approval": "PASS",
+      "role": "Secondary-Anchor",
+      "asset_path": null,
+      "limitations": []
+    }
+  ]
+}
