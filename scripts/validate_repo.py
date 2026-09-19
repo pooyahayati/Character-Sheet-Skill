@@ -184,6 +184,19 @@ def validate_pose_ready_contracts():
             raise AssertionError(f"Missing sample pose asset: {rel}")
 
 
+def validate_source_of_truth_separation():
+    pose_schema = load("schemas/pose-contract.schema.json")
+    if "camera" in pose_schema.get("properties", {}):
+        raise AssertionError("Camera state must live only in camera-lighting-contract, not pose-contract")
+    if "camera" in pose_schema.get("required", []):
+        raise AssertionError("Pose contract must not require camera state")
+
+    profile_schema = load("schemas/character-profile.schema.json")
+    pose_assets = profile_schema["properties"]["pose_assets"]["properties"]
+    if "anchor_bank" in pose_assets:
+        raise AssertionError("Anchor bank source of truth must be production_assets.identity_anchor_bank_file")
+
+
 def validate_p1_asset_links():
     profile = load("examples/sample-character-profile.json")
     analysis = load("examples/sample-reference-analysis.json")
@@ -301,6 +314,7 @@ def main():
     validate_scenarios()
     validate_skill_workflow()
     validate_pose_ready_contracts()
+    validate_source_of_truth_separation()
     validate_p1_asset_links()
     validate_visual_benchmark_result_logic()
     validate_manifest_rules()
