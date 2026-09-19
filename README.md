@@ -57,6 +57,12 @@ The production layout and panel hierarchy are defined in:
 
 The canonical face is always the strongest visual anchor. Modeling poses are secondary. Reconstructed or estimated information must never be visually presented as directly observed evidence.
 
+## Build request and level choice
+
+The skill normalizes the production goal before selecting a level. Explicit Base / Advanced / Full requests are respected when supported; Auto selects the smallest sufficient level.
+
+The normative level rules live in `config/level-contract.json`.
+
 ## Character-sheet levels
 
 ### Base
@@ -174,6 +180,12 @@ Small appearance changes may create versions such as `v1.1`, while major structu
 
 A Base sheet can later be upgraded to Advanced or Full as new references are supplied without rebuilding the identity from scratch.
 
+## Privacy and body revisions
+
+Real-person builds record authorization and age handling. Raw user photographs must not be committed to this public repository. Controlled body edits follow `docs/BODY-REVISION-GUARD.md`, including protected invariants and adult-confirmation requirements for sexualized secondary-characteristic edits.
+
+See `docs/PRIVACY-CONSENT.md`.
+
 ## Production
 
 The production path is explicitly panel-by-panel. The skill first approves a Canonical Face Anchor, then generates and validates each panel independently, and finally composes the approved panels deterministically.
@@ -187,7 +199,9 @@ See:
 
 ## Validation
 
-The repository includes a scenario-based regression suite covering single-photo intake, large duplicate sets, mixed time periods, identity outliers, filters, occluders, smile-only references, mirrored laterality, perspective distortion, modeling poses and revision workflows.
+Validation is executable in CI. `scripts/validate_repo.py` checks schemas, examples, cross-file reference integrity, the canonical level contract, group-photo exclusion behavior, and scenario uniqueness. The deterministic compositor is smoke-tested on every push and pull request.
+
+The repository also includes a scenario-based regression suite covering single-photo intake, large duplicate sets, mixed time periods, identity outliers, filters, occluders, smile-only references, mirrored laterality, perspective distortion, modeling poses and revision workflows.
 
 See:
 
@@ -210,13 +224,24 @@ docs/
   EXAMPLE-SHEET-LAYOUT.md
   PRODUCTION-PIPELINE.md
   GATE-CONTRACT.md
+config/
+  level-contract.json
 schemas/
+  build-request.schema.json
+  reference-analysis.schema.json
   character-profile.schema.json
+  level-contract.schema.json
+  sheet-plan.schema.json
   sheet-manifest.schema.json
+  build-report.schema.json
 scripts/
   compose_sheet.py
+  validate_repo.py
 examples/
+  sample-build-request.json
+  sample-reference-analysis.json
   sample-character-profile.json
+  sample-sheet-manifest.json
   sheet-layout-spec.json
 tests/
   SCENARIO-VALIDATION.md
