@@ -170,6 +170,30 @@ def validate_pose_ready_contracts():
             raise AssertionError(f"Missing sample pose asset: {rel}")
 
 
+def validate_visual_benchmark_result_logic():
+    suite = load("config/visual-benchmark.json")
+    result = load("examples/sample-visual-benchmark-result.json")
+    suite_ids = {s["id"] for s in suite["scenarios"]}
+
+    for item in result["scenario_results"]:
+        if item["scenario_id"] not in suite_ids:
+            raise AssertionError(f"Unknown benchmark scenario: {item['scenario_id']}")
+        values = list(item["dimensions"].values())
+        if item["overall"] == "PASS" and any(v != "PASS" for v in values):
+            raise AssertionError(f"{item['scenario_id']}: overall PASS requires all four dimensions PASS")
+        if item["overall"] == "PASS_WITH_LIMITS" and any(v in {"BLOCK", "NOT_TESTED"} for v in values):
+            raise AssertionError(f"{item['scenario_id']}: PASS_WITH_LIMITS cannot hide BLOCK/NOT_TESTED")
+
+    if result["overall_pose_readiness"] == "Production":
+        by_id = {x["scenario_id"]: x for x in result["scenario_results"]}
+        missing = [s["id"] for s in suite["scenarios"] if s["id"] not in by_id]
+        if missing:
+            raise AssertionError(f"Production pose readiness requires all benchmark scenarios: {missing}")
+        for sid, item in by_id.items():
+            if item["overall"] in {"BLOCK", "NOT_TESTED"}:
+                raise AssertionError(f"Production pose readiness cannot include {item['overall']}: {sid}")
+
+
 def validate_manifest_rules():
     manifest = load("examples/sample-sheet-manifest.json")
     for panel in manifest["panels"]:
@@ -223,6 +247,7 @@ def main():
     validate_scenarios()
     validate_skill_workflow()
     validate_pose_ready_contracts()
+    validate_visual_benchmark_result_logic()
     validate_manifest_rules()
     validate_inline_output_examples()
     print("Repository validation passed.")
