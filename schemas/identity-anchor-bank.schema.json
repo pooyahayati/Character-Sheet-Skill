@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/identity-anchor-bank.schema.json",
+  "title": "Multi-view Identity Anchor Bank",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "character_id",
+    "profile_version",
+    "anchors"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "character_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "anchors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "anchor_id",
+          "view",
+          "source_reference_ids",
+          "evidence_basis",
+          "approval",
+          "role"
+        ],
+        "properties": {
+          "anchor_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "view": {
+            "enum": [
+              "Front",
+              "Three-Quarter-Left",
+              "Three-Quarter-Right",
+              "Profile-Left",
+              "Profile-Right",
+              "Eye-Detail",
+              "Mouth-Detail",
+              "Smile",
+              "Body-Front",
+              "Body-Side",
+              "Body-Back"
+            ]
+          },
+          "source_reference_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "evidence_basis": {
+            "enum": [
+              "Observed",
+              "Cross-Validated",
+              "Reconstructed"
+            ]
+          },
+          "approval": {
+            "enum": [
+              "PASS",
+              "PASS_WITH_LIMITS",
+              "BLOCK"
+            ]
+          },
+          "role": {
+            "enum": [
+              "Primary-Anchor",
+              "Secondary-Anchor",
+              "Validation-Only"
+            ]
+          },
+          "asset_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
