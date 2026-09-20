@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/coverage-audit.schema.json",
+  "title": "Pre-generation Coverage Audit",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "request_id",
+    "requested_level",
+    "supported_level",
+    "layout_scope",
+    "coverage",
+    "blocking_gaps",
+    "nonblocking_gaps",
+    "targeted_reference_requests",
+    "generation_allowed"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requested_level": {
+      "enum": [
+        "Auto",
+        "Base",
+        "Advanced",
+        "Full"
+      ]
+    },
+    "supported_level": {
+      "enum": [
+        "None",
+        "Base",
+        "Advanced",
+        "Full"
+      ]
+    },
+    "layout_scope": {
+      "enum": [
+        "Compact",
+        "Complete"
+      ]
+    },
+    "coverage": {
+      "type": "object",
+      "required": [
+        "face_front",
+        "face_3q_left",
+        "face_3q_right",
+        "profile_left",
+        "profile_right",
+        "neutral_expression",
+        "smile",
+        "body_front",
+        "body_side",
+        "body_back",
+        "hands",
+        "feet"
+      ],
+      "properties": {
+        "face_front": {
+          "$ref": "#/$defs/coverageState"
+        },
+        "face_3q_left": {
+          "$ref": "#/$defs/coverageState"
+        },
+        "face_3q_right": {
+          "$ref": "#/$defs/coverageState"
+        },
+        "profile_left": {
+          "$ref": "#/$defs/coverageState"
+        },
+        "profile_right": {
+          "$ref": "#/$defs/coverageState"
+        },
+        "neutral_expression": {
+          "$ref": "#/$defs/coverageState"
+        },
+        "smile": {
+          "$ref": "#/$defs/coverageState"
+        },
+        "body_front": {
+          "$ref": "#/$defs/coverageState"
+        },
+        "body_side": {
+          "$ref": "#/$defs/coverageState"
+        },
+        "body_back": {
+          "$ref": "#/$defs/coverageState"
+        },
+        "hands": {
+          "$ref": "#/$defs/coverageState"
+        },
+        "feet": {
+          "$ref": "#/$defs/coverageState"
+        }
+      },
+      "additionalProperties": false
+    },
+    "blocking_gaps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "nonblocking_gaps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "targeted_reference_requests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "reference_type",
+          "reason",
+          "priority",
+          "instruction"
+        ],
+        "properties": {
+          "reference_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "priority": {
+            "enum": [
+              "Required",
+              "Recommended",
+              "Optional"
+            ]
+          },
+          "instruction": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "generation_allowed": {
+      "type": "boolean"
+    },
+    "decision_reason": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "coverageState": {
+      "enum": [
+        "Strong",
+        "Usable",
+        "Weak",
+        "Missing",
+        "Not-Required"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
