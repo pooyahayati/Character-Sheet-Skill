@@ -3,7 +3,7 @@
   "request_id": "REQ-DEMO-001",
   "character_id": "CS-DEMO-001",
   "evidence_level": "Advanced",
-  "layout_scope": "Complete",
+  "layout_scope": "Compact",
   "status": "Approved-With-Limits",
   "limitations": [
     "Observed profile references are not available in this fictional example."
