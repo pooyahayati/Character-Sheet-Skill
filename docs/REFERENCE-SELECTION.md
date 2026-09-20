@@ -6,7 +6,13 @@ Large photo sets must be curated before identity extraction. More images can red
 
 ## Structured record
 
-Store the result for every image using `schemas/reference-analysis.schema.json`. The record includes target-subject resolution, capture context, pose, utility, risks, duplicate cluster, identity consistency, and final selection role.
+Use staged records with `schemas/reference-analysis.schema.json`.
+
+- Primary references: full analysis.
+- Validation references: compact/delta analysis.
+- Excluded references: minimal reason/status record.
+
+Do not duplicate dozens of fields for every near-identical or excluded image.
 
 ## Multi-person images
 
@@ -19,9 +25,23 @@ Allowed target states:
 
 If the target remains `Ambiguous`, the image must be `Excluded`. Do not guess based on prominence, gender presentation, clothing, or similarity alone.
 
+## Pre-analysis normalization
+
+Before image-level assessment, normalize references using `scripts/normalize_references.py` when available.
+
+Normalization must address:
+
+- EXIF orientation;
+- decodability/corruption;
+- RGB/sRGB-compatible conversion;
+- oversized dimensions;
+- JPEG/PNG normalization;
+- exact and normalized hashes;
+- duplicate grouping.
+
 ## Per-image assessment
 
-Evaluate each image for:
+After triage, evaluate Primary images fully for:
 
 - focus;
 - effective resolution;
@@ -208,6 +228,18 @@ Image Quality
 ```
 
 Do not expose arbitrary numeric scores unless they help the user.
+
+## Mandatory pre-generation Coverage Audit
+
+Before any image generation, emit a structured Coverage Audit using `schemas/coverage-audit.schema.json`.
+
+Generation is blocked when the requested evidence level lacks required coverage.
+
+For Advanced, independent subject-left and subject-right non-frontal face evidence is required.
+
+For Full, both-side non-frontal evidence plus observed profile coverage is required according to the level contract.
+
+Do not silently reconstruct a missing required angle to avoid asking for a reference.
 
 ## Sufficiency detection
 
