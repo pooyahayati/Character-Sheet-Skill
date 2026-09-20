@@ -4,7 +4,31 @@
 
 A successful build produces structured identity data and approved visual assets, not only one flattened image.
 
-## Required output package
+## Output modes
+
+### Quick-Sheet — default
+
+Use for normal users who primarily want the visual character sheet.
+
+Minimum delivery:
+
+```text
+character-output/
+  final/
+    character-sheet.png
+    character-sheet-preview.jpg
+  panels/
+    <approved essential panels>
+  build-summary.json
+```
+
+Keep internal structured artifacts only as needed for execution; do not force all of them into the user-facing delivery.
+
+### Production-Package — explicit / reusable workflow
+
+Use when the user requests reusable machine-readable identity assets, repeated future generation, or full production provenance.
+
+## Production-Package structure
 
 ```text
 character-output/
@@ -33,7 +57,7 @@ character-output/
   build-report.json
 ```
 
-Additional PNG/PDF renders are optional derivatives of the canonical SVG.
+For Quick-Sheet, PNG and JPEG preview are required delivery formats when the environment supports raster rendering. SVG remains useful as a canonical editable composition but should not be the only user-facing deliverable. PDF is optional.
 
 ## File roles
 
