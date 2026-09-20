@@ -362,3 +362,18 @@ Every production panel has an explicit camera/lighting state.
 Neutral canonical views should prefer low-distortion camera logic and identity-neutral lighting.
 
 Diagnostic perspective views may use high/low camera angles, but those perspective effects must not be interpreted as canonical anatomy.
+
+
+## Localization and RTL
+
+The deterministic compositor supports locale and direction controls.
+
+For Persian output:
+
+- use `locale=fa`;
+- use `direction=rtl`;
+- use a font family available in the rendering environment with Persian glyph coverage;
+- right-align header and panel metadata;
+- keep numeric IDs/version strings readable.
+
+Do not rasterize text through an image generator. Labels remain deterministic compositor text.
