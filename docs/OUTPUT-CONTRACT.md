@@ -14,12 +14,16 @@ Minimum delivery:
 
 ```text
 character-output/
+  build-request.json
+  coverage-audit.json
+  preflight-plan.json
+  sheet-plan.json
+  build-summary.json
+  panels/
+    <approved essential panels>
   final/
     character-sheet.png
     character-sheet-preview.jpg
-  panels/
-    <approved essential panels>
-  build-summary.json
 ```
 
 Keep internal structured artifacts only as needed for execution; do not force all of them into the user-facing delivery.
@@ -33,6 +37,8 @@ Use when the user requests reusable machine-readable identity assets, repeated f
 ```text
 character-output/
   build-request.json
+  coverage-audit.json
+  preflight-plan.json
   reference-analysis.json
   character-profile.json
   identity-anchor-bank.json
@@ -135,3 +141,16 @@ The build report must preserve:
 - `schemas/camera-lighting-contract.schema.json`
 
 Every structured output should validate before the final package is approved.
+
+
+## Integrated package validation
+
+Before delivery, validate the complete output directory:
+
+```bash
+python scripts/validate_character_output.py character-output/
+```
+
+This cross-checks request IDs, coverage resolution, level downgrade rules, layout scope, planned panels, final files, manifest paths, and BLOCK-panel leakage.
+
+Individual JSON Schema validation is necessary but not sufficient.
