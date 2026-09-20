@@ -188,17 +188,22 @@ Detailed Windows installation and usage guide:
 Start
 → Show expected character-sheet preview
 → Normalize build request / goal / authorization / age handling
+→ Ask goal + height + authorization/output preferences
+→ Show Base / Advanced / Full reference-photo guide
 → Collect one or more photos
-→ Reference Image Selection System
-→ Automatic visual analysis
+→ Normalize orientation/encoding/size + duplicate triage
+→ Staged Reference Image Selection
+→ Mandatory Coverage Audit
+→ Request exact missing angles before generation
 → Face Identity Gate
 → Coverage analysis
 → Select Base / Advanced / Full
 → Build Canonical Character Identity
 → Build Multi-view Identity Anchor Bank
 → Build Body Proxy / Pose Readiness when needed
-→ Create Sheet Plan + Pose + Camera/Lighting Contracts
-→ Generate panels individually with nearest relevant anchors
+→ Create Sheet Plan + Preflight call/file/compute estimate
+→ Create Pose + Camera/Lighting Contracts
+→ Generate independent panel groups in parallel where supported
 → Per-panel multi-gate quality control
 → Repair / escalate failed panels
 → Cross-panel Identity Matrix
@@ -245,6 +250,14 @@ For broad, high-quality reference coverage with low uncertainty for the requeste
 Requires broad left/right/profile facial evidence. Expression, body, back-view, hands/nails, and modeling coverage become required only when the production goal needs them. Unsupported views remain explicitly Reconstructed rather than being presented as observed evidence.
 
 **Important:** the number of photos alone never determines the level. Coverage, reliability, diversity and image quality do.
+
+## Reference-photo intake guide
+
+Before asking for uploads, the Skill shows:
+
+![Base, Advanced, and Full reference-photo guide](assets/reference-photo-guide.svg)
+
+The guide tells the user which views are required or recommended for each evidence level. Missing required angles are detected before generation.
 
 ## Reference Image Selection System
 
@@ -385,6 +398,14 @@ See:
 - `docs/GENERATION-ROUTER.md`
 - `docs/PHYSICAL-PLAUSIBILITY.md`
 - `docs/VISUAL-BENCHMARK.md`
+
+## Output modes
+
+Default: `Quick-Sheet`.
+
+This delivers the visual sheet and compact summary without forcing the full machine-readable production package.
+
+Use `Production-Package` only for reusable downstream identity assets, repeated generation, or explicit structured delivery.
 
 ## Production
 
