@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0",
+  "principle": "Show this guide before requesting references. Evidence level and layout scope are separate.",
+  "levels": {
+    "Base": {
+      "required": [
+        {
+          "id": "face-front-neutral",
+          "label": "Front / near-front neutral face",
+          "instruction": "Sharp, neutral expression, eye-level, low distortion."
+        }
+      ],
+      "recommended": [
+        {
+          "id": "face-3q-best",
+          "label": "Best 3/4 face",
+          "instruction": "One clear non-frontal view."
+        },
+        {
+          "id": "smile",
+          "label": "Natural smile",
+          "instruction": "Useful if smile/expression consistency matters."
+        }
+      ],
+      "body_when_needed": [
+        {
+          "id": "body-front",
+          "label": "Full-body front",
+          "instruction": "Neutral stance, camera near chest/waist height."
+        }
+      ]
+    },
+    "Advanced": {
+      "required": [
+        {
+          "id": "face-front-neutral",
+          "label": "Front neutral face",
+          "instruction": "Sharp, neutral, low distortion."
+        },
+        {
+          "id": "face-3q-left",
+          "label": "3/4 subject-left",
+          "instruction": "Independent left non-frontal reference."
+        },
+        {
+          "id": "face-3q-right",
+          "label": "3/4 subject-right",
+          "instruction": "Independent right non-frontal reference."
+        }
+      ],
+      "recommended": [
+        {
+          "id": "profile-best",
+          "label": "At least one profile",
+          "instruction": "Clear side profile."
+        },
+        {
+          "id": "smile",
+          "label": "Smile / expression",
+          "instruction": "Neutral plus smile when expression matters."
+        }
+      ],
+      "body_when_needed": [
+        {
+          "id": "body-front",
+          "label": "Full-body front",
+          "instruction": "Neutral stance."
+        },
+        {
+          "id": "body-side",
+          "label": "Full-body side",
+          "instruction": "Neutral side view."
+        }
+      ]
+    },
+    "Full": {
+      "required": [
+        {
+          "id": "face-front-neutral",
+          "label": "Front neutral face",
+          "instruction": "Sharp and low distortion."
+        },
+        {
+          "id": "face-3q-left",
+          "label": "3/4 subject-left",
+          "instruction": "Independent reference."
+        },
+        {
+          "id": "face-3q-right",
+          "label": "3/4 subject-right",
+          "instruction": "Independent reference."
+        },
+        {
+          "id": "profile-left",
+          "label": "Profile subject-left",
+          "instruction": "Observed profile when possible."
+        },
+        {
+          "id": "profile-right",
+          "label": "Profile subject-right",
+          "instruction": "Observed opposite profile strongly recommended for robust multi-view identity."
+        }
+      ],
+      "recommended": [
+        {
+          "id": "smile-closed",
+          "label": "Closed/soft smile",
+          "instruction": "Expression calibration."
+        },
+        {
+          "id": "smile-open",
+          "label": "Open smile",
+          "instruction": "Only when dental/smile identity matters."
+        },
+        {
+          "id": "hair-detail",
+          "label": "Hairline / hair detail",
+          "instruction": "Clear hairline and parting."
+        },
+        {
+          "id": "hand-detail",
+          "label": "Hands / nails",
+          "instruction": "Both hands if hand identity matters."
+        }
+      ],
+      "body_when_needed": [
+        {
+          "id": "body-front",
+          "label": "Full-body front",
+          "instruction": "Neutral."
+        },
+        {
+          "id": "body-side-left",
+          "label": "Body side",
+          "instruction": "Low-distortion side."
+        },
+        {
+          "id": "body-back",
+          "label": "Body back",
+          "instruction": "Required for canonical back view."
+        }
+      ]
+    }
+  },
+  "capture_rules": [
+    "Prefer original non-filtered photographs.",
+    "Avoid close wide-angle selfies for canonical geometry.",
+    "Keep the full head visible for face-angle references.",
+    "For body references keep feet visible and avoid extreme low/high camera angles.",
+    "Do not mirror/flip files before upload unless noted.",
+    "More photos do not compensate for missing angles."
+  ]
+}
