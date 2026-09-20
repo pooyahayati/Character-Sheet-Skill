@@ -11,7 +11,8 @@
     "VERSION",
     "LICENSE",
     "CHANGELOG.md",
-    "package-manifest.json"
+    "package-manifest.json",
+    "requirements-runtime.txt"
   ],
   "runtime_directories": [
     "assets",
@@ -21,7 +22,8 @@
     "schemas"
   ],
   "runtime_scripts": [
-    "scripts/compose_sheet.py"
+    "scripts/compose_sheet.py",
+    "scripts/normalize_references.py"
   ],
   "excluded_from_install_package": [
     ".git",
