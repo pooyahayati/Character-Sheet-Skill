@@ -29,6 +29,9 @@ SCHEMAS = [
     "schemas/hair-dynamics.schema.json",
     "schemas/clothing-behavior.schema.json",
     "schemas/camera-lighting-contract.schema.json",
+    "schemas/coverage-audit.schema.json",
+    "schemas/preflight-plan.schema.json",
+    "schemas/quick-build-summary.schema.json",
 ]
 
 EXAMPLES = [
@@ -50,6 +53,9 @@ EXAMPLES = [
     ("examples/sample-hair-dynamics.json", "schemas/hair-dynamics.schema.json"),
     ("examples/sample-clothing-behavior.json", "schemas/clothing-behavior.schema.json"),
     ("examples/sample-camera-lighting-contract.json", "schemas/camera-lighting-contract.schema.json"),
+    ("examples/sample-coverage-audit.json", "schemas/coverage-audit.schema.json"),
+    ("examples/sample-preflight-plan.json", "schemas/preflight-plan.schema.json"),
+    ("examples/sample-quick-build-summary.json", "schemas/quick-build-summary.schema.json"),
 ]
 
 
@@ -107,6 +113,54 @@ def validate_level_contract():
         raise AssertionError("Advanced body output must remain goal-conditional")
 
 
+def validate_staged_reference_analysis():
+    analysis = load("examples/sample-reference-analysis.json")
+    refs = analysis["references"]
+    counts = {
+        "Full": sum(r["analysis_depth"] == "Full" for r in refs),
+        "Compact": sum(r["analysis_depth"] == "Compact" for r in refs),
+        "Excluded-Minimal": sum(r["analysis_depth"] == "Excluded-Minimal" for r in refs),
+    }
+    summary = analysis["set_summary"]
+    if summary["total"] != len(refs):
+        raise AssertionError("Reference set_summary.total mismatch")
+    if summary["full_analysis"] != counts["Full"]:
+        raise AssertionError("Reference full_analysis count mismatch")
+    if summary["compact_analysis"] != counts["Compact"]:
+        raise AssertionError("Reference compact_analysis count mismatch")
+    if summary["minimal_excluded"] != counts["Excluded-Minimal"]:
+        raise AssertionError("Reference minimal_excluded count mismatch")
+    for r in refs:
+        role = r["selection"]["role"]
+        depth = r["analysis_depth"]
+        if role == "Primary" and depth != "Full":
+            raise AssertionError(f"Primary reference must use Full analysis: {r['reference_id']}")
+        if role == "Excluded" and depth != "Excluded-Minimal":
+            raise AssertionError(f"Excluded reference must use minimal analysis: {r['reference_id']}")
+
+
+def validate_coverage_and_preflight():
+    request = load("examples/sample-build-request.json")
+    coverage = load("examples/sample-coverage-audit.json")
+    preflight = load("examples/sample-preflight-plan.json")
+    if coverage["request_id"] != request["request_id"] or preflight["request_id"] != request["request_id"]:
+        raise AssertionError("Coverage/preflight request_id mismatch")
+    if coverage["requested_level"] != request["requested_level"]:
+        raise AssertionError("Coverage requested_level must match build request")
+    if coverage["layout_scope"] != request["layout_scope"]:
+        raise AssertionError("Coverage layout_scope must match build request")
+    if preflight["output_mode"] != request["output_mode"]:
+        raise AssertionError("Preflight output_mode must match build request")
+    if preflight["budget_mode"] != request["budget_mode"]:
+        raise AssertionError("Preflight budget_mode must match build request")
+    if coverage["blocking_gaps"] and coverage["generation_allowed"]:
+        raise AssertionError("Coverage with blocking gaps cannot allow generation")
+    if preflight["estimated_generation_calls"]["min"] > preflight["estimated_generation_calls"]["max"]:
+        raise AssertionError("Invalid generation call estimate range")
+    if preflight["estimated_output_files"]["min"] > preflight["estimated_output_files"]["max"]:
+        raise AssertionError("Invalid output file estimate range")
+
+
 def validate_reference_links():
     analysis = load("examples/sample-reference-analysis.json")
     profile = load("examples/sample-character-profile.json")
@@ -152,6 +206,13 @@ def validate_skill_workflow():
     required_phrase = "## 2. Normalize the build request"
     if required_phrase not in text:
         raise AssertionError("SKILL must normalize build request before photo intake")
+
+    if "assets/reference-photo-guide.svg" not in text:
+        raise AssertionError("SKILL must require the illustrated reference-photo guide")
+    if "coverage-audit.json" not in text:
+        raise AssertionError("SKILL must require a pre-generation coverage audit")
+    if "subject height" not in text.lower():
+        raise AssertionError("SKILL must collect subject height in first-turn intake")
 
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     if "Normalize build request / goal / authorization / age handling" not in readme:
@@ -330,6 +391,8 @@ def main():
     validate_schema_files()
     validate_examples()
     validate_level_contract()
+    validate_staged_reference_analysis()
+    validate_coverage_and_preflight()
     validate_reference_links()
     validate_scenarios()
     validate_skill_workflow()
