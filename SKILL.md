@@ -26,11 +26,16 @@ Use `docs/GATE-CONTRACT.md` as the decision contract.
 
 ## 1. Start with an expectation preview
 
-Before intake, show or generate a concise example of the expected character-sheet structure so the user understands the target output.
+Before intake, show two things:
+
+1. the expected character-sheet output structure;
+2. the illustrated reference-photo guide in `assets/reference-photo-guide.svg`.
+
+The reference-photo guide is mandatory. For `Auto`, show the Base / Advanced / Full comparison. For an explicit level, emphasize that level while still explaining what additional coverage unlocks higher confidence.
 
 Follow the visual hierarchy in `docs/VISUAL-STANDARD.md` and the level definitions in `docs/LEVEL-SPECS.md`. The preview should compare Base / Advanced / Full while making clear that facial identity fidelity does not decrease in lower levels.
 
-Use `assets/character-sheet-levels-example.svg` as the bundled default preview when a static reference is appropriate. If the environment supports generating a preview dynamically, it may generate an equivalent fictional example that follows the same layout and evidence rules.
+Use `assets/character-sheet-levels-example.svg` as the bundled output preview and `assets/reference-photo-guide.svg` as the bundled intake/reference preview when a static reference is appropriate. If the environment supports generating a preview dynamically, it may generate an equivalent fictional example that follows the same layout and evidence rules.
 
 The preview should demonstrate, when applicable:
 
@@ -50,14 +55,23 @@ The preview is illustrative, not a promise that unsupported views are factual.
 
 Before choosing a level, normalize the user's actual production goal using `schemas/build-request.schema.json` and `docs/REQUEST-CONTRACT.md`.
 
+Collect the first-turn intake in one compact step before deep image analysis.
+
 Record:
 
 - goal;
-- requested level: Auto / Base / Advanced / Full;
+- requested evidence level: Auto / Base / Advanced / Full;
+- layout scope: Auto / Compact / Complete;
+- output mode: Quick-Sheet / Production-Package;
+- budget mode: Economy / Balanced / Maximum-Fidelity;
+- subject height in centimeters when known;
+- if height is unknown, explicitly ask once and record `Asked-Unknown` rather than inferring it;
 - details required for the production task;
 - intended appearance epoch when relevant;
 - subject authorization;
 - age handling.
+
+Do not infer height from ordinary photographs. For body or pose-ready work, ask for height at the beginning because it materially improves scale consistency.
 
 Do not automatically choose the highest level available. If level is Auto, choose the smallest level that satisfies the production goal with adequate evidence.
 
@@ -65,9 +79,21 @@ For a reusable real-person identity package, follow `docs/PRIVACY-CONSENT.md`. I
 
 Do not infer adulthood from appearance. Body edits or presentation involving sexualized secondary characteristics require `Adult-Confirmed`; otherwise follow the conservative restrictions in `docs/BODY-REVISION-GUARD.md`.
 
-## 3. Accept one or many real photographs
+## 3. Accept and normalize one or many real photographs
 
 Minimum input: one usable photograph.
+
+Before reference scoring or generation, normalize source files using `scripts/normalize_references.py` when executable tools are available:
+
+- apply EXIF orientation;
+- convert to a standard RGB/sRGB-compatible representation;
+- verify image decoding;
+- resize excessively large files to a controlled maximum dimension;
+- normalize JPEG/PNG handling;
+- compute exact and normalized hashes;
+- flag corrupt or duplicate inputs.
+
+If script execution is unavailable, perform the same checks conceptually and do not send obviously corrupt/misoriented source files to generation.
 
 Do not assume more photos always improve the result. Large collections must pass the Reference Image Selection System before identity extraction.
 
@@ -75,7 +101,14 @@ Do not assume more photos always improve the result. Large collections must pass
 
 Represent per-image analysis using `schemas/reference-analysis.schema.json`.
 
-For every input image, assess:
+Use staged analysis to control cost.
+
+1. Triage all images cheaply for decodability, duplicate cluster, gross view, quality, and exclusion risk.
+2. Run full feature-level analysis only on Primary references.
+3. Use compact/delta analysis for Validation references.
+4. Keep Excluded references minimal: reason + duplicate/outlier/corruption status.
+
+For fully analyzed Primary images, assess:
 
 - focus and effective resolution;
 - face pixel coverage;
@@ -111,6 +144,27 @@ Build:
 Never weight a feature merely by photo count. Weight by independent coverage and reliability.
 
 If an image contains multiple people, do not guess the target. The target must be Single-Subject, User-Selected, or explicitly Resolved-by-Context. Ambiguous group images are Excluded from identity extraction until resolved.
+
+### Coverage audit — mandatory before generation
+
+After reference selection, create `coverage-audit.json` using `schemas/coverage-audit.schema.json`.
+
+The audit must determine:
+
+- requested level;
+- highest evidence-supported level;
+- layout scope;
+- face-angle coverage;
+- expression coverage;
+- body coverage;
+- hands/feet coverage;
+- blocking gaps;
+- non-blocking gaps;
+- exact targeted reference requests.
+
+No image generation may start while `generation_allowed=false`.
+
+If an explicit Base / Advanced / Full target is missing required evidence, ask for the smallest targeted reference set before generating reconstructed substitutes.
 
 ### Coverage maps
 
@@ -414,9 +468,18 @@ Body edits must follow `docs/BODY-REVISION-GUARD.md` and must not silently modif
 
 Record previous value, new value, revision request, protected invariants, and post-edit QC.
 
-## 10. Select the character-sheet level
+## 10. Select evidence level and layout scope
 
 Use `config/level-contract.json` as the normative level definition.
+
+Choose the evidence level from the build request and Coverage Audit.
+
+Keep two concepts independent:
+
+- `Evidence Level`: Base / Advanced / Full — how strongly the source references support identity claims;
+- `Layout Scope`: Compact / Complete — how broad the visual board is.
+
+A Complete layout may contain reconstructed/limited panels while still being Advanced evidence. Never call it Full merely because the board looks complete.
 
 Choose the level from the build request and evidence:
 
@@ -434,9 +497,11 @@ Only lock observed/cross-validated facts. Mark unsupported generated views as `R
 
 ### Advanced
 
-Use when references provide broader face-angle and body/detail coverage.
+Use when references provide broader multi-angle coverage.
 
-Prefer real multi-angle facial evidence and stronger profile support.
+Require independent subject-left and subject-right non-frontal facial references for multi-angle approval. Do not reconstruct the missing opposite 3/4 as if Advanced evidence were complete.
+
+Prefer stronger observed profile support.
 
 If smile consistency is important, require at least one useful smile reference before treating smile behavior as calibrated.
 
@@ -448,9 +513,24 @@ Full means lower uncertainty and broader evidence, not merely a larger sheet.
 
 Optional details such as hands/nails do not automatically block Full when they are irrelevant to the requested use. Keep them Unverified or request a targeted reference only when they are required by the user or production goal.
 
-## 11. Create the Sheet Plan
+## 11. Create the preflight plan and Sheet Plan
 
-Plan only the panels supported or explicitly reconstructed by the available evidence.
+Before generation, create `preflight-plan.json` using `schemas/preflight-plan.schema.json`.
+
+Tell the user, compactly:
+
+- planned panel count;
+- estimated generation-call range;
+- estimated output-file range;
+- relative compute level;
+- repair budget;
+- which panels can run in parallel;
+- wall-clock estimate only when backed by measured backend history;
+- monetary estimate only when backend pricing is actually available.
+
+Do not fabricate time or currency estimates.
+
+Then plan only the panels supported or explicitly reconstructed by the available evidence.
 
 Use `examples/sheet-layout-spec.json` as the machine-readable layout baseline. Keep the canonical face visually dominant, neutral body views ahead of modeling poses, and evidence-state labeling available for reconstructed/estimated content.
 
@@ -496,7 +576,9 @@ Follow `docs/PRODUCTION-PIPELINE.md`.
 
 Do not generate the entire multi-panel character sheet in one image-model call.
 
-Production order must be panel-based:
+Production order must be panel-based and dependency-aware. Independent approved panel groups should be generated in parallel when the execution environment supports parallel calls.
+
+Production order:
 
 1. establish and approve a Multi-view Identity Anchor Bank using `schemas/identity-anchor-bank.schema.json`;
 2. select the nearest relevant approved anchor(s) for each target view instead of always forcing a frontal anchor;
@@ -570,7 +652,7 @@ Critical local failures override a strong global score.
 
 When a panel fails, repair that panel rather than regenerating the entire sheet.
 
-Use the repair budget in `docs/PRODUCTION-PIPELINE.md`: initial attempt plus at most 2 targeted repair attempts. Repeated critical failure becomes `BLOCK` and requires better evidence or a different backend strategy.
+Use the repair budget in `docs/PRODUCTION-PIPELINE.md`. Respect the user's budget mode; do not automatically spend the maximum repair budget in Economy/Quick-Sheet mode. Repeated critical failure becomes `BLOCK` and requires better evidence or a different backend strategy.
 
 Use the Validation Pool to compare results against references not used as primary generation anchors.
 
