@@ -1,3 +1,18 @@
+# Assessment method and confidence discipline
+
+Every QC gate must record how it was assessed:
+
+- `Automated-Metric`
+- `Human-Review`
+- `Model-Visual-Review`
+- `Hybrid`
+
+Do not present a visual-only judgment as if it were an objective measured score.
+
+When no calibrated metric or human confirmation exists, use `Model-Visual-Review` and state relevant limitations.
+
+A `PASS` still means the named gate passed under its recorded assessment method; it does not imply laboratory-grade certainty.
+
 # Quality Control
 
 ## Principle
