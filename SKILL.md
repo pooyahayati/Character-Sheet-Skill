@@ -166,6 +166,27 @@ No image generation may start while `generation_allowed=false`.
 
 If an explicit Base / Advanced / Full target is missing required evidence, ask for the smallest targeted reference set before generating reconstructed substitutes.
 
+### Coverage audit — mandatory before generation
+
+After reference selection, create `coverage-audit.json` using `schemas/coverage-audit.schema.json`.
+
+The audit must determine:
+
+- requested level;
+- highest evidence-supported level;
+- layout scope;
+- face-angle coverage;
+- expression coverage;
+- body coverage;
+- hands/feet coverage;
+- blocking gaps;
+- non-blocking gaps;
+- exact targeted reference requests.
+
+No image generation may start while `generation_allowed=false`.
+
+If an explicit Base / Advanced / Full target is missing required evidence, ask for the smallest targeted reference set before generating reconstructed substitutes.
+
 ### Coverage maps
 
 Build internal coverage maps for:
@@ -471,6 +492,15 @@ Record previous value, new value, revision request, protected invariants, and po
 ## 10. Select evidence level and layout scope
 
 Use `config/level-contract.json` as the normative level definition.
+
+Choose the evidence level from the build request and Coverage Audit.
+
+Keep two concepts independent:
+
+- `Evidence Level`: Base / Advanced / Full — how strongly the source references support identity claims;
+- `Layout Scope`: Compact / Complete — how broad the visual board is.
+
+A Complete layout may contain reconstructed/limited panels while still being Advanced evidence. Never call it Full merely because the board looks complete.
 
 Choose the evidence level from the build request and Coverage Audit.
 
