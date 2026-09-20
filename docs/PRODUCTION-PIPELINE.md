@@ -216,11 +216,20 @@ Input:
 
 `sheet-manifest.json`
 
-Output:
+Supported deterministic outputs:
 
-a self-contained `SVG` board.
+- SVG;
+- PNG;
+- JPEG preview;
+- PDF.
 
-A renderer may convert the SVG to PNG/PDF later, but the composition itself must remain deterministic.
+Use `scripts/compose_sheet.py`.
+
+For SVG, `--image-mode linked` produces a smaller file and `--image-mode embed` produces a portable self-contained file. Embedded raster panels are downscaled/compressed to avoid unnecessarily huge SVGs.
+
+For Persian/Arabic layouts, set locale/direction (for example `--locale fa --direction rtl`).
+
+Quick-Sheet should normally deliver PNG + JPEG preview.
 
 ## Final sheet QC
 
