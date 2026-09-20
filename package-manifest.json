@@ -24,7 +24,9 @@
   "runtime_scripts": [
     "scripts/compose_sheet.py",
     "scripts/normalize_references.py",
-    "scripts/validate_character_output.py"
+    "scripts/validate_character_output.py",
+    "scripts/audit_coverage.py",
+    "scripts/plan_preflight.py"
   ],
   "excluded_from_install_package": [
     ".git",
