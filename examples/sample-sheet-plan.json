@@ -1,0 +1,135 @@
+{
+  "request_id": "REQ-DEMO-001",
+  "character_id": "CS-DEMO-001",
+  "selected_level": "Advanced",
+  "layout_scope": "Compact",
+  "pose_readiness_target": "Basic",
+  "panels": [
+    {
+      "panel_id": "canonical-face",
+      "panel_type": "Canonical-Face",
+      "required": true,
+      "evidence_expectation": "Observed-Preferred",
+      "source_reference_ids": [
+        "ref-front"
+      ],
+      "reconstruction_allowed": false,
+      "pose_contract_file": null,
+      "generation_route": "R1-Identity-Reference",
+      "pose_difficulty": "Not-Applicable",
+      "identity_anchor_ids": [
+        "anchor-front"
+      ],
+      "camera_lighting_contract_file": "sample-camera-lighting-contract.json",
+      "clothing_behavior_file": null
+    },
+    {
+      "panel_id": "face-three-quarter-left",
+      "panel_type": "Face-Three-Quarter-Left",
+      "required": true,
+      "evidence_expectation": "Observed-Preferred",
+      "source_reference_ids": [
+        "ref-three-quarter"
+      ],
+      "reconstruction_allowed": false,
+      "pose_contract_file": null,
+      "generation_route": "R1-Identity-Reference",
+      "pose_difficulty": "Not-Applicable",
+      "identity_anchor_ids": [
+        "anchor-3q-left"
+      ],
+      "camera_lighting_contract_file": "sample-camera-lighting-contract.json",
+      "clothing_behavior_file": null
+    },
+    {
+      "panel_id": "face-three-quarter-right",
+      "panel_type": "Face-Three-Quarter-Right",
+      "required": true,
+      "evidence_expectation": "Observed-Preferred",
+      "source_reference_ids": [
+        "ref-body-side"
+      ],
+      "reconstruction_allowed": false,
+      "pose_contract_file": null,
+      "generation_route": "R1-Identity-Reference",
+      "pose_difficulty": "Not-Applicable",
+      "identity_anchor_ids": [
+        "anchor-front"
+      ],
+      "camera_lighting_contract_file": "sample-camera-lighting-contract.json",
+      "clothing_behavior_file": null
+    },
+    {
+      "panel_id": "eye-detail",
+      "panel_type": "Eye-Detail",
+      "required": true,
+      "evidence_expectation": "Observed-Preferred",
+      "source_reference_ids": [
+        "ref-eye-closeup"
+      ],
+      "reconstruction_allowed": false,
+      "pose_contract_file": null,
+      "generation_route": "R4-Identity-Preserving-Local-Edit",
+      "pose_difficulty": "Not-Applicable",
+      "identity_anchor_ids": [
+        "anchor-eye"
+      ],
+      "camera_lighting_contract_file": null,
+      "clothing_behavior_file": null
+    },
+    {
+      "panel_id": "mouth-detail",
+      "panel_type": "Mouth-Lip-Detail",
+      "required": true,
+      "evidence_expectation": "Observed-Preferred",
+      "source_reference_ids": [
+        "ref-front"
+      ],
+      "reconstruction_allowed": false,
+      "pose_contract_file": null,
+      "generation_route": "R4-Identity-Preserving-Local-Edit",
+      "pose_difficulty": "Not-Applicable",
+      "identity_anchor_ids": [
+        "anchor-front"
+      ],
+      "camera_lighting_contract_file": null,
+      "clothing_behavior_file": null
+    },
+    {
+      "panel_id": "hair-detail",
+      "panel_type": "Hair",
+      "required": true,
+      "evidence_expectation": "Observed-Preferred",
+      "source_reference_ids": [
+        "ref-front"
+      ],
+      "reconstruction_allowed": false,
+      "pose_contract_file": null,
+      "generation_route": "R4-Identity-Preserving-Local-Edit",
+      "pose_difficulty": "Not-Applicable",
+      "identity_anchor_ids": [
+        "anchor-front"
+      ],
+      "camera_lighting_contract_file": null,
+      "clothing_behavior_file": null
+    },
+    {
+      "panel_id": "body-front",
+      "panel_type": "Body-Front",
+      "required": true,
+      "evidence_expectation": "Observed-Preferred",
+      "source_reference_ids": [
+        "ref-body-front"
+      ],
+      "reconstruction_allowed": false,
+      "pose_contract_file": null,
+      "generation_route": "R2-Identity-Plus-2D-Pose",
+      "pose_difficulty": "P0-Neutral",
+      "identity_anchor_ids": [
+        "anchor-front"
+      ],
+      "camera_lighting_contract_file": "sample-camera-lighting-contract.json",
+      "clothing_behavior_file": "sample-clothing-behavior.json"
+    }
+  ]
+}
