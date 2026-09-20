@@ -577,3 +577,108 @@ Any future change to the skill should preserve these properties:
 - do not lock wide-angle nose/head/leg distortion into canonical geometry.
 
 **Pass condition:** camera geometry is separated from character geometry.
+
+
+---
+
+## S38 — Height is collected at intake
+
+**Input:** new body/character-sheet request with no stated height.
+
+**Expected:** ask once for subject height before deep image analysis; store User-Provided or Asked-Unknown; never infer exact height from ordinary photographs.
+
+---
+
+## S39 — Visual reference guide is shown first
+
+**Input:** new Base/Advanced/Full/Auto build.
+
+**Expected:** show the illustrated Base / Advanced / Full reference-photo guide before requesting uploads.
+
+---
+
+## S40 — Advanced is missing the opposite 3/4
+
+**Input:** front + only subject-left non-frontal reference; Advanced requested.
+
+**Expected:** Coverage Audit blocks generation and asks specifically for subject-right 3/4. Do not silently reconstruct the missing side as complete Advanced evidence.
+
+---
+
+## S41 — Complete layout lacks profiles
+
+**Input:** Advanced evidence supports the identity but Layout Scope is Complete and both profiles are missing.
+
+**Expected:** Evidence Level may remain Advanced, but Complete layout is blocked pending profile references or explicit user acceptance of reconstructed panels.
+
+---
+
+## S42 — Quick Sheet is default
+
+**Input:** ordinary request for a character sheet with no machine-readable package request.
+
+**Expected:** default to Quick-Sheet; do not force the full Production-Package.
+
+---
+
+## S43 — Input normalization
+
+**Input:** rotated EXIF image, oversized image, duplicate file and corrupt image.
+
+**Expected:** correct orientation, normalize/resize, detect duplicate hashes, and reject/flag corrupt input before generation.
+
+---
+
+## S44 — Explicit level downgrade
+
+**Input:** Full requested; evidence supports only Advanced.
+
+**Expected:** do not start generation as Full and downgrade later. Ask for missing references or obtain explicit acceptance of Advanced before generation.
+
+---
+
+## S45 — Preflight execution estimate
+
+**Input:** approved coverage and sheet plan.
+
+**Expected:** state planned panels, generation-call range, output-file range, relative compute and repair budget before generation. Time/currency estimates require real backend data.
+
+---
+
+## S46 — Large-set staged analysis
+
+**Input:** 20+ photos with duplicates and low-value references.
+
+**Expected:** Full analysis only for Primary references, Compact analysis for Validation, Minimal records for Excluded.
+
+---
+
+## S47 — Multi-format composition
+
+**Input:** approved manifest.
+
+**Expected:** compositor can produce SVG, PNG, JPEG and PDF; linked SVG is available for lower size; RTL/locale can be selected.
+
+---
+
+## S48 — Integrated output validation
+
+**Input:** completed character-output directory.
+
+**Expected:** validate cross-file IDs, coverage resolution, selected level, layout scope, file existence and prevent BLOCK panels entering final output.
+
+---
+
+## S49 — QC assessment method
+
+**Input:** visual identity gate without calibrated metric.
+
+**Expected:** record Model-Visual-Review or Human-Review; do not imply an objective measured score.
+
+---
+
+## S50 — Parallel independent panels
+
+**Input:** several approved independent face/detail/body panels.
+
+**Expected:** group independent work for parallel execution where supported while respecting anchor dependencies.
