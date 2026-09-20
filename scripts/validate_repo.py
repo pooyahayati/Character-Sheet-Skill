@@ -94,6 +94,7 @@ def validate_examples():
 
 def validate_level_contract():
     contract = load("config/level-contract.json")
+    layout_scope = load("config/layout-scope-contract.json")
     layout = load("examples/sheet-layout-spec.json")
 
     if layout.get("level_contract") != "../config/level-contract.json":
@@ -111,6 +112,13 @@ def validate_level_contract():
         raise AssertionError("Base must not require a three-quarter panel")
     if "full_body_front" in contract["levels"]["Advanced"]["required_sections"]:
         raise AssertionError("Advanced body output must remain goal-conditional")
+    complete_faces = set(layout_scope["scopes"]["Complete"]["required_face_panels"])
+    expected_complete = {
+        "Canonical-Face","Face-Front","Face-Three-Quarter-Left","Face-Three-Quarter-Right",
+        "Face-Profile-Left","Face-Profile-Right","Eye-Detail","Mouth-Lip-Detail","Hair"
+    }
+    if not expected_complete.issubset(complete_faces):
+        raise AssertionError("Complete layout must include the full canonical face-angle set")
 
 
 def validate_staged_reference_analysis():
@@ -351,6 +359,7 @@ def validate_inline_output_examples():
         "request_id": "REQ-DEMO-001",
         "character_id": "CS-DEMO-001",
         "selected_level": "Base",
+        "layout_scope": "Compact",
         "panels": [{
             "panel_id": "canonical-face",
             "panel_type": "Canonical-Face",
@@ -377,7 +386,8 @@ def validate_inline_output_examples():
         "panel_results": [{
             "panel_id": "canonical-face",
             "gate_result": "PASS",
-            "included_in_final": True
+            "included_in_final": True,
+            "assessment_method": "Model-Visual-Review"
         }],
         "omitted_panels": [],
         "limitations": ["Example validation report."],
