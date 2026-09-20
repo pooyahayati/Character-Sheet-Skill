@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/preflight-plan.schema.json",
+  "title": "Preflight Execution Plan",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "request_id",
+    "output_mode",
+    "budget_mode",
+    "planned_panels",
+    "estimated_generation_calls",
+    "estimated_output_files",
+    "relative_compute",
+    "parallel_groups",
+    "wall_clock_estimate",
+    "cost_estimate",
+    "repair_budget"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "output_mode": {
+      "enum": [
+        "Quick-Sheet",
+        "Production-Package"
+      ]
+    },
+    "budget_mode": {
+      "enum": [
+        "Economy",
+        "Balanced",
+        "Maximum-Fidelity"
+      ]
+    },
+    "planned_panels": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "estimated_generation_calls": {
+      "type": "object",
+      "required": [
+        "min",
+        "max"
+      ],
+      "properties": {
+        "min": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "estimated_output_files": {
+      "type": "object",
+      "required": [
+        "min",
+        "max"
+      ],
+      "properties": {
+        "min": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "relative_compute": {
+      "enum": [
+        "Low",
+        "Medium",
+        "High",
+        "Very-High"
+      ]
+    },
+    "parallel_groups": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1
+      }
+    },
+    "wall_clock_estimate": {
+      "type": "object",
+      "required": [
+        "status",
+        "value"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "Estimated-From-History",
+            "Unavailable"
+          ]
+        },
+        "value": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "cost_estimate": {
+      "type": "object",
+      "required": [
+        "status",
+        "value"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "Estimated-From-Backend-Pricing",
+            "Relative-Only",
+            "Unavailable"
+          ]
+        },
+        "value": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "repair_budget": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 6
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}
