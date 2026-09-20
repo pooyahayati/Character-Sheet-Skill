@@ -1,5 +1,12 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
+  "set_summary": {
+    "total": 8,
+    "full_analysis": 3,
+    "compact_analysis": 3,
+    "minimal_excluded": 2,
+    "duplicate_clusters": 1
+  },
   "references": [
     {
       "reference_id": "ref-front",
@@ -59,6 +66,15 @@
         "reasons": [
           "Strong neutral frontal face reference."
         ]
+      },
+      "analysis_depth": "Full",
+      "normalization": {
+        "status": "Source-Usable",
+        "orientation_checked": true,
+        "decode_checked": true,
+        "source_sha256": null,
+        "normalized_sha256": null,
+        "normalized_file": null
       }
     },
     {
@@ -71,46 +87,16 @@
         "subject_index": null,
         "notes": "Target subject must be identified before use."
       },
-      "capture_context": {
-        "mirror_state": "Unknown",
-        "appearance_epoch_id": null,
-        "recency_relevance": "Unknown",
-        "camera_hint": "Unknown",
-        "lighting_hint": "Unknown"
+      "analysis_depth": "Excluded-Minimal",
+      "normalization": {
+        "status": "Source-Usable",
+        "orientation_checked": true,
+        "decode_checked": true,
+        "source_sha256": null,
+        "normalized_sha256": null,
+        "normalized_file": null
       },
-      "quality": {
-        "focus": "Good",
-        "exposure": "Good",
-        "effective_resolution": "Good",
-        "face_pixel_coverage": "Limited",
-        "motion_blur": "None",
-        "occlusion": "Low"
-      },
-      "pose": {
-        "face_view": "Other",
-        "body_view": "Dynamic"
-      },
-      "expression": "Other",
-      "utility": {
-        "face_geometry": "Limited",
-        "eyes": "Poor",
-        "nose": "Limited",
-        "mouth_lips": "Limited",
-        "smile": "Limited",
-        "hair_hairline": "Limited",
-        "body_geometry": "Limited",
-        "hands_nails": "Poor",
-        "distinctive_features": "Poor",
-        "feet": "Poor",
-        "skin_identity": "Limited",
-        "hair_dynamics": "Limited"
-      },
-      "risks": {
-        "lens_perspective_distortion": "Low",
-        "beauty_filter": "Unknown",
-        "heavy_retouching": "Unknown",
-        "suspect_synthetic": "Low"
-      },
+      "exclusion_reason": "Target subject is ambiguous.",
       "duplicate_cluster_id": null,
       "identity_consistency": "Unknown",
       "selection": {
@@ -177,6 +163,15 @@
         "reasons": [
           "Independent non-frontal face coverage."
         ]
+      },
+      "analysis_depth": "Full",
+      "normalization": {
+        "status": "Source-Usable",
+        "orientation_checked": true,
+        "decode_checked": true,
+        "source_sha256": null,
+        "normalized_sha256": null,
+        "normalized_file": null
       }
     },
     {
@@ -236,6 +231,15 @@
         "reasons": [
           "Neutral body-front geometry."
         ]
+      },
+      "analysis_depth": "Full",
+      "normalization": {
+        "status": "Source-Usable",
+        "orientation_checked": true,
+        "decode_checked": true,
+        "source_sha256": null,
+        "normalized_sha256": null,
+        "normalized_file": null
       }
     },
     {
@@ -248,46 +252,32 @@
         "subject_index": 0,
         "notes": "Only visible person."
       },
-      "capture_context": {
-        "mirror_state": "Not-Mirrored",
-        "appearance_epoch_id": "current",
-        "recency_relevance": "Current",
-        "camera_hint": "Unknown",
-        "lighting_hint": "Unknown"
-      },
-      "quality": {
-        "focus": "Good",
-        "exposure": "Good",
-        "effective_resolution": "Good",
-        "face_pixel_coverage": "Good",
-        "motion_blur": "None",
-        "occlusion": "None"
+      "analysis_depth": "Compact",
+      "normalization": {
+        "status": "Source-Usable",
+        "orientation_checked": true,
+        "decode_checked": true,
+        "source_sha256": null,
+        "normalized_sha256": null,
+        "normalized_file": null
       },
       "pose": {
         "face_view": "Front",
         "body_view": "None"
       },
       "expression": "Soft-Smile",
-      "utility": {
-        "face_geometry": "Good",
-        "eyes": "Good",
-        "nose": "Good",
-        "mouth_lips": "Good",
-        "smile": "Good",
-        "hair_hairline": "Good",
-        "body_geometry": "Poor",
-        "hands_nails": "Poor",
-        "distinctive_features": "Good",
-        "feet": "Poor",
-        "skin_identity": "Limited",
-        "hair_dynamics": "Limited"
-      },
-      "risks": {
-        "lens_perspective_distortion": "Low",
-        "beauty_filter": "None",
-        "heavy_retouching": "None",
-        "suspect_synthetic": "None"
-      },
+      "utility_summary": [
+        "face_geometry",
+        "eyes",
+        "nose",
+        "mouth_lips",
+        "smile",
+        "hair_hairline",
+        "distinctive_features"
+      ],
+      "differences": [
+        "Independent smile validation."
+      ],
       "duplicate_cluster_id": null,
       "identity_consistency": "Consistent",
       "selection": {
@@ -307,46 +297,32 @@
         "subject_index": 0,
         "notes": "Only visible person."
       },
-      "capture_context": {
-        "mirror_state": "Not-Mirrored",
-        "appearance_epoch_id": "current",
-        "recency_relevance": "Current",
-        "camera_hint": "Unknown",
-        "lighting_hint": "Unknown"
-      },
-      "quality": {
-        "focus": "Good",
-        "exposure": "Good",
-        "effective_resolution": "Good",
-        "face_pixel_coverage": "Limited",
-        "motion_blur": "None",
-        "occlusion": "None"
+      "analysis_depth": "Compact",
+      "normalization": {
+        "status": "Source-Usable",
+        "orientation_checked": true,
+        "decode_checked": true,
+        "source_sha256": null,
+        "normalized_sha256": null,
+        "normalized_file": null
       },
       "pose": {
         "face_view": "Three-Quarter-Subject-Right",
         "body_view": "Side-Subject-Right"
       },
       "expression": "Neutral",
-      "utility": {
-        "face_geometry": "Good",
-        "eyes": "Good",
-        "nose": "Good",
-        "mouth_lips": "Good",
-        "smile": "Limited",
-        "hair_hairline": "Good",
-        "body_geometry": "Good",
-        "hands_nails": "Poor",
-        "distinctive_features": "Good",
-        "feet": "Poor",
-        "skin_identity": "Limited",
-        "hair_dynamics": "Limited"
-      },
-      "risks": {
-        "lens_perspective_distortion": "Low",
-        "beauty_filter": "None",
-        "heavy_retouching": "None",
-        "suspect_synthetic": "None"
-      },
+      "utility_summary": [
+        "face_geometry",
+        "eyes",
+        "nose",
+        "mouth_lips",
+        "hair_hairline",
+        "body_geometry",
+        "distinctive_features"
+      ],
+      "differences": [
+        "Body side validation."
+      ],
       "duplicate_cluster_id": null,
       "identity_consistency": "Consistent",
       "selection": {
@@ -366,46 +342,27 @@
         "subject_index": 0,
         "notes": "Only visible person."
       },
-      "capture_context": {
-        "mirror_state": "Not-Mirrored",
-        "appearance_epoch_id": "current",
-        "recency_relevance": "Current",
-        "camera_hint": "Unknown",
-        "lighting_hint": "Unknown"
-      },
-      "quality": {
-        "focus": "Excellent",
-        "exposure": "Good",
-        "effective_resolution": "Excellent",
-        "face_pixel_coverage": "Excellent",
-        "motion_blur": "None",
-        "occlusion": "None"
+      "analysis_depth": "Compact",
+      "normalization": {
+        "status": "Source-Usable",
+        "orientation_checked": true,
+        "decode_checked": true,
+        "source_sha256": null,
+        "normalized_sha256": null,
+        "normalized_file": null
       },
       "pose": {
         "face_view": "Front",
         "body_view": "None"
       },
       "expression": "Neutral",
-      "utility": {
-        "face_geometry": "Limited",
-        "eyes": "Excellent",
-        "nose": "Limited",
-        "mouth_lips": "Poor",
-        "smile": "Poor",
-        "hair_hairline": "Limited",
-        "body_geometry": "Poor",
-        "hands_nails": "Poor",
-        "distinctive_features": "Good",
-        "feet": "Poor",
-        "skin_identity": "Limited",
-        "hair_dynamics": "Limited"
-      },
-      "risks": {
-        "lens_perspective_distortion": "Low",
-        "beauty_filter": "None",
-        "heavy_retouching": "None",
-        "suspect_synthetic": "None"
-      },
+      "utility_summary": [
+        "eyes",
+        "distinctive_features"
+      ],
+      "differences": [
+        "High-detail eye reference."
+      ],
       "duplicate_cluster_id": null,
       "identity_consistency": "Consistent",
       "selection": {
@@ -425,46 +382,16 @@
         "subject_index": 0,
         "notes": "Only visible person."
       },
-      "capture_context": {
-        "mirror_state": "Not-Mirrored",
-        "appearance_epoch_id": "current",
-        "recency_relevance": "Current",
-        "camera_hint": "Unknown",
-        "lighting_hint": "Unknown"
+      "analysis_depth": "Excluded-Minimal",
+      "normalization": {
+        "status": "Source-Usable",
+        "orientation_checked": true,
+        "decode_checked": true,
+        "source_sha256": null,
+        "normalized_sha256": null,
+        "normalized_file": null
       },
-      "quality": {
-        "focus": "Limited",
-        "exposure": "Good",
-        "effective_resolution": "Limited",
-        "face_pixel_coverage": "Good",
-        "motion_blur": "Low",
-        "occlusion": "None"
-      },
-      "pose": {
-        "face_view": "Front",
-        "body_view": "None"
-      },
-      "expression": "Neutral",
-      "utility": {
-        "face_geometry": "Good",
-        "eyes": "Good",
-        "nose": "Good",
-        "mouth_lips": "Good",
-        "smile": "Limited",
-        "hair_hairline": "Good",
-        "body_geometry": "Poor",
-        "hands_nails": "Poor",
-        "distinctive_features": "Good",
-        "feet": "Poor",
-        "skin_identity": "Limited",
-        "hair_dynamics": "Limited"
-      },
-      "risks": {
-        "lens_perspective_distortion": "Low",
-        "beauty_filter": "None",
-        "heavy_retouching": "None",
-        "suspect_synthetic": "None"
-      },
+      "exclusion_reason": "Near-duplicate and lower utility.",
       "duplicate_cluster_id": "cluster-front-1",
       "identity_consistency": "Consistent",
       "selection": {
