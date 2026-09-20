@@ -35,5 +35,6 @@
   ],
   "generation_allowed": true,
   "decision_reason": "Independent left/right non-frontal evidence supports Advanced; missing profiles are non-blocking for this request.",
-  "resolution": "Matched-Request"
+  "resolution": "Matched-Request",
+  "reconstruction_policy": "Not-Needed"
 }
