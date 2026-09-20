@@ -21,7 +21,13 @@ jobs:
       - name: Self-test reference normalization
         run: python scripts/normalize_references.py --self-test
       - name: Smoke-test deterministic compositor
-        run: python scripts/compose_sheet.py examples/sample-sheet-manifest.json /tmp/character-sheet-demo.svg
+        run: |
+          python scripts/compose_sheet.py examples/sample-sheet-manifest.json /tmp/character-sheet-demo.svg
+          python scripts/compose_sheet.py examples/sample-sheet-manifest.json /tmp/character-sheet-linked.svg --image-mode linked
+          python scripts/compose_sheet.py examples/sample-sheet-manifest.json /tmp/character-sheet-demo.png
+          python scripts/compose_sheet.py examples/sample-sheet-manifest.json /tmp/character-sheet-preview.jpg
+          python scripts/compose_sheet.py examples/sample-sheet-manifest.json /tmp/character-sheet-demo.pdf
+          python scripts/compose_sheet.py examples/sample-sheet-manifest.json /tmp/character-sheet-fa.png --locale fa --direction rtl
       - name: Read Skill version
         id: version
         shell: bash
