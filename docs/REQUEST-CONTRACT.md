@@ -85,3 +85,42 @@ Default to `Quick-Sheet` unless the user explicitly requests a reusable producti
 - Maximum-Fidelity: broader diagnostics and repair budget.
 
 Never invent monetary cost. Report actual pricing only when the active backend exposes pricing.
+
+
+## First-turn intake
+
+Before deep visual analysis, collect or resolve in one compact intake:
+
+- production goal;
+- requested evidence level;
+- layout scope;
+- output mode;
+- budget mode;
+- subject height;
+- authorization;
+- age handling when relevant.
+
+Height is special: do not infer exact height from ordinary photos. Ask once at the beginning. If the user does not know or declines, record `Asked-Unknown` and continue with relative proportions.
+
+## Evidence level vs layout scope
+
+These are independent.
+
+- Evidence Level = Base / Advanced / Full.
+- Layout Scope = Compact / Complete.
+
+A Complete visual sheet is not automatically Full evidence.
+
+## Output mode
+
+Default to `Quick-Sheet` unless the user explicitly requests a reusable production package or the task clearly requires persistent structured assets.
+
+`Production-Package` is appropriate for repeated downstream generation, revision workflows, or explicit machine-readable delivery.
+
+## Budget mode
+
+- Economy: minimum necessary panels and repairs.
+- Balanced: normal default.
+- Maximum-Fidelity: broader diagnostics and repair budget.
+
+Never invent monetary cost. Report actual pricing only when the active backend exposes pricing.
