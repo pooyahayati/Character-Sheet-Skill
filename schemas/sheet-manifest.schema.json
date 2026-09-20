@@ -127,6 +127,43 @@
     },
     "metadata": {
       "type": "object"
+    },
+    "render": {
+      "type": "object",
+      "properties": {
+        "locale": {
+          "type": "string",
+          "minLength": 2
+        },
+        "direction": {
+          "enum": [
+            "auto",
+            "ltr",
+            "rtl"
+          ]
+        },
+        "font_family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image_mode": {
+          "enum": [
+            "embed",
+            "linked"
+          ]
+        },
+        "max_embed_dim": {
+          "type": "integer",
+          "minimum": 512,
+          "maximum": 8192
+        },
+        "jpeg_quality": {
+          "type": "integer",
+          "minimum": 50,
+          "maximum": 100
+        }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false
