@@ -53,6 +53,7 @@ EXAMPLES = [
     ("examples/sample-hair-dynamics.json", "schemas/hair-dynamics.schema.json"),
     ("examples/sample-clothing-behavior.json", "schemas/clothing-behavior.schema.json"),
     ("examples/sample-camera-lighting-contract.json", "schemas/camera-lighting-contract.schema.json"),
+    ("examples/sample-sheet-plan.json", "schemas/sheet-plan.schema.json"),
     ("examples/sample-coverage-audit.json", "schemas/coverage-audit.schema.json"),
     ("examples/sample-preflight-plan.json", "schemas/preflight-plan.schema.json"),
     ("examples/sample-quick-build-summary.json", "schemas/quick-build-summary.schema.json"),
