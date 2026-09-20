@@ -7,6 +7,7 @@
     "request_id",
     "character_id",
     "selected_level",
+    "layout_scope",
     "panels"
   ],
   "properties": {
@@ -149,6 +150,12 @@
         "Basic",
         "Strong",
         "Production"
+      ]
+    },
+    "layout_scope": {
+      "enum": [
+        "Compact",
+        "Complete"
       ]
     }
   },
