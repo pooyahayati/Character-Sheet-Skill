@@ -23,7 +23,8 @@
   ],
   "runtime_scripts": [
     "scripts/compose_sheet.py",
-    "scripts/normalize_references.py"
+    "scripts/normalize_references.py",
+    "scripts/validate_character_output.py"
   ],
   "excluded_from_install_package": [
     ".git",
