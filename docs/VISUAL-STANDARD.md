@@ -1,3 +1,12 @@
+# Mandatory intake visuals
+
+Before requesting photos, show:
+
+1. `assets/character-sheet-levels-example.svg` — what the output can look like;
+2. `assets/reference-photo-guide.svg` — which source-photo angles are required/recommended for Base, Advanced, and Full.
+
+The second guide is mandatory. It prevents users from discovering missing angle requirements only after generation has started.
+
 # Visual Standard
 
 ## Purpose
