@@ -1,13 +1,22 @@
 {
+  "schema_version": "2.0",
   "request_id": "REQ-DEMO-001",
   "goal": "Character-Reference",
   "requested_level": "Advanced",
+  "layout_scope": "Complete",
+  "output_mode": "Quick-Sheet",
+  "budget_mode": "Balanced",
   "required_details": [
     "Face-Angles",
     "Expressions",
     "Body",
     "Distinctive-Features"
   ],
+  "subject_height": {
+    "status": "User-Provided",
+    "value_cm": 167,
+    "notes": "Fictional example value."
+  },
   "target_appearance_epoch": "current",
   "subject_authorization": "Self",
   "age_handling": "Adult-Confirmed",
