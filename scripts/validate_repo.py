@@ -119,6 +119,13 @@ def validate_level_contract():
     }
     if not expected_complete.issubset(complete_faces):
         raise AssertionError("Complete layout must include the full canonical face-angle set")
+    complete_faces = set(layout_scope["scopes"]["Complete"]["required_face_panels"])
+    expected_complete = {
+        "Canonical-Face","Face-Front","Face-Three-Quarter-Left","Face-Three-Quarter-Right",
+        "Face-Profile-Left","Face-Profile-Right","Eye-Detail","Mouth-Lip-Detail","Hair"
+    }
+    if not expected_complete.issubset(complete_faces):
+        raise AssertionError("Complete layout must include the full canonical face-angle set")
 
 
 def validate_staged_reference_analysis():
