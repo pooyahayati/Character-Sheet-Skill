@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "request_id": "REQ-DEMO-001",
+  "output_mode": "Quick-Sheet",
+  "budget_mode": "Balanced",
+  "planned_panels": 7,
+  "estimated_generation_calls": {
+    "min": 4,
+    "max": 7
+  },
+  "estimated_output_files": {
+    "min": 4,
+    "max": 10
+  },
+  "relative_compute": "Medium",
+  "parallel_groups": [
+    [
+      "face-three-quarter-left",
+      "face-three-quarter-right"
+    ],
+    [
+      "eye-detail",
+      "mouth-detail",
+      "hair-detail"
+    ],
+    [
+      "body-front",
+      "body-side"
+    ]
+  ],
+  "wall_clock_estimate": {
+    "status": "Unavailable",
+    "value": null
+  },
+  "cost_estimate": {
+    "status": "Relative-Only",
+    "value": "Medium relative generation cost; no backend price available."
+  },
+  "repair_budget": 2,
+  "notes": [
+    "Detail panels should use direct crops/edits where possible instead of new generation calls."
+  ]
+}
