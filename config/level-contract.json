@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "principle": "Level changes evidence breadth and uncertainty, never the minimum critical facial identity acceptance standard.",
   "levels": {
     "Base": {
@@ -52,7 +52,8 @@
         ],
         "required": [
           "front_or_near_front_face_with_critical_features_evaluable",
-          "at_least_one_independent_nonfrontal_face_reference"
+          "independent_subject_left_nonfrontal_reference",
+          "independent_subject_right_nonfrontal_reference"
         ],
         "conditional": [
           "expression_reference_if_expression_or_modeling_is_required",
@@ -106,7 +107,8 @@
           "neutral_plus_nonneutral_expression_if_expression_or_modeling_is_required",
           "body_front_plus_side_if_body_is_required",
           "observed_back_reference_if_back_view_must_be_canonical",
-          "hands_nails_if_required"
+          "hands_nails_if_required",
+          "opposite_profile_strongly_recommended_for_pose_ready_multiview"
         ],
         "not_required": [
           "optional_details_irrelevant_to_goal"
