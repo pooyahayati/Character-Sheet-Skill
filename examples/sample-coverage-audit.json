@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "request_id": "REQ-DEMO-001",
+  "requested_level": "Advanced",
+  "supported_level": "Advanced",
+  "layout_scope": "Complete",
+  "coverage": {
+    "face_front": "Strong",
+    "face_3q_left": "Strong",
+    "face_3q_right": "Usable",
+    "profile_left": "Missing",
+    "profile_right": "Missing",
+    "neutral_expression": "Strong",
+    "smile": "Usable",
+    "body_front": "Strong",
+    "body_side": "Usable",
+    "body_back": "Missing",
+    "hands": "Missing",
+    "feet": "Missing"
+  },
+  "blocking_gaps": [],
+  "nonblocking_gaps": [
+    "observed profile coverage",
+    "body back",
+    "hands",
+    "feet"
+  ],
+  "targeted_reference_requests": [
+    {
+      "reference_type": "profile",
+      "reason": "A clear observed profile would improve profile fidelity and future Full-level eligibility.",
+      "priority": "Recommended",
+      "instruction": "Add one sharp subject-left or subject-right profile in neutral lighting."
+    }
+  ],
+  "generation_allowed": true,
+  "decision_reason": "Independent left/right non-frontal evidence supports Advanced; missing profiles are non-blocking for this request."
+}
