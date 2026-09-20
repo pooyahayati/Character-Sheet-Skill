@@ -211,7 +211,9 @@
         "ref-three-quarter",
         "ref-eye-closeup"
       ],
-      "reason": "Critical visible facial identity checks pass; optional details remain unresolved."
+      "reason": "Critical visible facial identity checks pass; optional details remain unresolved.",
+      "assessment_method": "Model-Visual-Review",
+      "metric_evidence": []
     },
     "panel_gates": []
   },
