@@ -147,7 +147,7 @@ If an image contains multiple people, do not guess the target. The target must b
 
 ### Coverage audit — mandatory before generation
 
-After reference selection, create `coverage-audit.json` using `schemas/coverage-audit.schema.json`. When executable tools are available, use `scripts/audit_coverage.py` rather than manually guessing coverage.
+After reference selection, create `coverage-audit.json` using `schemas/coverage-audit.schema.json`. When executable tools are available, use `scripts/audit_coverage.py` rather than manually guessing coverage. When executable tools are available, use `scripts/audit_coverage.py` rather than manually guessing coverage.
 
 The audit must determine:
 
@@ -545,7 +545,7 @@ Optional details such as hands/nails do not automatically block Full when they a
 
 ## 11. Create the preflight plan and Sheet Plan
 
-Before generation, create `preflight-plan.json` using `schemas/preflight-plan.schema.json`. When executable tools are available, generate it with `scripts/plan_preflight.py`.
+Before generation, create `preflight-plan.json` using `schemas/preflight-plan.schema.json`. When executable tools are available, generate it with `scripts/plan_preflight.py`. When executable tools are available, generate it with `scripts/plan_preflight.py`.
 
 Tell the user, compactly:
 
