@@ -5,11 +5,45 @@
   "type": "object",
   "required": [
     "schema_version",
+    "set_summary",
     "references"
   ],
   "properties": {
     "schema_version": {
-      "const": "1.0"
+      "const": "2.0"
+    },
+    "set_summary": {
+      "type": "object",
+      "required": [
+        "total",
+        "full_analysis",
+        "compact_analysis",
+        "minimal_excluded",
+        "duplicate_clusters"
+      ],
+      "properties": {
+        "total": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "full_analysis": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "compact_analysis": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "minimal_excluded": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "duplicate_clusters": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
     },
     "references": {
       "type": "array",
@@ -38,18 +72,312 @@
         "Unknown"
       ]
     },
+    "targetSubject": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "Single-Subject",
+            "User-Selected",
+            "Resolved-by-Context",
+            "Ambiguous"
+          ]
+        },
+        "subject_index": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "captureContext": {
+      "type": "object",
+      "properties": {
+        "mirror_state": {
+          "enum": [
+            "Not-Mirrored",
+            "Mirrored",
+            "Unknown"
+          ]
+        },
+        "appearance_epoch_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "recency_relevance": {
+          "enum": [
+            "Current",
+            "Historical",
+            "Unknown"
+          ]
+        },
+        "camera_hint": {
+          "enum": [
+            "Low-Distortion",
+            "Moderate-Perspective",
+            "Strong-Perspective",
+            "Unknown"
+          ]
+        },
+        "lighting_hint": {
+          "enum": [
+            "Identity-Neutral",
+            "Moderate-Directional",
+            "Strong-Directional",
+            "Mixed",
+            "Unknown"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "quality": {
+      "type": "object",
+      "required": [
+        "focus",
+        "exposure",
+        "effective_resolution",
+        "face_pixel_coverage",
+        "motion_blur",
+        "occlusion"
+      ],
+      "properties": {
+        "focus": {
+          "$ref": "#/$defs/rating"
+        },
+        "exposure": {
+          "$ref": "#/$defs/rating"
+        },
+        "effective_resolution": {
+          "$ref": "#/$defs/rating"
+        },
+        "face_pixel_coverage": {
+          "$ref": "#/$defs/rating"
+        },
+        "motion_blur": {
+          "$ref": "#/$defs/risk"
+        },
+        "occlusion": {
+          "$ref": "#/$defs/risk"
+        }
+      },
+      "additionalProperties": false
+    },
+    "pose": {
+      "type": "object",
+      "required": [
+        "face_view",
+        "body_view"
+      ],
+      "properties": {
+        "face_view": {
+          "enum": [
+            "Front",
+            "Three-Quarter-Subject-Left",
+            "Three-Quarter-Subject-Right",
+            "Profile-Subject-Left",
+            "Profile-Subject-Right",
+            "High-Angle",
+            "Low-Angle",
+            "Other",
+            "Unknown"
+          ]
+        },
+        "body_view": {
+          "enum": [
+            "None",
+            "Front",
+            "Side-Subject-Left",
+            "Side-Subject-Right",
+            "Back",
+            "Three-Quarter",
+            "Dynamic",
+            "Seated",
+            "Other",
+            "Unknown"
+          ]
+        },
+        "head_pose_notes": {
+          "type": "string"
+        },
+        "body_pose_notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "utility": {
+      "type": "object",
+      "required": [
+        "face_geometry",
+        "eyes",
+        "nose",
+        "mouth_lips",
+        "smile",
+        "hair_hairline",
+        "body_geometry",
+        "hands_nails",
+        "distinctive_features",
+        "feet",
+        "skin_identity",
+        "hair_dynamics"
+      ],
+      "properties": {
+        "face_geometry": {
+          "$ref": "#/$defs/rating"
+        },
+        "eyes": {
+          "$ref": "#/$defs/rating"
+        },
+        "nose": {
+          "$ref": "#/$defs/rating"
+        },
+        "mouth_lips": {
+          "$ref": "#/$defs/rating"
+        },
+        "smile": {
+          "$ref": "#/$defs/rating"
+        },
+        "hair_hairline": {
+          "$ref": "#/$defs/rating"
+        },
+        "body_geometry": {
+          "$ref": "#/$defs/rating"
+        },
+        "hands_nails": {
+          "$ref": "#/$defs/rating"
+        },
+        "distinctive_features": {
+          "$ref": "#/$defs/rating"
+        },
+        "feet": {
+          "$ref": "#/$defs/rating"
+        },
+        "skin_identity": {
+          "$ref": "#/$defs/rating"
+        },
+        "hair_dynamics": {
+          "$ref": "#/$defs/rating"
+        }
+      },
+      "additionalProperties": false
+    },
+    "risks": {
+      "type": "object",
+      "required": [
+        "lens_perspective_distortion",
+        "beauty_filter",
+        "heavy_retouching",
+        "suspect_synthetic"
+      ],
+      "properties": {
+        "lens_perspective_distortion": {
+          "$ref": "#/$defs/risk"
+        },
+        "beauty_filter": {
+          "$ref": "#/$defs/risk"
+        },
+        "heavy_retouching": {
+          "$ref": "#/$defs/risk"
+        },
+        "suspect_synthetic": {
+          "$ref": "#/$defs/risk"
+        }
+      },
+      "additionalProperties": false
+    },
+    "normalization": {
+      "type": "object",
+      "required": [
+        "status",
+        "orientation_checked",
+        "decode_checked"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "Normalized",
+            "Source-Usable",
+            "Corrupt",
+            "Unsupported"
+          ]
+        },
+        "orientation_checked": {
+          "type": "boolean"
+        },
+        "decode_checked": {
+          "type": "boolean"
+        },
+        "source_sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "normalized_sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "normalized_file": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "selection": {
+      "type": "object",
+      "required": [
+        "role",
+        "reasons"
+      ],
+      "properties": {
+        "role": {
+          "enum": [
+            "Primary",
+            "Validation",
+            "Excluded"
+          ]
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
     "reference": {
       "type": "object",
       "required": [
         "reference_id",
+        "file_name",
         "source_type",
         "person_count",
         "target_subject",
-        "quality",
-        "pose",
-        "expression",
-        "utility",
-        "risks",
+        "analysis_depth",
+        "normalization",
+        "duplicate_cluster_id",
         "identity_consistency",
         "selection"
       ],
@@ -77,152 +405,26 @@
           "minimum": 1
         },
         "target_subject": {
-          "type": "object",
-          "required": [
-            "status"
-          ],
-          "properties": {
-            "status": {
-              "enum": [
-                "Single-Subject",
-                "User-Selected",
-                "Resolved-by-Context",
-                "Ambiguous"
-              ]
-            },
-            "subject_index": {
-              "type": [
-                "integer",
-                "null"
-              ],
-              "minimum": 0
-            },
-            "notes": {
-              "type": "string"
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/$defs/targetSubject"
+        },
+        "analysis_depth": {
+          "enum": [
+            "Full",
+            "Compact",
+            "Excluded-Minimal"
+          ]
+        },
+        "normalization": {
+          "$ref": "#/$defs/normalization"
         },
         "capture_context": {
-          "type": "object",
-          "properties": {
-            "mirror_state": {
-              "enum": [
-                "Not-Mirrored",
-                "Mirrored",
-                "Unknown"
-              ]
-            },
-            "appearance_epoch_id": {
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "recency_relevance": {
-              "enum": [
-                "Current",
-                "Historical",
-                "Unknown"
-              ]
-            },
-            "notes": {
-              "type": "string"
-            },
-            "camera_hint": {
-              "enum": [
-                "Low-Distortion",
-                "Moderate-Perspective",
-                "Strong-Perspective",
-                "Unknown"
-              ]
-            },
-            "lighting_hint": {
-              "enum": [
-                "Identity-Neutral",
-                "Moderate-Directional",
-                "Strong-Directional",
-                "Mixed",
-                "Unknown"
-              ]
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/$defs/captureContext"
         },
         "quality": {
-          "type": "object",
-          "required": [
-            "focus",
-            "exposure",
-            "effective_resolution",
-            "face_pixel_coverage",
-            "motion_blur",
-            "occlusion"
-          ],
-          "properties": {
-            "focus": {
-              "$ref": "#/$defs/rating"
-            },
-            "exposure": {
-              "$ref": "#/$defs/rating"
-            },
-            "effective_resolution": {
-              "$ref": "#/$defs/rating"
-            },
-            "face_pixel_coverage": {
-              "$ref": "#/$defs/rating"
-            },
-            "motion_blur": {
-              "$ref": "#/$defs/risk"
-            },
-            "occlusion": {
-              "$ref": "#/$defs/risk"
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/$defs/quality"
         },
         "pose": {
-          "type": "object",
-          "required": [
-            "face_view",
-            "body_view"
-          ],
-          "properties": {
-            "face_view": {
-              "enum": [
-                "Front",
-                "Three-Quarter-Subject-Left",
-                "Three-Quarter-Subject-Right",
-                "Profile-Subject-Left",
-                "Profile-Subject-Right",
-                "High-Angle",
-                "Low-Angle",
-                "Other",
-                "Unknown"
-              ]
-            },
-            "body_view": {
-              "enum": [
-                "None",
-                "Front",
-                "Side-Subject-Left",
-                "Side-Subject-Right",
-                "Back",
-                "Three-Quarter",
-                "Dynamic",
-                "Seated",
-                "Other",
-                "Unknown"
-              ]
-            },
-            "head_pose_notes": {
-              "type": "string"
-            },
-            "body_pose_notes": {
-              "type": "string"
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/$defs/pose"
         },
         "expression": {
           "enum": [
@@ -236,84 +438,26 @@
           ]
         },
         "utility": {
-          "type": "object",
-          "required": [
-            "face_geometry",
-            "eyes",
-            "nose",
-            "mouth_lips",
-            "smile",
-            "hair_hairline",
-            "body_geometry",
-            "hands_nails",
-            "distinctive_features",
-            "feet",
-            "skin_identity",
-            "hair_dynamics"
-          ],
-          "properties": {
-            "face_geometry": {
-              "$ref": "#/$defs/rating"
-            },
-            "eyes": {
-              "$ref": "#/$defs/rating"
-            },
-            "nose": {
-              "$ref": "#/$defs/rating"
-            },
-            "mouth_lips": {
-              "$ref": "#/$defs/rating"
-            },
-            "smile": {
-              "$ref": "#/$defs/rating"
-            },
-            "hair_hairline": {
-              "$ref": "#/$defs/rating"
-            },
-            "body_geometry": {
-              "$ref": "#/$defs/rating"
-            },
-            "hands_nails": {
-              "$ref": "#/$defs/rating"
-            },
-            "distinctive_features": {
-              "$ref": "#/$defs/rating"
-            },
-            "feet": {
-              "$ref": "#/$defs/rating"
-            },
-            "skin_identity": {
-              "$ref": "#/$defs/rating"
-            },
-            "hair_dynamics": {
-              "$ref": "#/$defs/rating"
-            }
+          "$ref": "#/$defs/utility"
+        },
+        "utility_summary": {
+          "type": "array",
+          "items": {
+            "type": "string"
           },
-          "additionalProperties": false
+          "uniqueItems": true
         },
         "risks": {
-          "type": "object",
-          "required": [
-            "lens_perspective_distortion",
-            "beauty_filter",
-            "heavy_retouching",
-            "suspect_synthetic"
-          ],
-          "properties": {
-            "lens_perspective_distortion": {
-              "$ref": "#/$defs/risk"
-            },
-            "beauty_filter": {
-              "$ref": "#/$defs/risk"
-            },
-            "heavy_retouching": {
-              "$ref": "#/$defs/risk"
-            },
-            "suspect_synthetic": {
-              "$ref": "#/$defs/risk"
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/$defs/risks"
+        },
+        "differences": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exclusion_reason": {
+          "type": "string"
         },
         "duplicate_cluster_id": {
           "type": [
@@ -330,30 +474,70 @@
           ]
         },
         "selection": {
-          "type": "object",
-          "required": [
-            "role",
-            "reasons"
-          ],
-          "properties": {
-            "role": {
-              "enum": [
-                "Primary",
-                "Validation",
-                "Excluded"
-              ]
-            },
-            "reasons": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "minItems": 1
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/$defs/selection"
         }
       },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "analysis_depth": {
+                "const": "Full"
+              }
+            },
+            "required": [
+              "analysis_depth"
+            ]
+          },
+          "then": {
+            "required": [
+              "capture_context",
+              "quality",
+              "pose",
+              "expression",
+              "utility",
+              "risks"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "analysis_depth": {
+                "const": "Compact"
+              }
+            },
+            "required": [
+              "analysis_depth"
+            ]
+          },
+          "then": {
+            "required": [
+              "pose",
+              "expression",
+              "utility_summary",
+              "differences"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "analysis_depth": {
+                "const": "Excluded-Minimal"
+              }
+            },
+            "required": [
+              "analysis_depth"
+            ]
+          },
+          "then": {
+            "required": [
+              "exclusion_reason"
+            ]
+          }
+        }
+      ],
       "additionalProperties": false
     }
   },
