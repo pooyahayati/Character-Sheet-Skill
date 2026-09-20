@@ -3,7 +3,7 @@
   "request_id": "REQ-DEMO-001",
   "goal": "Character-Reference",
   "requested_level": "Advanced",
-  "layout_scope": "Complete",
+  "layout_scope": "Compact",
   "output_mode": "Quick-Sheet",
   "budget_mode": "Balanced",
   "required_details": [
