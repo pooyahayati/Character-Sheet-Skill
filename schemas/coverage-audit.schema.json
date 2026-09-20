@@ -14,7 +14,8 @@
     "nonblocking_gaps",
     "targeted_reference_requests",
     "generation_allowed",
-    "resolution"
+    "resolution",
+    "reconstruction_policy"
   ],
   "properties": {
     "schema_version": {
@@ -161,6 +162,13 @@
         "Matched-Request",
         "User-Accepted-Lower-Level",
         "Blocked-Pending-References"
+      ]
+    },
+    "reconstruction_policy": {
+      "enum": [
+        "Not-Needed",
+        "Pending-User-Decision",
+        "User-Accepted-Reconstructed-Panels"
       ]
     }
   },
