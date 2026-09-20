@@ -16,11 +16,11 @@ For repeated realistic outputs in varied poses, the skill also builds a pose-rea
 
 ## Release status
 
-Current production release: `v1.0.0`
+Current production release: `v1.1.0`
 
 The installable package is:
 
-`character-sheet-skill-v1.0.0.zip`
+`character-sheet-skill-v1.1.0.zip`
 
 The repository keeps development/test files separate from the install package. The ZIP contains only the runtime Skill files and supporting resources.
 
@@ -54,23 +54,23 @@ Official OpenAI references:
 
 Release page:
 
-https://github.com/pooyahayati/Character-Sheet-Skill/releases/tag/v1.0.0
+https://github.com/pooyahayati/Character-Sheet-Skill/releases/tag/v1.1.0
 
 Direct download:
 
-https://github.com/pooyahayati/Character-Sheet-Skill/releases/download/v1.0.0/character-sheet-skill-v1.0.0.zip
+https://github.com/pooyahayati/Character-Sheet-Skill/releases/download/v1.1.0/character-sheet-skill-v1.1.0.zip
 
 Checksum:
 
-https://github.com/pooyahayati/Character-Sheet-Skill/releases/download/v1.0.0/SHA256SUMS.txt
+https://github.com/pooyahayati/Character-Sheet-Skill/releases/download/v1.1.0/SHA256SUMS.txt
 
 The file you install into ChatGPT is:
 
-`character-sheet-skill-v1.0.0.zip`
+`character-sheet-skill-v1.1.0.zip`
 
 **Alternative 1: GitHub Actions artifact**
 
-Open **Actions → latest successful Validate Skill run** and download the `character-sheet-skill-v1.0.0` artifact.
+Open **Actions → latest successful Validate Skill run** and download the `character-sheet-skill-v1.1.0` artifact.
 
 **Alternative 2: build the ZIP locally on Windows**
 
@@ -83,13 +83,13 @@ python scripts/package_skill.py
 Output:
 
 ```text
-dist/character-sheet-skill-v1.0.0.zip
+dist/character-sheet-skill-v1.1.0.zip
 ```
 
 Optional validation:
 
 ```powershell
-python scripts/package_skill.py --check dist/character-sheet-skill-v1.0.0.zip
+python scripts/package_skill.py --check dist/character-sheet-skill-v1.1.0.zip
 ```
 
 ### Step 2 — Install in the ChatGPT Windows app
@@ -100,7 +100,7 @@ python scripts/package_skill.py --check dist/character-sheet-skill-v1.0.0.zip
 4. Select **Create**.
 5. Select **Upload from your computer**.
 6. Choose:
-   `character-sheet-skill-v1.0.0.zip`
+   `character-sheet-skill-v1.1.0.zip`
 7. Wait for ChatGPT's skill scan to finish.
 8. If the skill is marked **Needs Review**, review it before enabling.
 9. Install/enable the Skill.
