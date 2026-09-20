@@ -54,7 +54,8 @@
         "required": [
           "panel_id",
           "gate_result",
-          "included_in_final"
+          "included_in_final",
+          "assessment_method"
         ],
         "properties": {
           "panel_id": {
@@ -72,6 +73,52 @@
           },
           "notes": {
             "type": "string"
+          },
+          "assessment_method": {
+            "enum": [
+              "Automated-Metric",
+              "Human-Review",
+              "Model-Visual-Review",
+              "Hybrid"
+            ]
+          },
+          "metric_evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "metric",
+                "result"
+              ],
+              "properties": {
+                "metric": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": [
+                    "number",
+                    "string",
+                    "null"
+                  ]
+                },
+                "threshold": {
+                  "type": [
+                    "number",
+                    "string",
+                    "null"
+                  ]
+                },
+                "result": {
+                  "enum": [
+                    "PASS",
+                    "PASS_WITH_LIMITS",
+                    "BLOCK",
+                    "NOT_APPLICABLE"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
           }
         },
         "additionalProperties": false
