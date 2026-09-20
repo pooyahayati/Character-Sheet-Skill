@@ -434,7 +434,8 @@
         "critical_checks",
         "limitations",
         "evidence_used",
-        "reason"
+        "reason",
+        "assessment_method"
       ],
       "properties": {
         "result": {
@@ -492,6 +493,53 @@
         },
         "reason": {
           "type": "string"
+        },
+        "assessment_method": {
+          "enum": [
+            "Automated-Metric",
+            "Human-Review",
+            "Model-Visual-Review",
+            "Hybrid"
+          ]
+        },
+        "metric_evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "metric",
+              "result"
+            ],
+            "properties": {
+              "metric": {
+                "type": "string",
+                "minLength": 1
+              },
+              "value": {
+                "type": [
+                  "number",
+                  "string",
+                  "null"
+                ]
+              },
+              "threshold": {
+                "type": [
+                  "number",
+                  "string",
+                  "null"
+                ]
+              },
+              "result": {
+                "enum": [
+                  "PASS",
+                  "PASS_WITH_LIMITS",
+                  "BLOCK",
+                  "NOT_APPLICABLE"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
         }
       },
       "additionalProperties": false
