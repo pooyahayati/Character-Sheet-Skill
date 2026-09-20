@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pooyahayati/Character-Sheet-Skill/schemas/quick-build-summary.schema.json",
+  "title": "Quick Sheet Build Summary",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "request_id",
+    "character_id",
+    "evidence_level",
+    "layout_scope",
+    "status",
+    "limitations",
+    "final_outputs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "character_id": {
+      "type": "string"
+    },
+    "evidence_level": {
+      "enum": [
+        "Base",
+        "Advanced",
+        "Full"
+      ]
+    },
+    "layout_scope": {
+      "enum": [
+        "Compact",
+        "Complete"
+      ]
+    },
+    "status": {
+      "enum": [
+        "Approved",
+        "Approved-With-Limits",
+        "Blocked"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "final_outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false
+}
