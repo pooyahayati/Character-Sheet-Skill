@@ -13,7 +13,8 @@
     "blocking_gaps",
     "nonblocking_gaps",
     "targeted_reference_requests",
-    "generation_allowed"
+    "generation_allowed",
+    "resolution"
   ],
   "properties": {
     "schema_version": {
@@ -154,6 +155,13 @@
     },
     "decision_reason": {
       "type": "string"
+    },
+    "resolution": {
+      "enum": [
+        "Matched-Request",
+        "User-Accepted-Lower-Level",
+        "Blocked-Pending-References"
+      ]
     }
   },
   "$defs": {
