@@ -4,14 +4,22 @@
   "title": "Character Sheet Build Request",
   "type": "object",
   "required": [
+    "schema_version",
     "request_id",
     "goal",
     "requested_level",
+    "layout_scope",
+    "output_mode",
+    "budget_mode",
     "required_details",
+    "subject_height",
     "subject_authorization",
     "age_handling"
   ],
   "properties": {
+    "schema_version": {
+      "const": "2.0"
+    },
     "request_id": {
       "type": "string",
       "minLength": 1
@@ -34,8 +42,31 @@
         "Full"
       ]
     },
+    "layout_scope": {
+      "enum": [
+        "Auto",
+        "Compact",
+        "Complete"
+      ]
+    },
+    "output_mode": {
+      "enum": [
+        "Quick-Sheet",
+        "Production-Package"
+      ],
+      "default": "Quick-Sheet"
+    },
+    "budget_mode": {
+      "enum": [
+        "Economy",
+        "Balanced",
+        "Maximum-Fidelity"
+      ],
+      "default": "Balanced"
+    },
     "required_details": {
       "type": "array",
+      "uniqueItems": true,
       "items": {
         "enum": [
           "Face-Angles",
@@ -45,12 +76,77 @@
           "Back-View",
           "Hair",
           "Hands-Nails",
+          "Feet",
           "Distinctive-Features",
           "Modeling-Poses",
           "Measurements"
         ]
+      }
+    },
+    "subject_height": {
+      "type": "object",
+      "required": [
+        "status",
+        "value_cm"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "User-Provided",
+            "Asked-Unknown",
+            "Not-Applicable"
+          ]
+        },
+        "value_cm": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 50,
+          "maximum": 260
+        },
+        "notes": {
+          "type": "string"
+        }
       },
-      "uniqueItems": true
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "User-Provided"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value_cm": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "Asked-Unknown",
+                  "Not-Applicable"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value_cm": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
     },
     "target_appearance_epoch": {
       "type": [
