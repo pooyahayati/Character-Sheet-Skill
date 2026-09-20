@@ -3,7 +3,7 @@
   "request_id": "REQ-DEMO-001",
   "requested_level": "Advanced",
   "supported_level": "Advanced",
-  "layout_scope": "Complete",
+  "layout_scope": "Compact",
   "coverage": {
     "face_front": "Strong",
     "face_3q_left": "Strong",
