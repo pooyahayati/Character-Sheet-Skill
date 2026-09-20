@@ -9,8 +9,14 @@ The skill must not ask an image model to create the final multi-panel board in o
 ## Required production order
 
 ```text
-Reference Intake
+Reference Guide
+→ First-turn Intake (goal + height + authorization)
+→ Normalize References
+→ Triage / Duplicate Removal
 → Reference Selection
+→ Coverage Audit
+→ Targeted Missing-Reference Request if blocked
+→ Preflight Cost/Call/File Estimate
 → Canonical Identity Profile
 → Canonical Body Proxy when pose production is required
 → Pose Readiness Target
@@ -28,6 +34,19 @@ Reference Intake
 → Deterministic Composition
 → Final Sheet QC
 ```
+
+## Hard pre-generation gate
+
+No generation may begin until:
+
+- source files are normalized/decodable;
+- duplicate triage is complete;
+- `coverage-audit.json` exists;
+- the supported evidence level is known;
+- required missing references have either been supplied or the user has explicitly accepted a lower supported evidence level;
+- a preflight execution estimate has been presented.
+
+Do not silently downgrade Full to Advanced after generation has already started.
 
 ## Backend capability requirement
 
@@ -51,6 +70,21 @@ Downstream panels use the nearest relevant approved anchor(s), plus the relevant
 A reconstructed anchor remains Reconstructed and cannot become stronger evidence than its source references.
 
 The anchor bank is a production control asset. It is not new source evidence.
+
+## Parallel execution groups
+
+Panel isolation does not imply sequential execution.
+
+After the canonical identity anchors are approved, generate independent panels in parallel when supported.
+
+Typical groups:
+
+- Group A: left/right 3/4 + profiles;
+- Group B: eye/mouth/hair detail crops or edits;
+- Group C: expression variants;
+- Group D: body views sharing the same approved body proxy/camera family.
+
+Dependent body/pose panels must wait for their required face/body anchors.
 
 ## Panel isolation rule
 
