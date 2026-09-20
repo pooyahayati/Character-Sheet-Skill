@@ -302,6 +302,115 @@
         "camera_contract",
         "do_not_confuse_perspective_with_identity"
       ]
+    },
+    {
+      "id": "S38",
+      "name": "first_turn_height_intake",
+      "must": [
+        "ask_height_before_deep_analysis",
+        "never_infer_exact_height_from_photos"
+      ]
+    },
+    {
+      "id": "S39",
+      "name": "reference_photo_guide_before_upload",
+      "must": [
+        "show_base_advanced_full_visual_guide"
+      ]
+    },
+    {
+      "id": "S40",
+      "name": "advanced_missing_opposite_three_quarter",
+      "must": [
+        "coverage_audit_blocks_generation",
+        "request_exact_missing_side"
+      ]
+    },
+    {
+      "id": "S41",
+      "name": "complete_layout_missing_profiles",
+      "must": [
+        "layout_scope_independent_from_evidence_level",
+        "request_missing_complete_angles_before_generation"
+      ]
+    },
+    {
+      "id": "S42",
+      "name": "quick_sheet_default",
+      "must": [
+        "quick_sheet_default",
+        "production_package_only_when_requested"
+      ]
+    },
+    {
+      "id": "S43",
+      "name": "reference_normalization",
+      "must": [
+        "exif_orientation",
+        "decode_check",
+        "resize_large_images",
+        "duplicate_hashing"
+      ]
+    },
+    {
+      "id": "S44",
+      "name": "explicit_level_downgrade",
+      "must": [
+        "no_silent_downgrade",
+        "user_accepts_lower_level_before_generation"
+      ]
+    },
+    {
+      "id": "S45",
+      "name": "preflight_execution_estimate",
+      "must": [
+        "generation_call_range",
+        "output_file_range",
+        "relative_compute",
+        "no_fabricated_price_or_time"
+      ]
+    },
+    {
+      "id": "S46",
+      "name": "staged_large_set_analysis",
+      "must": [
+        "full_analysis_primary_only",
+        "compact_validation",
+        "minimal_excluded"
+      ]
+    },
+    {
+      "id": "S47",
+      "name": "multi_format_composition",
+      "must": [
+        "png_jpeg_pdf_svg",
+        "linked_svg_option",
+        "rtl_locale_control"
+      ]
+    },
+    {
+      "id": "S48",
+      "name": "integrated_output_validation",
+      "must": [
+        "cross_file_id_validation",
+        "no_block_panel_leak",
+        "final_files_exist"
+      ]
+    },
+    {
+      "id": "S49",
+      "name": "qc_assessment_method",
+      "must": [
+        "record_assessment_method",
+        "do_not_present_visual_judgment_as_metric"
+      ]
+    },
+    {
+      "id": "S50",
+      "name": "parallel_independent_panels",
+      "must": [
+        "dependency_aware_parallel_groups"
+      ]
     }
   ]
 }
