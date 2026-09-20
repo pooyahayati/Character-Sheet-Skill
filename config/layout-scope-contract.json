@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "principle": "Layout scope controls visual breadth; evidence level controls how strongly source references support the identity claims.",
+  "scopes": {
+    "Compact": {
+      "purpose": "Efficient essential identity board.",
+      "required_face_panels": [
+        "Canonical-Face",
+        "Eye-Detail",
+        "Mouth-Lip-Detail",
+        "Hair"
+      ],
+      "conditional_face_panels": [
+        "Face-Front",
+        "Face-Three-Quarter-Left",
+        "Face-Three-Quarter-Right",
+        "Smile"
+      ],
+      "body_when_requested": [
+        "Body-Front"
+      ],
+      "missing_reference_policy": "Do not add low-value reconstructed panels only to fill space."
+    },
+    "Complete": {
+      "purpose": "Broad production board with deliberate multi-angle coverage.",
+      "required_face_panels": [
+        "Canonical-Face",
+        "Face-Front",
+        "Face-Three-Quarter-Left",
+        "Face-Three-Quarter-Right",
+        "Face-Profile-Left",
+        "Face-Profile-Right",
+        "Eye-Detail",
+        "Mouth-Lip-Detail",
+        "Hair"
+      ],
+      "expression_when_requested": [
+        "Smile"
+      ],
+      "body_when_requested": [
+        "Body-Front",
+        "Body-Side",
+        "Body-Back"
+      ],
+      "detail_when_requested": [
+        "Hands-Nails",
+        "Distinctive-Features"
+      ],
+      "missing_reference_policy": "Before generation, request missing source angles needed for the Complete board. Reconstruct only after the user accepts that the panel will remain Reconstructed/PASS_WITH_LIMITS."
+    }
+  }
+}
